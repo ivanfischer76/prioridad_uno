@@ -1,0 +1,124 @@
+.main-header {
+  background: linear-gradient(
+    to bottom,
+    var(--header-bg, #035d1b) 0%,
+    #388e3c 100%
+  );
+  color: #fff;
+  box-shadow: 0 2px 8px rgb(250, 250, 250);
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 44px;
+  max-height: 50px;
+  height: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // Divide en dos: izquierda y derecha
+  min-height: 44px;
+  max-height: 50px;
+  height: 50px;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo img {
+  height: 32px;
+}
+
+.main-menu {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+}
+.main-header,
+.header-content {
+  overflow: visible !important;
+}
+
+/* Letras claras para los links del header */
+.navbar-nav .nav-link,
+.navbar-brand,
+.main-header .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.navbar-nav .nav-link:hover,
+.navbar-brand:hover,
+.main-header .nav-link:hover {
+  color: var(--light-green, #a5d6a7) !important;
+  text-decoration: underline;
+}
+.navbar-nav.flex-row .nav-item {
+  margin-right: 1rem;
+}
+.navbar-nav.flex-row .nav-item:last-child {
+  margin-right: 0;
+}
+.navbar-nav.flex-row .nav-item {
+  margin-right: 1rem;
+}
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.navbar-nav .nav-item {
+  margin-right: 1.2rem;
+}
+.navbar-nav .nav-item:last-child {
+  margin-right: 0;
+}
+
+.lang-select {
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.flag-icon {
+  width: 36px;
+  height: 26px;
+  vertical-align: middle;
+  margin-right: 0.6rem;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  object-fit: cover;
+  padding: 4px; /* Más espacio entre la bandera y el borde */
+  display: inline-block;
+}
+
+.header-right {
+  display: flex;
+  align-items: center; /* Centra verticalmente la bandera y el select */
+}
+
+.dropdown-menu {
+  z-index: 2000 !important;
+}
+
+
+
+

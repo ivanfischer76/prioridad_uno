@@ -1,0 +1,20 @@
+{
+  "app": {
+    "title": "Prioridade Um"
+  },
+  "menu": {
+    "home": "Início",
+    "about": "Quem somos",
+    "join": "Junte-se a nós",
+    "amazonas": "Projeto Amazonas",
+    "stories": "Histórias",
+    "contact": "Contato",
+    "donate": "Doar",
+    "projects": "Projetos"
+  },
+  "slider": {
+    "nature": "Explore a natureza",
+    "adventure": "Aventura na montanha",
+    "discover": "Descubra novos horizontes"
+  }
+}

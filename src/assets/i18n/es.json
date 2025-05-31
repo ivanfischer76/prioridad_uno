@@ -1,0 +1,20 @@
+{
+  "app": {
+    "title": "Prioridad Uno"
+  },
+  "menu": {
+    "home": "Inicio",
+    "about": "Quiénes somos",
+    "join": "Únete",
+    "amazonas": "Amazonas Boliviano",
+    "stories": "Historias",
+    "contact": "Contacto",
+    "donate": "Donar",
+    "projects": "Proyectos"
+  },
+  "slider": {
+    "nature": "Explora la naturaleza",
+    "adventure": "Aventura en la montaña",
+    "discover": "Descubre nuevos horizontes"
+  }
+}

@@ -1,0 +1,74 @@
+
+<ngb-carousel 
+    [interval]="5000" 
+    [pauseOnHover]="true" 
+    [showNavigationArrows]="true" 
+    [showNavigationIndicators]="true"
+    class="full-carousel">
+    <ng-template ngbSlide *ngFor="let slide of slides; let i = index">
+        <div class="carousel-bg">
+        <ng-container [ngSwitch]="slide.type">
+            <img *ngSwitchCase="'image'" [src]="slide.src" class="carousel-img" alt="slide {{i+1}}">
+            <video *ngSwitchCase="'video'" [src]="slide.src" class="carousel-img" autoplay muted loop></video>
+        </ng-container>
+        <div class="carousel-caption carousel-caption-right">
+            <h3>{{ slide.text | translate }}</h3>
+        </div>
+        </div>
+    </ng-template>
+</ngb-carousel>
+
+<!-- <section class="hero-section p-d-flex p-ai-center p-jc-center" style="background: url('assets/logo.jpg') center/cover no-repeat; min-height: 60vh;">
+  <div class="hero-content p-text-center p-p-5" style="background: rgba(255,255,255,0.85); border-radius: 1.5rem; max-width: 600px;">
+    <h1 class="p-mb-3">{{ 'app.title' | translate }}</h1>
+    <h2 class="p-mb-4">Llevando esperanza y ayuda a comunidades aisladas del Amazonas boliviano</h2>
+    <a routerLink="/join-us" class="p-button p-button-lg p-button-primary">Únete a la misión</a>
+  </div>
+</section>
+
+<section class="mission-section p-py-6 p-px-3 p-text-center">
+  <h2 class="p-mb-3">Nuestra Misión</h2>
+  <p class="p-mb-4">Somos una organización cristiana que utiliza la aviación y la logística para llevar ayuda humanitaria, salud, educación y el mensaje de esperanza a las comunidades más remotas del Amazonas boliviano.</p>
+</section>
+
+<section class="programs-section p-py-6 p-px-3">
+  <h2 class="p-text-center p-mb-5">Programas Destacados</h2>
+  <div class="p-grid p-justify-center p-align-stretch">
+    <div class="p-col-12 p-md-4 p-p-2">
+      <div class="p-card">
+        <img src="assets/logo.jpg" alt="Amazonas Boliviano" height="40" style="vertical-align: middle; border-radius: 1rem 1rem 0 0;" />
+        <div class="p-card-body">
+          <h3>Amazonas Boliviano</h3>
+          <p>Proyecto de apoyo integral a comunidades amazónicas: salud, educación, agua y desarrollo sostenible.</p>
+          <a routerLink="/amazonas-boliviano" class="p-button p-button-sm p-button-secondary">Ver más</a>
+        </div>
+      </div>
+    </div>
+    <div class="p-col-12 p-md-4 p-p-2">
+      <div class="p-card">
+        <img src="assets/logo.jpg" alt="Historias de Esperanza" height="40" style="vertical-align: middle; border-radius: 1rem 1rem 0 0;" />
+        <div class="p-card-body">
+          <h3>Historias de Esperanza</h3>
+          <p>Testimonios reales de vidas transformadas por la ayuda y el amor llevados a lugares inaccesibles.</p>
+          <a routerLink="/stories" class="p-button p-button-sm p-button-secondary">Leer historias</a>
+        </div>
+      </div>
+    </div>
+    <div class="p-col-12 p-md-4 p-p-2">
+      <div class="p-card">
+        <img src="assets/logo.jpg" alt="Únete a la misión" height="40" style="vertical-align: middle; border-radius: 1rem 1rem 0 0;" />
+        <div class="p-card-body">
+          <h3>Únete a la misión</h3>
+          <p>Participa como voluntario, piloto, donante o colaborador y sé parte del cambio en el Amazonas.</p>
+          <a routerLink="/join-us" class="p-button p-button-sm p-button-secondary">Súmate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section p-py-6 p-px-3 p-text-center">
+  <h2 class="p-mb-3">¿Quieres ayudar?</h2>
+  <p class="p-mb-4">Tu donación o voluntariado puede marcar la diferencia en la vida de cientos de familias amazónicas.</p>
+  <a routerLink="/donate" class="p-button p-button-lg p-button-success">Donar ahora</a>
+</section> -->

@@ -1,0 +1,39 @@
+<header class="main-header">
+  <div class="header-content">
+    <div class="header-left">
+      <a class="logo" routerLink="/home">
+        <img src="assets/logo.jpg" alt="Logo" />
+      </a>
+      <nav>
+        <ul class="navbar-nav d-flex flex-row align-items-center">
+          <li class="nav-item"><a class="nav-link" routerLink="/home">{{ 'menu.home' | translate }}</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/about">{{ 'menu.about' | translate }}</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/join-us">{{ 'menu.join' | translate }}</a></li>
+          <li ngbDropdown class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+                ngbDropdownToggle
+                id="projectsDropdown"
+                role="button">
+                {{ 'menu.projects' | translate }}
+            </a>
+            <ul ngbDropdownMenu aria-labelledby="programsDropdown">
+                <li>
+                    <a class="dropdown-item" routerLink="/amazonas-boliviano">{{ 'menu.amazonas' | translate }}</a>
+                </li>
+                <!-- Puedes agregar más programas aquí -->
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" routerLink="/stories">{{ 'menu.stories' | translate }}</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/contact">{{ 'menu.contact' | translate }}</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/donate">{{ 'menu.donate' | translate }}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-right">
+        <img [src]="currentLang.flag" [alt]="currentLang.label" class="flag-icon" />
+        <select #langSel (change)="changeLang(langSel.value)" class="lang-select" [value]="currentLang.code">
+            <option *ngFor="let lang of languages" [value]="lang.code">{{ lang.label }}</option>
+        </select>
+    </div>
+  </div>
+</header>
