@@ -1,20 +1,26 @@
 {
   "app": {
-    "title": "Priorité Un"
+    "title": "Priorité Un",
+    "asociacion": "Association Église du Seigneur"
   },
   "menu": {
     "home": "Accueil",
-    "about": "Qui sommes-nous",
-    "join": "Rejoignez-nous",
-    "amazonas": "Projet Amazonas",
-    "stories": "Histoires",
+    "about_us": "Qui sommes-nous",
     "contact": "Contact",
-    "donate": "Faire un don",
-    "projects": "Projets"
+    "donate": "Faire un don"
   },
   "slider": {
     "nature": "Explorez la nature",
     "adventure": "Aventure en montagne",
     "discover": "Découvrez de nouveaux horizons"
-  }
+  },
+  "login": "Connexion",
+  "register": "Inscription",
+  "profile": "Profil",
+  "user": "Utilisateur",
+  "logout": "Déconnexion",
+  "contact_us": "Contactez-nous !",
+  "welcome": "Bienvenue",
+  "campaigns": "Campagnes",
+  "projects": "Projets"
 }

@@ -1,20 +1,26 @@
 {
   "app": {
-    "title": "Prioridade Um"
+    "title": "Prioridade Um",
+    "asociacion": "Associação Igreja do Senhor"
   },
   "menu": {
     "home": "Início",
-    "about": "Quem somos",
-    "join": "Junte-se a nós",
-    "amazonas": "Projeto Amazonas",
-    "stories": "Histórias",
+    "about_us": "Quem somos",
     "contact": "Contato",
-    "donate": "Doar",
-    "projects": "Projetos"
+    "donate": "Doar"
   },
   "slider": {
     "nature": "Explore a natureza",
     "adventure": "Aventura na montanha",
     "discover": "Descubra novos horizontes"
-  }
+  },
+  "login": "Entrar",
+  "register": "Registrar",
+  "profile": "Perfil",
+  "user": "Usuário",
+  "logout": "Sair",
+  "contact_us": "Contate-nos!",
+  "welcome": "Bem-vindo",
+  "campaigns": "Campanhas",
+  "projects": "Projetos"
 }

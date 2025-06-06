@@ -1,20 +1,26 @@
 {
-  "app": {
-    "title": "Prioridad Uno"
-  },
-  "menu": {
-    "home": "Inicio",
-    "about": "Quiénes somos",
-    "join": "Únete",
-    "amazonas": "Amazonas Boliviano",
-    "stories": "Historias",
-    "contact": "Contacto",
-    "donate": "Donar",
+    "app": {
+        "title": "Prioridad Uno",
+        "asociacion": "Asociación Iglesia del Señor"
+    },
+    "menu": {
+        "home": "Inicio",
+        "about_us": "Quiénes somos",
+        "contact": "Contacto",
+        "donate": "Donar"
+    },
+    "slider": {
+        "nature": "Explora la naturaleza",
+        "adventure": "Aventura en la montaña",
+        "discover": "Descubre nuevos horizontes"
+    },
+    "login": "Iniciar Sesión",
+    "register": "Registro",
+    "profile": "Perfil",
+    "user": "Usuario",
+    "logout": "Cerrar Sesión",
+    "contact_us": "Contáctenos!",
+    "welcome": "Bienvenido",
+    "campaigns": "Campañas",
     "projects": "Proyectos"
-  },
-  "slider": {
-    "nature": "Explora la naturaleza",
-    "adventure": "Aventura en la montaña",
-    "discover": "Descubre nuevos horizontes"
-  }
 }

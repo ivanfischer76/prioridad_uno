@@ -1,0 +1,126 @@
+<section>
+    <div class="flex flex-wrap justify-content-between items-center">
+        <div class="flex flex-wrap justify-content-start items-center">
+            <p-menubar [model]="items">
+                <ng-template  #item let-item>
+                    <ng-container *ngIf="item.isLogo; else defaultItem">
+                        <a (click)="item.command && item.command()" 
+                            style="cursor:pointer; display: flex; align-items: center; gap: 12px; text-decoration: none; padding-right: 10px;">
+                            <img src="assets/logo.svg" 
+                                alt="Logo" 
+                                style="height:44px;vertical-align:middle;border-radius: 6px;" />
+                            <span 
+                                class="font-bold text-1xl tracking-wide"
+                                style="color: #fff; font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; letter-spacing: 1px;">
+                                {{ 'app.title' | translate }}
+                            </span>
+                        </a>
+                    </ng-container>
+                    <ng-template #defaultItem>
+                        <ng-container *ngIf="item.route; else urlRef">
+                            <a [routerLink]="item.route" class="p-menubar-item-link">
+                                <span [class]="item.icon"></span>
+                                <span class="ml-2">
+                                    {{ item.label | translate }}
+                                </span>
+                            </a>
+                        </ng-container>
+                        <ng-template #urlRef>
+                            <a *ngIf="item.items; else noLink" class="p-menubar-item-link">
+                                <span [class]="item.icon"></span>
+                                <span class="ml-2">
+                                    {{ item.label | translate }}
+                                </span>
+                            </a>
+                        </ng-template>
+                        <ng-template #noLink>
+                            <div class="p-menubar-item-link">
+                                <span [class]="item.icon"></span>
+                                <span class="ml-2">
+                                    {{ item.label | translate }}
+                                </span>
+                                <!-- <span class="pi pi-fw pi-angle-down ml-2"></span> -->
+                            </div>
+                        </ng-template>
+                    </ng-template>
+                </ng-template>
+            </p-menubar>
+        </div>
+        <div class="flex flex-wrap justify-content-end items-center gap-2 ml-auto pr-2">
+            <p-button 
+                pRipple
+                type="button"
+                [raised]="true"
+                pTooltip="{{ 'login' | translate }}"
+                tooltipPosition="bottom" 
+                icon="pi pi-sign-in" 
+                [text]="true"
+                *ngIf="!isLoggedIn"
+                (click)="onLogin()">
+            </p-button>
+            <p-button 
+                pRipple
+                type="button"
+                [raised]="true"
+                pTooltip="{{ 'register' | translate }}"
+                tooltipPosition="bottom" 
+                icon="pi pi-user-plus" 
+                [text]="true"
+                *ngIf="!isLoggedIn"
+                (click)="onRegister()">
+            </p-button>
+            <p-button 
+                pRipple
+                type="button"
+                [raised]="true"
+                [label]="'Iván Fischer'" 
+                icon="pi pi-user" 
+                [text]="true"
+                *ngIf="isLoggedIn">                
+            </p-button>
+            <p-select 
+                [options]="languages" 
+                [(ngModel)]="selectedLang" 
+                (onChange)="changeLang($event.value)" 
+                optionLabel="label" 
+                [style]="{height: '44px', width: '140px'}"
+                [showClear]="false">
+                <ng-template #selectedItem let-selectedLang>
+                    <div class="flex items-center gap-2" *ngIf="selectedLang">
+                        <img
+                            [src]="'assets/flags/' + selectedLang.value.toLowerCase() +'.svg'"
+                            [class]="'flag flag-' + selectedLang.value.toLowerCase()"
+                            style="width: 18px"
+                        />
+                        <div>{{ selectedLang.label }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-language #item>
+                    <div class="flex items-center gap-2">
+                        <img
+                            [src]="'assets/flags/' + language.value.toLowerCase() +'.svg'"
+                            [class]="'flag flag-' + language.value.toLowerCase()"
+                            style="width: 18px"
+                        />
+                        <div>{{ language.label }}</div>
+                    </div>
+                </ng-template>
+                <ng-template #dropdownicon>
+                    <i class="pi pi-map"></i>
+                </ng-template>
+            </p-select>
+            <p-button 
+                pRipple
+                type="button"
+                [raised]="true" 
+                icon="pi pi-sign-out" 
+                pTooltip="{{ 'logout' | translate }}"
+                tooltipPosition="bottom" 
+                [text]="true"
+                *ngIf="isLoggedIn"
+                (click)="onLogout()">
+            </p-button>
+        </div>
+    </div>
+
+</section>

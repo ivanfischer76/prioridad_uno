@@ -1,0 +1,7 @@
+.watermark-bg {
+//   min-height: calc(100vh - 92px); /* Ajusta según el alto de tu navbar+footer */
+  background: url('/assets/Sena-Bolivia-mapa-recortado-transparente.png') center center no-repeat;
+  background-size: cover; /*contain o 'cover' según prefieras */
+  position: relative;
+  z-index: 1;
+}

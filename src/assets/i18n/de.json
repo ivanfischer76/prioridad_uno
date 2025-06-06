@@ -1,20 +1,26 @@
 {
   "app": {
-    "title": "Priorität Eins"
+    "title": "Priorität Eins",
+    "asociacion": "Vereinigung Kirche des Herrn"
   },
   "menu": {
     "home": "Startseite",
-    "about": "Über uns",
-    "join": "Mitmachen",
-    "amazonas": "Amazonas-Projekt",
-    "stories": "Geschichten",
+    "about_us": "Über uns",
     "contact": "Kontakt",
-    "donate": "Spenden",
-    "projects": "Projekte"
+    "donate": "Spenden"
   },
   "slider": {
     "nature": "Entdecke die Natur",
     "adventure": "Abenteuer in den Bergen",
     "discover": "Entdecke neue Horizonte"
-  }
+  },
+  "login": "Anmelden",
+  "register": "Registrieren",
+  "profile": "Profil",
+  "user": "Benutzer",
+  "logout": "Abmelden",
+  "contact_us": "Kontaktieren Sie uns!",
+  "welcome": "Willkommen",
+  "campaigns": "Kampagnen",
+  "projects": "Projekte"
 }

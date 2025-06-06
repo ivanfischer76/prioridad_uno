@@ -11,7 +11,7 @@ describe('DonateComponent', () => {
       imports: [DonateComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(DonateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,20 +1,26 @@
 {
   "app": {
-    "title": "Priority One"
+    "title": "Priority One",
+    "asociacion": "Church of the Lord Association"
   },
   "menu": {
     "home": "Home",
-    "about": "About us",
-    "join": "Join us",
-    "amazonas": "Amazonas Project",
-    "stories": "Stories",
+    "about_us": "About us",
     "contact": "Contact",
-    "donate": "Donate",
-    "projects": "Projects"
+    "donate": "Donate"
   },
   "slider": {
     "nature": "Explore nature",
     "adventure": "Mountain adventure",
     "discover": "Discover new horizons"
-  }
+  },
+  "login": "Login",
+  "register": "Register",
+  "profile": "Profile",
+  "user": "User",
+  "logout": "Logout",
+  "contact_us": "Contact us!",
+  "welcome": "Welcome",
+  "campaigns": "Campaigns",
+  "projects": "Projects"
 }

@@ -1,0 +1,14 @@
+section{
+    height: 35px;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        var(--p-green-500),
+        var(--p-green-900)
+    );
+    border-top: 1px solid var(--p-green-900);
+    z-index: 100;
+}
