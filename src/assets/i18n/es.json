@@ -7,12 +7,18 @@
         "home": "Inicio",
         "about_us": "Quiénes somos",
         "contact": "Contacto",
-        "donate": "Donar"
+        "donate": "Donar",
+        "management": "Gestión",
+        "users": "Usuarios",
+        "roles": "Roles",
+        "permissions": "Permisos",
+        "campaigns": "Campañas"
     },
     "slider": {
         "nature": "Explora la naturaleza",
         "adventure": "Aventura en la montaña",
-        "discover": "Descubre nuevos horizontes"
+        "discover": "Descubre nuevos horizontes",
+        "learn_more": "Conocer más"
     },
     "login": "Iniciar Sesión",
     "register": "Registro",
@@ -21,6 +27,31 @@
     "logout": "Cerrar Sesión",
     "contact_us": "Contáctenos!",
     "welcome": "Bienvenido",
-    "campaigns": "Campañas",
-    "projects": "Proyectos"
+    "campaigns": {
+        "active": "Activas",
+        "finished": "Finalizadas",
+        "active_content": "Aquí se muestran las campañas activas.",
+        "finished_content": "Aquí se muestran las campañas finalizadas.",
+        "date": "Fecha",
+        "goal": "Objetivo",
+        "result": "Resultado",
+        "date_from": "Desde",
+        "date_to": "Hasta",
+        "duration": "Duración",
+        "months": "meses",
+        "contact": "Contacto",
+        "collaborate": "¡Quiero colaborar!",
+        "progress": "Avance",
+        "collected_so_far": "Recolectadas hasta ahora",
+        "titles": {
+            "Campaña Frazadas": "Campaña Frazadas",
+            "Campaña Kits Escolares": "Campaña Kits Escolares",
+            "Campaña Biblias": "Campaña Biblias",
+            "Campaña Alimentos": "Campaña Alimentos",
+            "Campaña Juguetes": "Campaña Juguetes"
+        }
+    },
+    "projects": "Proyectos",
+    "about_us": "¿Quiénes somos?",
+    "what_we_believe": "¿Qué creemos?"
 }

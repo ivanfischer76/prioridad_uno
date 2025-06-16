@@ -7,12 +7,18 @@
     "home": "Home",
     "about_us": "About us",
     "contact": "Contact",
-    "donate": "Donate"
+    "donate": "Donate",
+    "management": "Management",
+    "users": "Users",
+    "roles": "Roles",
+    "permissions": "Permissions",
+    "campaigns": "Campaigns"
   },
   "slider": {
     "nature": "Explore nature",
     "adventure": "Mountain adventure",
-    "discover": "Discover new horizons"
+    "discover": "Discover new horizons",
+    "learn_more": "Learn more"
   },
   "login": "Login",
   "register": "Register",
@@ -21,6 +27,31 @@
   "logout": "Logout",
   "contact_us": "Contact us!",
   "welcome": "Welcome",
-  "campaigns": "Campaigns",
-  "projects": "Projects"
+  "campaigns": {
+    "active": "Active",
+    "finished": "Finished",
+    "active_content": "Active campaigns are shown here.",
+    "finished_content": "Finished campaigns are shown here.",
+    "date": "Date",
+    "goal": "Goal",
+    "result": "Result",
+    "date_from": "From",
+    "date_to": "To",
+    "duration": "Duration",
+    "months": "months",
+    "contact": "Contact",
+    "collaborate": "I want to help!",
+    "titles": {
+      "Campaña Frazadas": "Blanket Campaign",
+      "Campaña Kits Escolares": "School Kits Campaign",
+      "Campaña Biblias": "Bibles Campaign",
+      "Campaña Alimentos": "Food Campaign",
+      "Campaña Juguetes": "Toys Campaign"
+    },
+    "progress": "Progress",
+    "collected_so_far": "Collected so far"
+  },
+  "projects": "Projects",
+  "about_us": "About us",
+  "what_we_believe": "What do we believe?"
 }

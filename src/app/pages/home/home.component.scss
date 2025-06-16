@@ -1,3 +1,25 @@
-section{
-    padding: 10px;
+section {
+    padding: 0px;
+    height: calc(100vh - 120px);
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+}
+
+:host ::ng-deep .p-carousel-content,
+:host ::ng-deep .p-carousel-items-content,
+:host ::ng-deep .p-carousel-items-container,
+:host ::ng-deep .p-carousel-item {
+    height: 100% !important;
+    min-height: 0 !important;
+    align-items: stretch !important;
+    display: flex !important;
+}
+
+:host ::ng-deep .p-carousel-item > div,
+:host ::ng-deep .p-carousel-item > div > div {
+    height: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: stretch !important;
 }

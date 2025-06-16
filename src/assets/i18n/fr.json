@@ -7,12 +7,18 @@
     "home": "Accueil",
     "about_us": "Qui sommes-nous",
     "contact": "Contact",
-    "donate": "Faire un don"
+    "donate": "Faire un don",
+    "management": "Gestion",
+    "users": "Utilisateurs",
+    "roles": "Rôles",
+    "permissions": "Autorisations",
+    "campaigns": "Campagnes"
   },
   "slider": {
     "nature": "Explorez la nature",
     "adventure": "Aventure en montagne",
-    "discover": "Découvrez de nouveaux horizons"
+    "discover": "Découvrez de nouveaux horizons",
+    "learn_more": "En savoir plus"
   },
   "login": "Connexion",
   "register": "Inscription",
@@ -21,6 +27,31 @@
   "logout": "Déconnexion",
   "contact_us": "Contactez-nous !",
   "welcome": "Bienvenue",
-  "campaigns": "Campagnes",
-  "projects": "Projets"
+  "campaigns": {
+    "active": "Actives",
+    "finished": "Terminées",
+    "active_content": "Les campagnes actives sont affichées ici.",
+    "finished_content": "Les campagnes terminées sont affichées ici.",
+    "date": "Date",
+    "goal": "Objectif",
+    "result": "Résultat",
+    "date_from": "De",
+    "date_to": "À",
+    "duration": "Durée",
+    "months": "mois",
+    "contact": "Contact",
+    "collaborate": "Je veux aider !",
+    "titles": {
+      "Campaña Frazadas": "Campagne Couvertures",
+      "Campaña Kits Escolares": "Campagne Kits Scolaires",
+      "Campaña Biblias": "Campagne Bibles",
+      "Campaña Alimentos": "Campagne Aliments",
+      "Campaña Juguetes": "Campagne Jouets"
+    },
+    "progress": "Avancement",
+    "collected_so_far": "Collectés jusqu'à présent"
+  },
+  "projects": "Projets",
+  "about_us": "Qui sommes-nous ?",
+  "what_we_believe": "Que croyons-nous ?"
 }

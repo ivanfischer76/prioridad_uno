@@ -1,4 +1,62 @@
-section{
-    padding: 10px;
+section {
+    padding: 0;
     height: calc(100vh - 92px);
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.flex-1 {
+    overflow: hidden;
+    max-height: calc(100vh - 120px);
+    padding-left: 12px;
+    padding-right: 4px;
+}
+
+.flex-1 > .flex-1 {
+    min-height: 0;
+}
+
+.flex-1 > .flex-1 > .flex-1 {
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent; /* Por defecto, scrollbar invisible */
+    transition: scrollbar-color 0.2s;
+}
+
+.flex-1 > .flex-1 > .flex-1:hover {
+    scrollbar-color: #a7f3d0 #f3f4f6; /* Scrollbar visible al interactuar */
+}
+
+.flex-1 > .flex-1 > .flex-1::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.flex-1 > .flex-1 > .flex-1:hover::-webkit-scrollbar {
+    opacity: 1;
+    background: #f3f4f6;
+}
+.flex-1 > .flex-1 > .flex-1::-webkit-scrollbar-thumb {
+    background: #a7f3d0;
+    border-radius: 4px;
+}
+
+/* Ajuste de márgenes para la línea divisoria vertical */
+.border-r {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.w-\[340px\] {
+    min-width: 320px;
+    max-width: 400px;
+    height: 100%;
+    padding-right: 32px;
+    padding-left: 4px;
+}
+
+.sticky {
+    background: transparent !important;
 }

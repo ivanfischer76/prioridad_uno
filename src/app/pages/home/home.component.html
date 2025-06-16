@@ -1,10 +1,46 @@
-<section>
-    <h1>
-        {{ 'menu.home' | translate }}
-    </h1>
-    <p>
-        Aquí va un carusel de imágenes que se pueden ir cambiando, como un carrusel de noticias sobre los proyectos o algo así, con un botón para ver más información.
-        También se pueden poner botones para ir a las diferentes secciones de la página, como "Sobre nosotros", "Contáctanos", "Campañas", "Donar", etc.
-    </p>
-
+<section class="h-[calc(100vh-120px)] w-full p-0 m-0 mt-4">
+    <div class="relative w-full h-full">
+        <p-carousel [value]="images"
+            [circular]="true"
+            [autoplayInterval]="10000"
+            [numVisible]="1"
+            [numScroll]="1"
+            [showIndicators]="false"
+            [showNavigators]="true"
+            [style]="{
+                width: '100vw', 
+                height: '100%', 
+                maxWidth: '100vw', 
+                margin: '0', 
+                border: 'none', 
+                boxShadow: 'none', 
+                background: 'transparent'
+            }">
+            <ng-template pTemplate="item" let-item>
+                <div class="flex flex-row items-stretch justify-center h-full w-full min-h-0 relative">
+                    <img 
+                        [src]="item.image" 
+                        [alt]="item.alt" 
+                        class="object-cover h-full w-3/4 rounded-none border-none shadow-none bg-transparent" 
+                    />
+                    <div class="flex flex-col justify-center w-1/4 h-full p-6">
+                        <div class="text-gray-700 text-base rounded h-full flex flex-col items-center justify-between p-4" 
+                            style="background: rgba(255,255,255,0.3); height: 100%;">
+                            <span class="mb-4">
+                                {{ item.text }}
+                            </span>
+                            <button 
+                                pButton 
+                                type="button" 
+                                class="p-button p-button-sm p-button-primary w-full mt-auto mb-0" 
+                                style="min-width: 100px;"
+                                (click)="goToLogin()">
+                                {{ 'slider.learn_more' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
 </section>

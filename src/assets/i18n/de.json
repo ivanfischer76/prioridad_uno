@@ -7,12 +7,18 @@
     "home": "Startseite",
     "about_us": "Über uns",
     "contact": "Kontakt",
-    "donate": "Spenden"
+    "donate": "Spenden",
+    "management": "Verwaltung",
+    "users": "Benutzer",
+    "roles": "Rollen",
+    "permissions": "Berechtigungen",
+    "campaigns": "Kampagnen"
   },
   "slider": {
     "nature": "Entdecke die Natur",
     "adventure": "Abenteuer in den Bergen",
-    "discover": "Entdecke neue Horizonte"
+    "discover": "Entdecke neue Horizonte",
+    "learn_more": "Mehr erfahren"
   },
   "login": "Anmelden",
   "register": "Registrieren",
@@ -21,6 +27,31 @@
   "logout": "Abmelden",
   "contact_us": "Kontaktieren Sie uns!",
   "welcome": "Willkommen",
-  "campaigns": "Kampagnen",
-  "projects": "Projekte"
+  "campaigns": {
+    "active": "Aktiv",
+    "finished": "Beendet",
+    "active_content": "Hier werden die aktiven Kampagnen angezeigt.",
+    "finished_content": "Hier werden die beendeten Kampagnen angezeigt.",
+    "date": "Datum",
+    "goal": "Ziel",
+    "result": "Ergebnis",
+    "date_from": "Von",
+    "date_to": "Bis",
+    "duration": "Dauer",
+    "months": "Monate",
+    "contact": "Kontakt",
+    "collaborate": "Ich möchte helfen!",
+    "progress": "Fortschritt",
+    "collected_so_far": "Bisher gesammelt",
+    "titles": {
+      "Campaña Frazadas": "Decken-Kampagne",
+      "Campaña Kits Escolares": "Schulsets-Kampagne",
+      "Campaña Biblias": "Bibel-Kampagne",
+      "Campaña Alimentos": "Lebensmittel-Kampagne",
+      "Campaña Juguetes": "Spielzeug-Kampagne"
+    }
+  },
+  "projects": "Projekte",
+  "about_us": "Über uns",
+  "what_we_believe": "Was glauben wir?"
 }

@@ -77,19 +77,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     updateMenuItems() {
-        this.items = [
+        const baseItems = [
             {
                 isLogo: true,
                 command: () => this.router.navigate(['/'])
-            },
-            // {
-            //     label: 'menu.about_us',
-            //     icon: 'pi pi-users',
-            //     route: '/about-us'
-            // },
-            
-            // Ejemplo: solo mostrar si está logueado
-            ...(this.isLoggedIn ? [
+            }
+        ];
+        let menuItems: any[] = [];
+        if (this.isLoggedIn) {
+            menuItems = [
                 {
                     label: 'welcome',
                     route: '/welcome'
@@ -99,37 +95,34 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     route: '/projects'
                 },
                 {
-                    label: 'Gestión',
-                    items: [
-                        {
-                            label: 'Proyectos'
-                        },
-                        {
-                            label: 'Campañas'
-                        },
-                        {
-                            label: 'Usuarios'
-                        },
-                        {
-                            label: 'Roles'
-                        },
-                        {
-                            label: 'Permisos'
-                        }
-                    ]
+                    label: 'menu.campaigns',
+                    route: '/campaigns'
                 },
-            ] : [
+                {
+                    label: 'menu.management',
+                    items: [
+                        { label: 'Proyectos' },
+                        { label: 'Campañas' },
+                        { label: 'Usuarios' },
+                        { label: 'Roles' },
+                        { label: 'Permisos' }
+                    ]
+                }
+            ];
+        } else {
+            menuItems = [
                 {
                     label: 'menu.about_us',
                     icon: 'pi pi-users',
                     route: '/about-us'
                 },
                 {
-                    label: 'campaigns',
+                    label: 'menu.campaigns',
                     route: '/campaigns'
-                },
-            ])
-        ];
+                }
+            ];
+        }
+        this.items = [...baseItems, ...menuItems];
     }
 
     changeLang(lang: any) {

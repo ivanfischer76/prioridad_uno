@@ -1,8 +1,46 @@
 <section>
-    <h1>
+    <h1 class="mb-6 text-2xl font-bold">
         {{ 'projects' | translate }}
     </h1>
-    <p>
-        Aquí se mostrarán tarjetas con información básica sobre cada proyecto con alguna foto y con una breve descripción de los mismos, los responsables, etc, con redirección a cada uno de los proyectos para conocer las últimas noticias
-    </p>
+    <div class="overflow-x-visible">
+      <p-carousel 
+        [value]="projects" 
+        [numVisible]="1" 
+        [numScroll]="1" 
+        [circular]="true" 
+        [showNavigators]="true" 
+        [showIndicators]="true" 
+        [style]="{width: '100%', maxWidth: '1200px', margin: '0 auto', overflow: 'visible'}" 
+        [page]="0">
+          <ng-template pTemplate="item" let-project>
+              <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-0 flex flex-row items-stretch overflow-visible h-[320px] w-[60vw] mx-6 cursor-pointer transition-shadow duration-200 hover:shadow-xl relative" style="right:-4vw;">
+                  <img 
+                    [src]="project.image" 
+                    [alt]="project.title" 
+                    class="object-cover h-full w-2/5 rounded-l-2xl" 
+                  />
+                  <div class=" p-3 pl-4 pr-4 flex-1 flex flex-col w-3/5 justify-center">
+                      <h2 class="text-xl font-semibold mb-4">
+                        {{ project.title }}
+                    </h2>
+                      <p class="text-gray-600 flex-1 text-base">
+                        {{ project.description }}
+                    </p>
+                      <ul class="mb-4 mt-2 text-sm text-gray-700 list-disc pl-5">
+                          <li><b>Misioneros:</b> bla bla bla</li>
+                          <li><b>Inicio del proyecto:</b> 01/01/2024</li>
+                      </ul>
+                      <button 
+                        pButton 
+                        type="button" 
+                        class="p-button p-button-primary mt-auto w-full"
+                        (click)="goToProject(project)"
+                      >
+                          Ver Noticias
+                      </button>
+                  </div>
+              </div>
+          </ng-template>
+      </p-carousel>
+    </div>
 </section>

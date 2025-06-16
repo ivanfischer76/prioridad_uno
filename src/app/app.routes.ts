@@ -39,5 +39,13 @@ export const routes: Routes = [
     {
         path: 'welcome',
         loadComponent: () => import('./pages/welcome/welcome.component').then(m => m.WelcomeComponent)
+    },
+    {
+        path: 'project-1',
+        loadComponent: () => import('./pages/project-1/project-1.component').then(m => m.Project1Component)
+    },
+    {
+        path: 'project-2',
+        loadComponent: () => import('./pages/project-2/project-2.component').then(m => m.Project2Component)
     }
 ];

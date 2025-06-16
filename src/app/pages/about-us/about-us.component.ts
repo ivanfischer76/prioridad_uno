@@ -6,6 +6,7 @@ import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-transla
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ButtonModule } from 'primeng/button';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -15,7 +16,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   selector: 'app-about-us',
   imports: [
     ButtonModule,
-    TranslateModule
+    TranslateModule,
+    ScrollPanelModule
   ],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.scss'
