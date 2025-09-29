@@ -35,16 +35,16 @@ export const appConfig: ApplicationConfig = {
 		}),
 		provideHttpClient(),
 		TranslateService,
-    	TranslateStore,
+		TranslateStore,
 		{
 			provide: TranslateLoader,
 			useFactory: HttpLoaderFactory,
 			deps: [HttpClient]
 		},
-		        {
-            provide: TranslateCompiler,
-            useClass: TranslateFakeCompiler
-        },
+		{
+			provide: TranslateCompiler,
+			useClass: TranslateFakeCompiler
+		},
 		{
 			provide: TranslateParser,
 			useClass: TranslateDefaultParser
@@ -56,7 +56,7 @@ export const appConfig: ApplicationConfig = {
 		{
 			provide: USE_DEFAULT_LANG,
 			useValue: true // o false si no quieres usar el idioma por defecto
-    	},
+		},
 		{
 			provide: ISOLATE_TRANSLATE_SERVICE,
 			useValue: false

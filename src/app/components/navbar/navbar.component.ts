@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
 import { TooltipModule } from 'primeng/tooltip';
+import { LoggedUser } from '../../models/auth/logged_user';
 
 @Component({
     selector: 'app-navbar',
@@ -43,6 +44,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     selectedLang: any;
 
     isLoggedIn: boolean = false;
+
+    loggedUser: LoggedUser | null = null;
+
     private authSub?: Subscription;
 
     constructor(
@@ -65,11 +69,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.updateMenuItems();
-        this.authSub = this.authService.isLoggedIn$.subscribe(logged => {
-            this.isLoggedIn = logged;
-            console.log('User logged in:', this.isLoggedIn);
-            this.updateMenuItems();
-        });
+        this.authSub = this.authService.getIsLoggedIn$().subscribe(
+            (logged: boolean) => {
+                this.isLoggedIn = logged;
+                console.log('User logged in:', this.isLoggedIn);
+                this.loggedUser = sessionStorage.getItem('logged_user') ? JSON.parse(sessionStorage.getItem('logged_user')!) : null;
+                console.log('Logged user data:', this.loggedUser);
+                this.updateMenuItems();
+            }
+        );
     }
 
     ngOnDestroy() {
@@ -109,6 +117,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     ]
                 }
             ];
+            
         } else {
             menuItems = [
                 {

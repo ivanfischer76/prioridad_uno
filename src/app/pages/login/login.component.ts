@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
-
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+
+import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
 
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
+import { InputTextModule } from 'primeng/inputtext';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -18,14 +20,18 @@ import { AuthService } from '../../services/auth.service';
         FormsModule,
         ButtonModule,
         SelectModule,
+        InputTextModule,
     ],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss'
 })
 export class LoginComponent {
     email: string = '';
+    username: string = '';
     password: string = '';
     rememberMe: boolean = false;
+    showPassword: boolean = false;
+    isLoading: boolean = false;
     
     constructor(
         private router: Router,
@@ -46,11 +52,30 @@ export class LoginComponent {
         this.translate.setDefaultLang('es'); // Establecer el idioma por defecto
     }
     
+    loginError: string = '';
+
     onLogin() {
-        // NOTA: Actualmente acepta cualquier usuario/contraseña y marca como logueado.
-        // Implementar autenticación real contra backend en el futuro.
-        this.authService.login(this.email, this.password); // isLoggedIn se pone en true
-        this.router.navigate(['welcome']);
+        this.loginError = '';
+        this.isLoading = true;
+        this.authService.login(this.username, this.password).subscribe({
+            next: (response: any) => {
+                sessionStorage.setItem('logged_user', JSON.stringify(response));
+                this.isLoading = false;
+                if (response && response.token) {
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    this.authService.setIsLoggedIn(true);
+                    console.log('Login successful, navigating to welcome page...');
+                    this.router.navigate(['welcome']);
+                } else {
+                    this.authService.setIsLoggedIn(false);
+                    this.loginError = this.translate.instant('login.invalid_credentials');
+                }
+            },
+            error: (err) => {
+                this.isLoading = false;
+                this.loginError = this.translate.instant('login.invalid_credentials');
+            }
+        });
     }
     
     onRegister() {

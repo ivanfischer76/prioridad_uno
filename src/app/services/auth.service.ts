@@ -1,35 +1,51 @@
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private loggedIn$ = new BehaviorSubject<boolean>(false);
 
-  constructor() {
-    // Leer el estado de sesión desde sessionStorage al iniciar
-    const stored = sessionStorage.getItem('isLoggedIn');
-    this.loggedIn$.next(stored === 'true');
-  }
+    private urlLogin = `${environment.url_base}/login`;
 
-  // Observable para saber si el usuario está logueado
-  get isLoggedIn$(): Observable<boolean> {
-    return this.loggedIn$.asObservable();
-  }
-
-  // Método para hacer login (simulado)
-  login(email: string, password: string): boolean {
-    // Aquí iría la lógica real de autenticación
-    if (email && password) {
-      this.loggedIn$.next(true);
-      sessionStorage.setItem('isLoggedIn', 'true');
-      return true;
+    constructor(private http: HttpClient) {
+        // Leer el estado de sesión desde sessionStorage al iniciar
+        const stored = sessionStorage.getItem('isLoggedIn');
+        this.loggedIn$.next(stored === 'true');
     }
-    return false;
-  }
 
-  // Método para hacer logout
-  logout(): void {
-    this.loggedIn$.next(false);
-    sessionStorage.removeItem('isLoggedIn');
-  }
+    
+
+    // Método para hacer login (simulado)
+    private loggedIn$ = new BehaviorSubject<boolean>(false);
+    login(username: string, password: string): Observable<any> {
+        // Llamada real al backend para autenticación
+        if (username && password) {
+            const body = { username, password };
+            return  this.http.post(this.urlLogin, body);
+        }
+        // Si faltan datos, retorna un observable de error
+        return new BehaviorSubject({ error: 'Username y password requeridos' }).asObservable();
+    }
+    // Observable para saber si el usuario está logueado
+    getIsLoggedIn$(): Observable<boolean> {
+        return this.loggedIn$.asObservable();
+    }
+    setIsLoggedIn(value: boolean): void {
+        this.loggedIn$.next(value);
+        sessionStorage.setItem('isLoggedIn', value ? 'true' : 'false');
+    }
+
+    // Método para hacer logout
+    logout(): void {
+        this.loggedIn$.next(false);
+        sessionStorage.removeItem('isLoggedIn');
+    }
+
+    // Registro de usuario
+    registerUser(data: any): Observable<any> {
+        const url = `${environment.url_base}/register`;
+        return this.http.post(url, data);
+    }
 }

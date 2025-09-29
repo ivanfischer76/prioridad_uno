@@ -15,17 +15,17 @@ import { environment } from '../environments/environment';
 
 // Función para el loader
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @Component({
     selector: 'app-root',
     imports: [
-      RouterOutlet,
-      TranslateModule, 
-      HttpClientModule,
-      FooterComponent,
-      NavbarComponent
+        RouterOutlet,
+        TranslateModule, 
+        HttpClientModule,
+        FooterComponent,
+        NavbarComponent
     ],
     templateUrl: './app.html',
     styleUrl: './app.scss'
@@ -34,7 +34,7 @@ export class App implements OnInit {
     protected title = 'prioridad_uno';
 
     items: MenuItem[] | undefined;
-    
+
     constructor(private translate: TranslateService) {
         this.translate.setDefaultLang('es');
         console.log('producción?:', environment.production);
