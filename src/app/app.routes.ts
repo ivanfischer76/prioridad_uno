@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authUsersGuard } from './guards/auth-users.guard';
 export const routes: Routes = [
     {
         path: '',
@@ -47,5 +48,11 @@ export const routes: Routes = [
     {
         path: 'project-2',
         loadComponent: () => import('./pages/project-2/project-2.component').then(m => m.Project2Component)
+    },
+    {
+        path: 'users',
+        canActivate: [authUsersGuard],
+        data: { permiso: 'gestionar usuarios' },
+        loadComponent: () => import('./pages/users/users.component').then(m => m.UsersComponent)
     }
 ];

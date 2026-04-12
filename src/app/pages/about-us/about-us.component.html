@@ -1,59 +1,68 @@
 <section class="h-full">
-  <div class="flex h-full">
-    <!-- Sección izquierda con dos bloques scrollables, títulos fijos -->
-    <div class="flex-1 min-w-0 flex flex-col pt-10 overflow-hidden pr-4 border-r border-gray-300 h-full">
-      <div class="flex-1 flex flex-col min-h-0">
-        <!-- Quiénes somos -->
-        <div class="mb-6 flex flex-col h-1/2 min-h-0">
-          <h2 class="text-2xl font-bold text-left mb-4 flex-shrink-0 bg-transparent sticky top-0 z-10 pb-2">
-            {{ 'about_us' | translate }}
-          </h2>
-          <p-scrollpanel [style]="{width: '100%', height: 'calc(100% - 2.5rem)'}">
-            <div>
-              Texto sobre quienes somos, misión, visión, creencia, hasta quizás un breve pero poderoso mensaje evangelístico
-            </div>
-            <div class="mt-4 text-sm text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.
-              <br><br>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              <br><br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam nisl nisi euismod nunc.
-            </div>
-          </p-scrollpanel>
+  <div class="about-grid">
+    <!-- Quiénes somos -->
+    <div class="about-col pr-4 border-r border-gray-300">
+      <h2 class="text-2xl font-bold text-left mb-4 flex-shrink-0 pb-2">
+        {{ 'about_us' | translate }}
+      </h2>
+      <p-scrollpanel [style]="{width: '100%', height: '100%'}">
+        <div>
+          Texto sobre quienes somos, misión, visión, creencia, hasta quizás un breve pero poderoso mensaje evangelístico
         </div>
-        <!-- Qué creemos -->
-        <div class="flex flex-col h-1/2 min-h-0">
-          <h2 class="text-2xl font-bold text-left mb-4 flex-shrink-0 bg-transparent sticky top-0 z-10 pb-2">
-            {{ 'what_we_believe' | translate }}
-          </h2>
-          <p-scrollpanel [style]="{width: '100%', height: 'calc(100% - 2.5rem)'}">
-            <div>
-              Aquí podríamos incluir un breve resumen de nuestras creencias fundamentales, quizás con un enlace a una página más detallada, con un mensaje evangelístico breve pero poderoso.
-            </div>
-            <div class="mt-4 text-sm text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.
-              <br><br>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              <br><br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam nisl nisi euismod nunc.
-            </div>
-          </p-scrollpanel>
+        <div class="mt-4 text-sm text-gray-700">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.
+          <br><br>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          <br><br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam nisl nisi euismod nunc.
         </div>
-      </div>
+      </p-scrollpanel>
     </div>
-    <!-- Sección derecha -->
-    <div class="w-[340px] flex flex-col pt-10 pl-4 pr-4 h-full">
+    <!-- Qué creemos -->
+    <div class="about-col px-4 border-r border-gray-300">
+      <h2 class="text-2xl font-bold text-left mb-4 flex-shrink-0 pb-2">
+        {{ 'what_we_believe' | translate }}
+      </h2>
+      <p-scrollpanel [style]="{width: '100%', height: '100%'}">
+        <div>
+          {{ 'credo.creemos' | translate }}
+        </div>
+        <div class="mt-4 text-md text-gray-800">
+          <ul id="credoList">
+            <li>{{ 'credo.texto1' | translate }}</li>
+            <li>{{ 'credo.texto2' | translate }}</li>
+            <li>{{ 'credo.texto3' | translate }}</li>
+            <li>{{ 'credo.texto4' | translate }}</li>
+            <li>{{ 'credo.texto5' | translate }}</li>
+            <li>{{ 'credo.texto6' | translate }}</li>
+            <li>{{ 'credo.texto7' | translate }}</li>
+            <li>{{ 'credo.texto8' | translate }}</li>
+            <li>{{ 'credo.texto9' | translate }}</li>
+            <li>{{ 'credo.texto10' | translate }}</li>
+            <li>{{ 'credo.texto11' | translate }}</li>
+            <li>{{ 'credo.texto12' | translate }}</li>
+            <li>{{ 'credo.texto13' | translate }}</li>
+            <li>{{ 'credo.texto14' | translate }}</li>
+          </ul>
+        </div>
+        <p class="mt-4 text-sm text-gray-900 font-italic">
+          {{ 'credo.atribute' | translate }}
+        </p>
+      </p-scrollpanel>
+    </div>
+    <!-- Contacto -->
+    <div class="about-col pl-2 pr-4">
       <h3 class="text-center text-2xl font-bold text-gray-800">
         {{ 'contact_us' | translate }}
       </h3>
-      <div class="grid grid-cols-12 gap-2 my-4">
-        <div class="col-span-12 flex items-center gap-2">
+      <div class="flex flex-col gap-2 my-4">
+        <div class="flex items-center gap-2">
           <i class="pi pi-phone text-green-600"></i>
           <span class="text-gray-800 text-sm select-all">
             {{ phone }}
           </span>
         </div>
-        <div class="col-span-12 flex items-center gap-2">
+        <div class="flex items-center gap-2">
           <i class="pi pi-envelope text-blue-600"></i>
           <a [href]="'mailto:' + email"
             class="text-gray-800 text-sm select-all hover:underline">

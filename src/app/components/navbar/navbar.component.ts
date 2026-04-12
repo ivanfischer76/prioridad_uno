@@ -111,7 +111,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     items: [
                         { label: 'Proyectos' },
                         { label: 'Campañas' },
-                        { label: 'Usuarios' },
+                        { 
+                            label: 'Usuarios', 
+                            command: () => this.router.navigate(['/users']) 
+                        },
                         { label: 'Roles' },
                         { label: 'Permisos' }
                     ]

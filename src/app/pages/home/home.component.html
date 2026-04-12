@@ -24,19 +24,21 @@
                         class="object-cover h-full w-3/4 rounded-none border-none shadow-none bg-transparent" 
                     />
                     <div class="flex flex-col justify-center w-1/4 h-full p-6">
-                        <div class="text-gray-700 text-base rounded h-full flex flex-col items-center justify-between p-4" 
+                        <div class="rounded h-full flex flex-col items-center justify-between p-4 bg-white/50 backdrop-blur-sm" 
                             style="background: rgba(255,255,255,0.3); height: 100%;">
-                            <span class="mb-4">
+                            <span class="mb-4 text-gray-800 text-lg text-base">
                                 {{ item.text }}
                             </span>
-                            <button 
-                                pButton 
+                            <p-button id="btnConocerMas"
+                                pRipple
+                                [raised]="true" 
                                 type="button" 
-                                class="p-button p-button-sm p-button-primary w-full mt-auto mb-0" 
-                                style="min-width: 100px;"
+                                severity="primary"
+                                styleClass="w-full mt-auto mb-0"
+                                [style]="{width: '100%'}" 
                                 (click)="goToLogin()">
                                 {{ 'slider.learn_more' | translate }}
-                            </button>
+                            </p-button>
                         </div>
                     </div>
                 </div>

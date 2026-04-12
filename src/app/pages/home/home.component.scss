@@ -23,3 +23,11 @@ section {
     display: flex !important;
     align-items: stretch !important;
 }
+
+#btnConocerMas {
+    width: 100%;
+
+    ::ng-deep .p-button {
+        width: 100%;
+    }
+}

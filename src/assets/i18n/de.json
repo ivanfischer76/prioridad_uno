@@ -86,5 +86,30 @@
   },
   "projects": "Projekte",
   "about_us": "Über uns",
-  "what_we_believe": "Was glauben wir?"
+  "what_we_believe": "Was glauben wir?",
+  "credo": {
+    "creemos": "Wir glauben: ",
+    "texto1": "An Gott, der ewiger Geist ist, unveränderlich, allwissend, allgegenwärtig, heilig, gerecht und barmherzig, der sich in der Schöpfung, in der Bibel, im Gewissen der Menschen offenbart und sich darüber hinaus unter Einbeziehung der Prinzipien von Beziehung und Gemeinschaft als Vater, Sohn und Heiliger Geist geoffenbart hat, drei Personen in einer, gleichen Wesens, ewigen Seins und gleich an Heiligkeit, Gerechtigkeit, Weisheit, Macht und Würde.",
+    "texto2": "An die Präexistenz, Gottheit und Erniedrigung Jesu Christi und an seine jungfräuliche Geburt durch das Wirken des Heiligen Geistes.",
+    "texto3": "An die Persönlichkeit und Gottheit des Heiligen Geistes, der gesandt wurde, um die Werke des Vaters und des Sohnes in der Welt zu vollbringen.",
+    "texto4": "Dass der Mensch gut und aufrecht geschaffen wurde, aber durch die freiwillige Übertretung des Gesetzes Gottes als Folge nicht nur den physischen, sondern auch den geistlichen Tod erlitt, der die Trennung der Seele von Gott ist. Folglich besteht die Notwendigkeit einer Neugeburt.",
+    "texto5": "An die stellvertretende Sühne des Herrn Jesus Christus durch das Vergießen seines eigenen Blutes, und indem er unsere Sünden auf sich genommen und unsere Strafe empfangen hat, ist er der einzige Retter der Welt. Als eingeborener Sohn Gottes hat er die Vollmacht, unsere Sünden zu vergeben.",
+    "texto6": "An die Wiederkunft Jesu Christi gemäß den Schriften.",
+    "texto7": "Dass die Heilige Schrift von Gott inspiriert ist und daher die Offenbarung Gottes an den Menschen, die Autorität und die einzige Richtschnur des Glaubens und Verhaltens ist.",
+    "texto8": "Dass wir durch persönlichen Glauben an Jesus Christus gerechtfertigt werden.",
+    "texto9": "Dass die Werke der Gerechtigkeit das Ergebnis des neuen Lebens sind, das im Gläubigen erzeugt wurde.",
+    "texto10": "An die Auferstehung aller Toten, das Gericht über die Welt, das ewige Leben für die Gläubigen an Christus und die ewige Verdammnis derer, die ihn ablehnen.",
+    "texto11": "Dass die Heilige Schrift ein Leben in Heiligkeit lehrt und ermöglicht, ohne das niemand Gott sehen wird, und dass die Heiligung ein Werk Gottes ist, das durch den Glauben angeeignet und durch den Heiligen Geist mittels des Wortes wirksam gemacht wird, das uns vom Bösen trennt und uns fortschreitend zur Vollkommenheit führt.",
+    "texto12": "Dass die Gläubigen das Recht und die Pflicht haben, aufrichtig die Verheißung des Vaters zu suchen und zu erwarten, nämlich die Taufe im Heiligen Geist und Feuer, gemäß dem Gebot unseres Herrn Jesus Christus. Dies war die normale Verheißung für alle in der frühen Kirche und wird durch einen Glaubensakt des gereinigten Gläubigen erlangt. Wir empfangen sie wie am Pfingsttag.",
+    "texto13": "Dass der Heilige Geist den Gläubigen Gaben für den Dienst und die Erbauung der Gemeinde verleiht.",
+    "texto14": "Dass der Gläubige die folgenden Ordnungen beachten soll: Wassertaufe, das Abendmahl des Herrn und die Versammlung mit der Gemeinschaft des Glaubens.",
+    "atribute": "Glaubensbekenntnis geteilt von der ‚Asociación Civil Evangélica Seminario Bíblico de Fe', Nationales Register der Religionsgemeinschaften Nummer 2866. Rechtspersönlichkeit, Generalinspektion der Justiz Nummer 00041, an die Vereinigung Kirche des Herrn."
+  },
+  "texto_imagen_1": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
+  "texto_imagen_2": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
+  "texto_imagen_3": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
+  "texto_imagen_4": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
+  "texto_imagen_5": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
+  "texto_imagen_6": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
+  "texto_imagen_7": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit."
 }

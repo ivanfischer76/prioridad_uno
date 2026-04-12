@@ -59,7 +59,7 @@ export class LoginComponent {
         this.isLoading = true;
         this.authService.login(this.username, this.password).subscribe({
             next: (response: any) => {
-                sessionStorage.setItem('logged_user', JSON.stringify(response));
+                sessionStorage.setItem('response_logged_user', JSON.stringify(response));
                 this.isLoading = false;
                 if (response && response.token) {
                     sessionStorage.setItem('isLoggedIn', 'true');

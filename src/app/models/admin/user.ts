@@ -1,3 +1,4 @@
+import { Permiso } from './permiso';
 import { Role } from './role';
 
 export class User {
@@ -12,7 +13,7 @@ export class User {
     created_at?: Date | string | null | undefined; // "2025-09-05T23:47:15.000000Z",
     updated_at?: Date | string | null | undefined; // "2025-09-05T23:47:15.000000Z"
     roles?: Role[] | null | undefined;
-    permissions?: string[] | null | undefined;
+    permissions?: Permiso[] | null | undefined;
 
     constructor(
         id?: number | null | undefined,
@@ -26,7 +27,7 @@ export class User {
         created_at?: Date | string | null | undefined,
         updated_at?: Date | string | null | undefined,
         roles?: Role[] | null | undefined,
-        permissions?: string[] | null | undefined
+        permissions?: Permiso[] | null | undefined
     ){
         this.id = id != undefined ? id : null;
         this.username = username != undefined ? username : null;

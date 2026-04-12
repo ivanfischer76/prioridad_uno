@@ -1,55 +1,87 @@
-import { Component, ViewChild } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { GalleriaModule, Galleria } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-home',
     imports: [
         TranslateModule,
         GalleriaModule,
-        CarouselModule
+        CarouselModule,
+        ButtonModule
     ],
     templateUrl: './home.component.html',
-    styleUrl: './home.component.scss'
+    styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
     @ViewChild('galleria') galleria!: Galleria;
     images = [
         {
-            image: 'https://picsum.photos/id/1015/800/400',
-            thumbnail: 'https://picsum.photos/id/1015/200/100',
+            image: 'assets/images/foto_1.jpeg',
+            thumbnail: 'assets/images/foto_1.jpeg',
             alt: 'Imagen 1',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+            textKey: 'texto_imagen_1',
+            text: ''
         },
         {
-            image: 'https://picsum.photos/id/1016/800/400',
-            thumbnail: 'https://picsum.photos/id/1016/200/100',
+            image: 'assets/images/foto_2.jpeg',
+            thumbnail: 'assets/images/foto_2.jpeg',
             alt: 'Imagen 2',
-            text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem. ed ut perspiciatis unde omnis iste natus error sit voluptatem. ed ut perspiciatis unde omnis iste natus error sit voluptatem. ed ut perspiciatis unde omnis iste natus error sit voluptatem.'
+            textKey: 'texto_imagen_2',
+            text: ''
         },
         {
-            image: 'https://picsum.photos/id/1018/800/400',
-            thumbnail: 'https://picsum.photos/id/1018/200/100',
+            image: 'assets/images/foto_3.jpeg',
+            thumbnail: 'assets/images/foto_3.jpeg',
             alt: 'Imagen 3',
-            text: 'At vero eos et accusamus et iusto odio dignissimos ducimus. At vero eos et accusamus et iusto odio dignissimos ducimus. At vero eos et accusamus et iusto odio dignissimos ducimus. At vero eos et accusamus et iusto odio dignissimos ducimus.'
+            textKey: 'texto_imagen_3',
+            text: ''
         },
         {
-            image: 'https://picsum.photos/id/1020/800/400',
-            thumbnail: 'https://picsum.photos/id/1020/200/100',
+            image: 'assets/images/foto_4.jpeg',
+            thumbnail: 'assets/images/foto_4.jpeg',
             alt: 'Imagen 4',
-            text: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit. Quis autem vel eum iure reprehenderit qui in ea voluptate velit. Quis autem vel eum iure reprehenderit qui in ea voluptate velit. Quis autem vel eum iure reprehenderit qui in ea voluptate velit.'
+            textKey: 'texto_imagen_4',
+            text: ''
         },
         {
-            image: 'https://picsum.photos/id/1024/800/400',
-            thumbnail: 'https://picsum.photos/id/1024/200/100',
+            image: 'assets/images/foto_5.jpeg',
+            thumbnail: 'assets/images/foto_5.jpeg',
             alt: 'Imagen 5',
-            text: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam. Ut enim ad minima veniam, quis nostrum exercitationem ullam. Ut enim ad minima veniam, quis nostrum exercitationem ullam. Ut enim ad minima veniam, quis nostrum exercitationem ullam.'
+            textKey: 'texto_imagen_5',
+            text: ''
+        },
+        {
+            image: 'assets/images/foto_6.jpeg',
+            thumbnail: 'assets/images/foto_6.jpeg',
+            alt: 'Imagen 6',
+            textKey: 'texto_imagen_6',
+            text: ''
+        },
+        {
+            image: 'assets/images/foto_7.jpeg',
+            thumbnail: 'assets/images/foto_7.jpeg',
+            alt: 'Imagen 7',
+            textKey: 'texto_imagen_7',
+            text: ''
         }
     ];
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private translate: TranslateService) {}
+
+    ngOnInit() {
+        this.loadTranslations();
+        this.translate.onLangChange.subscribe(() => this.loadTranslations());
+    }
+
+    private loadTranslations() {
+        for (const img of this.images) {
+            this.translate.get(img.textKey).subscribe(val => img.text = val);
+        }
+    }
 
     goToLogin() {
         this.router.navigate(['/login']);

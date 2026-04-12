@@ -1,46 +1,37 @@
+:host {
+    display: block;
+    height: calc(100vh - 92px);
+    overflow: hidden;
+}
+
 section {
     padding: 0;
-    height: calc(100vh - 92px);
-    width: 100vw;
-    overflow-x: hidden;
-}
-
-.flex-1 {
+    height: 100%;
+    width: 100%;
     overflow: hidden;
-    max-height: calc(100vh - 120px);
-    padding-left: 12px;
-    padding-right: 4px;
 }
 
-.flex-1 > .flex-1 {
+.about-grid {
+    display: grid;
+    grid-template-columns: 5fr 5fr 2fr;
+    gap: 1rem;
+    height: 100%;
+    padding: 0 1rem;
+}
+
+.about-col {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
     min-height: 0;
-}
 
-.flex-1 > .flex-1 > .flex-1 {
-    min-height: 0;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent; /* Por defecto, scrollbar invisible */
-    transition: scrollbar-color 0.2s;
-}
-
-.flex-1 > .flex-1 > .flex-1:hover {
-    scrollbar-color: #a7f3d0 #f3f4f6; /* Scrollbar visible al interactuar */
-}
-
-.flex-1 > .flex-1 > .flex-1::-webkit-scrollbar {
-    width: 8px;
-    background: transparent;
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-.flex-1 > .flex-1 > .flex-1:hover::-webkit-scrollbar {
-    opacity: 1;
-    background: #f3f4f6;
-}
-.flex-1 > .flex-1 > .flex-1::-webkit-scrollbar-thumb {
-    background: #a7f3d0;
-    border-radius: 4px;
+    p-scrollpanel {
+        flex: 1;
+        min-height: 0;
+    }
 }
 
 /* Ajuste de márgenes para la línea divisoria vertical */
@@ -49,14 +40,45 @@ section {
     margin-right: 0;
 }
 
-.w-\[340px\] {
-    min-width: 320px;
-    max-width: 400px;
-    height: 100%;
-    padding-right: 32px;
-    padding-left: 4px;
-}
+#credoList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: credo;
 
-.sticky {
-    background: transparent !important;
+    li {
+        position: relative;
+        padding: 12px 16px 12px 48px;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+        border-left: 4px solid #10b981;
+        border-radius: 8px;
+        font-size: 0.925rem;
+        line-height: 1.6;
+        color: #374151;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        counter-increment: credo;
+
+        &::before {
+            content: counter(credo);
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        &:hover {
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+        }
+    }
 }

@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -40,7 +39,7 @@ export class AuthService {
     // Método para hacer logout
     logout(): void {
         this.loggedIn$.next(false);
-        sessionStorage.removeItem('isLoggedIn');
+        sessionStorage.clear();
     }
 
     // Registro de usuario
