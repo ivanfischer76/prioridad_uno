@@ -1,48 +1,60 @@
+
 <section class="h-[calc(100vh-120px)] w-full p-0 m-0 mt-4">
-    <div class="relative w-full h-full">
-        <p-carousel [value]="images"
-            [circular]="true"
-            [autoplayInterval]="10000"
-            [numVisible]="1"
-            [numScroll]="1"
-            [showIndicators]="false"
-            [showNavigators]="true"
-            [style]="{
-                width: '100vw', 
-                height: '100%', 
-                maxWidth: '100vw', 
-                margin: '0', 
-                border: 'none', 
-                boxShadow: 'none', 
-                background: 'transparent'
-            }">
-            <ng-template pTemplate="item" let-item>
-                <div class="flex flex-row items-stretch justify-center h-full w-full min-h-0 relative">
-                    <img 
-                        [src]="item.image" 
-                        [alt]="item.alt" 
-                        class="object-cover h-full w-3/4 rounded-none border-none shadow-none bg-transparent" 
-                    />
-                    <div class="flex flex-col justify-center w-1/4 h-full p-6">
-                        <div class="rounded h-full flex flex-col items-center justify-between p-4 bg-white/50 backdrop-blur-sm" 
-                            style="background: rgba(255,255,255,0.3); height: 100%;">
-                            <span class="mb-4 text-gray-800 text-lg text-base">
-                                {{ item.text }}
-                            </span>
-                            <p-button id="btnConocerMas"
-                                pRipple
-                                [raised]="true" 
-                                type="button" 
-                                severity="primary"
-                                styleClass="w-full mt-auto mb-0"
-                                [style]="{width: '100%'}" 
-                                (click)="goToLogin()">
-                                {{ 'slider.learn_more' | translate }}
-                            </p-button>
-                        </div>
+    <div class="flex w-full h-full">
+        <!-- Carrusel a la izquierda -->
+        <div class="flex-1 h-full">
+            <p-carousel
+                [value]="images"
+                [circular]="true"
+                [autoplayInterval]="10000"
+                [numVisible]="1"
+                [numScroll]="1"
+                [showIndicators]="false"
+                [showNavigators]="true"
+                [style]="{
+                    width: '100%',
+                    height: '100%',
+                    maxWidth: '100vw',
+                    margin: '0',
+                    border: 'none',
+                    boxShadow: 'none',
+                    background: 'transparent'
+                }">
+                    (onPage)="onCarouselPage($event)"
+                <ng-template pTemplate="item" let-item>
+                    <div class="flex items-center justify-center h-full w-full min-h-0 relative">
+                        <img
+                            [src]="item.image"
+                            [alt]="item.alt"
+                            class="object-cover h-full w-full rounded-none border-none shadow-none bg-transparent"
+                        />
                     </div>
-                </div>
-            </ng-template>
-        </p-carousel>
+                </ng-template>
+            </p-carousel>
+        </div>
+        <!-- Bloque fijo a la derecha -->
+        <div class="w-[400px] flex flex-col justify-center p-4 bg-white/50 backdrop-blur-sm rounded-lg shadow-lg ml-2 mr-2" 
+            style="height: auto; max-height: calc(100% - 1rem);">
+            <span class="mb-2 text-gray-800 text-lg text-base font-bold font-italic">
+                "{{ 'slider.versiculo' | translate }}"
+            </span>
+            <span class="mb-4 text-gray-800 text-right text-md text-base font-italic">
+                {{ 'slider.cita' | translate }}
+            </span>
+            <span class="mb-4 text-gray-800 text-lg text-base">
+                {{ 'slider.texto' | translate }}
+            </span>
+            <p-button
+                id="btnConocerMas"
+                pRipple
+                [raised]="true"
+                type="button"
+                severity="primary"
+                styleClass="w-full mt-auto mb-0"
+                [style]="{ width: '100%' }"
+                (click)="goToLogin()">
+                {{ 'slider.learn_more' | translate }}
+            </p-button>
+        </div>
     </div>
 </section>

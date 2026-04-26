@@ -17,7 +17,9 @@ import { ButtonModule } from 'primeng/button';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
     @ViewChild('galleria') galleria!: Galleria;
+
     images = [
         {
             image: 'assets/images/foto_1.jpeg',
@@ -86,4 +88,6 @@ export class HomeComponent implements OnInit {
     goToLogin() {
         this.router.navigate(['/login']);
     }
+
+
 }

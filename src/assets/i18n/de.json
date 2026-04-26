@@ -15,9 +15,9 @@
     "campaigns": "Kampagnen"
   },
   "slider": {
-    "nature": "Entdecke die Natur",
-    "adventure": "Abenteuer in den Bergen",
-    "discover": "Entdecke neue Horizonte",
+    "versiculo": "So habe ich es mir zur Ehre gemacht, das Evangelium zu verkündigen, nicht dort, wo Christus schon genannt worden war, damit ich nicht auf einen fremden Grund baue, sondern wie geschrieben steht: Diejenigen, denen nichts von ihm verkündet wurde, werden sehen; und die, die nichts gehört haben, werden verstehen.",
+    "cita": "Römer 15,20-21",
+    "texto": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
     "learn_more": "Mehr erfahren"
   },
   "login": {
@@ -60,6 +60,10 @@
   "logout": "Abmelden",
   "contact_us": "Kontaktieren Sie uns!",
   "welcome": "Willkommen",
+  "projects": "Projekte",
+  "amazonas": "Bolivianischer Amazonas",
+  "entrada_anterior": "Vorheriger Eintrag",
+  "siguiente_entrada": "Nächster Eintrag",
   "campaigns": {
     "active": "Aktiv",
     "finished": "Beendet",
@@ -84,8 +88,12 @@
       "Campaña Juguetes": "Spielzeug-Kampagne"
     }
   },
-  "projects": "Projekte",
-  "about_us": "Über uns",
+  "about_us": {
+    "title": "Über uns",
+    "versiculo": "So habe ich es mir zur Ehre gemacht, das Evangelium zu verkündigen, nicht dort, wo Christus schon genannt worden war, damit ich nicht auf einen fremden Grund baue, sondern wie geschrieben steht: Diejenigen, denen nichts von ihm verkündet wurde, werden sehen; und die, die nichts gehört haben, werden verstehen.",
+    "cita": "Römer 15,20-21",
+    "texto1": "Wir sind eine Kirche, die sich verpflichtet hat, die Aufgabe zu erfüllen, das Evangelium in alle Nationen zu bringen, Jünger Christi zu machen und das Wort Gottes (die Bibel) treu zu lehren."
+  },
   "what_we_believe": "Was glauben wir?",
   "credo": {
     "creemos": "Wir glauben: ",
@@ -104,12 +112,5 @@
     "texto13": "Dass der Heilige Geist den Gläubigen Gaben für den Dienst und die Erbauung der Gemeinde verleiht.",
     "texto14": "Dass der Gläubige die folgenden Ordnungen beachten soll: Wassertaufe, das Abendmahl des Herrn und die Versammlung mit der Gemeinschaft des Glaubens.",
     "atribute": "Glaubensbekenntnis geteilt von der ‚Asociación Civil Evangélica Seminario Bíblico de Fe', Nationales Register der Religionsgemeinschaften Nummer 2866. Rechtspersönlichkeit, Generalinspektion der Justiz Nummer 00041, an die Vereinigung Kirche des Herrn."
-  },
-  "texto_imagen_1": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
-  "texto_imagen_2": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
-  "texto_imagen_3": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
-  "texto_imagen_4": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
-  "texto_imagen_5": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
-  "texto_imagen_6": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit.",
-  "texto_imagen_7": "Priorität Eins ist ein Evangelisationsprojekt, dessen Mission es ist, mit der Botschaft des Evangeliums vom Reich Gottes die verschiedenen ethnischen Gruppen des bolivianischen Amazonas zu erreichen, mit besonderer Aufmerksamkeit für diejenigen, die noch nie von Jesus gehört haben, noch von seinem Erlösungswerk zugunsten der Menschheit."
+  }
 }

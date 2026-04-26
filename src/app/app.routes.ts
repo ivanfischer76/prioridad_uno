@@ -42,8 +42,8 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/welcome/welcome.component').then(m => m.WelcomeComponent)
     },
     {
-        path: 'project-1',
-        loadComponent: () => import('./pages/project-1/project-1.component').then(m => m.Project1Component)
+        path: 'amazonas-boliviano',
+        loadComponent: () => import('./pages/amazonas-boliviano/amazonas-boliviano.component').then(m => m.AmazonasBolivianoComponent)
     },
     {
         path: 'project-2',

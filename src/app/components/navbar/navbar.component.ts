@@ -99,13 +99,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     route: '/welcome'
                 },
                 {
-                    label: 'projects',
-                    route: '/projects'
+                    label: 'amazonas',
+                    route: '/amazonas-boliviano'
                 },
-                {
-                    label: 'menu.campaigns',
-                    route: '/campaigns'
-                },
+                // {
+                //     label: 'projects',
+                //     route: '/projects'
+                // },
+                // {
+                //     label: 'menu.campaigns',
+                //     route: '/campaigns'
+                // },
                 {
                     label: 'menu.management',
                     items: [
@@ -128,10 +132,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     icon: 'pi pi-users',
                     route: '/about-us'
                 },
-                {
-                    label: 'menu.campaigns',
-                    route: '/campaigns'
-                }
+                // {
+                //     label: 'menu.campaigns',
+                //     route: '/campaigns'
+                // }
             ];
         }
         this.items = [...baseItems, ...menuItems];

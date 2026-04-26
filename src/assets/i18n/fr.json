@@ -15,9 +15,9 @@
     "campaigns": "Campagnes"
   },
   "slider": {
-    "nature": "Explorez la nature",
-    "adventure": "Aventure en montagne",
-    "discover": "Découvrez de nouveaux horizons",
+    "versiculo": "C’est ainsi que je me suis fait un honneur d’annoncer l’Évangile là où Christ n’avait pas été nommé, afin de ne pas bâtir sur le fondement d’autrui, mais, comme il est écrit : Ceux à qui il n’a point été annoncé verront, et ceux qui n’en avaient pas entendu parler comprendront.",
+    "cita": "Romains 15:20-21",
+    "texto": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité.",
     "learn_more": "En savoir plus"
   },
   "login": {
@@ -60,6 +60,10 @@
   "logout": "Déconnexion",
   "contact_us": "Contactez-nous !",
   "welcome": "Bienvenue",
+  "projects": "Projets",
+  "amazonas": "Amazonie Bolivienne",
+  "entrada_anterior": "Entrée précédente",
+  "siguiente_entrada": "Entrée suivante",
   "campaigns": {
     "active": "Actives",
     "finished": "Terminées",
@@ -84,8 +88,12 @@
     "progress": "Avancement",
     "collected_so_far": "Collectés jusqu'à présent"
   },
-  "projects": "Projets",
-  "about_us": "Qui sommes-nous ?",
+  "about_us": {
+    "title": "Qui sommes-nous",
+    "versiculo": "C’est ainsi que je me suis fait un honneur d’annoncer l’Évangile là où Christ n’avait pas été nommé, afin de ne pas bâtir sur le fondement d’autrui, mais, comme il est écrit : Ceux à qui il n’a point été annoncé verront, et ceux qui n’en avaient pas entendu parler comprendront.",
+    "cita": "Romains 15:20-21",
+    "texto1": "Nous sommes une Église engagée à accomplir la tâche de porter l'Évangile à toutes les Nations, faisant des disciples de Christ et enseignant fidèlement la Parole de Dieu (La Bible)."
+  },
   "what_we_believe": "Que croyons-nous ?",
   "credo": {
     "creemos": "Nous croyons : ",
@@ -104,12 +112,5 @@
     "texto13": "Que le Saint-Esprit accorde des dons aux croyants pour le ministère et l'édification de l'Église.",
     "texto14": "Que le croyant doit observer les ordonnances suivantes : le baptême d'eau, la Cène du Seigneur et le rassemblement avec la fraternité de la foi.",
     "atribute": "Déclaration de foi partagée par l'« Asociación Civil Evangélica Seminario Bíblico de Fe », Registre National des cultes numéro 2866. Personnalité juridique, Inspection Générale de la Justice numéro 00041, à l'Association Église du Seigneur."
-  },
-  "texto_imagen_1": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité.",
-  "texto_imagen_2": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité.",
-  "texto_imagen_3": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité.",
-  "texto_imagen_4": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité.",
-  "texto_imagen_5": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité.",
-  "texto_imagen_6": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité.",
-  "texto_imagen_7": "Priorité Un est un projet d'évangélisation dont la mission est d'atteindre, avec le message de l'évangile du royaume de Dieu, les différents groupes ethniques de l'Amazonie bolivienne, en accordant une attention particulière à ceux qui n'ont jamais entendu parler de Jésus, ni de son œuvre rédemptrice en faveur de l'humanité."
+  }
 }

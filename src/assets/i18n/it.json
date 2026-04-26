@@ -15,9 +15,9 @@
     "campaigns": "Campagne"
   },
   "slider": {
-    "nature": "Esplora la natura",
-    "adventure": "Avventura in montagna",
-    "discover": "Scopri nuovi orizzonti",
+    "versiculo": "Così mi sono sforzato di predicare il vangelo, non dove Cristo era già stato nominato, per non edificare su un fondamento altrui, ma come è scritto: Coloro ai quali non era stato annunziato di lui, vedranno; e coloro che non ne avevano udito parlare, comprenderanno.",
+    "cita": "Romani 15:20-21",
+    "texto": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità.",
     "learn_more": "Scopri di più"
   },
   "login": {
@@ -60,6 +60,10 @@
   "logout": "Disconnetti",
   "contact_us": "Contattaci!",
   "welcome": "Benvenuto",
+  "projects": "Progetti",
+  "amazonas": "Amazzonia Boliviana",
+  "entrada_anterior": "Voce precedente",
+  "siguiente_entrada": "Voce successiva",
   "campaigns": {
     "active": "Attive",
     "finished": "Concluse",
@@ -84,8 +88,12 @@
     "progress": "Avanzamento",
     "collected_so_far": "Raccolti finora"
   },
-  "projects": "Progetti",
-  "about_us": "Chi siamo?",
+  "about_us": {
+    "title": "Chi siamo",
+    "versiculo": "Così mi sono sforzato di predicare il vangelo, non dove Cristo era già stato nominato, per non edificare su un fondamento altrui, ma come è scritto: Coloro ai quali non era stato annunziato di lui, vedranno; e coloro che non ne avevano udito parlare, comprenderanno.",
+    "cita": "Romani 15:20-21",
+    "texto1": "Siamo una Chiesa impegnata a completare il compito di portare il Vangelo a tutte le Nazioni, facendo discepoli di Cristo e insegnando fedelmente la Parola di Dio (La Bibbia)."
+  },
   "what_we_believe": "In cosa crediamo?",
   "credo": {
     "creemos": "Crediamo: ",
@@ -104,12 +112,5 @@
     "texto13": "Che lo Spirito Santo concede doni ai credenti per il ministero e l'edificazione della chiesa.",
     "texto14": "Che il credente deve osservare le seguenti ordinanze: battesimo in acqua, la Cena del Signore e il radunarsi con la fratellanza della fede.",
     "atribute": "Dichiarazione di fede condivisa dalla 'Asociación Civil Evangélica Seminario Bíblico de Fe', Registro Nazionale dei culti numero 2866. Personalità giuridica, Ispettorato Generale della Giustizia numero 00041, all'Associazione Chiesa del Signore."
-  },
-  "texto_imagen_1": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità.",
-  "texto_imagen_2": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità.",
-  "texto_imagen_3": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità.",
-  "texto_imagen_4": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità.",
-  "texto_imagen_5": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità.",
-  "texto_imagen_6": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità.",
-  "texto_imagen_7": "Priorità Uno è un progetto di evangelizzazione la cui missione è raggiungere, con il messaggio del vangelo del regno di Dio, i diversi gruppi etnici dell'Amazzonia boliviana, prestando particolare attenzione a coloro che non hanno mai sentito parlare di Gesù, né della sua opera redentrice a favore dell'umanità."
+  }
 }

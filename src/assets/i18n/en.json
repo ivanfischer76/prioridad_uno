@@ -15,9 +15,9 @@
     "campaigns": "Campaigns"
   },
   "slider": {
-    "nature": "Explore nature",
-    "adventure": "Mountain adventure",
-    "discover": "Discover new horizons",
+    "versiculo": "And so I have made it my aim to preach the gospel, not where Christ was named, lest I should build on another man’s foundation, but as it is written: To whom He was not announced, they shall see; And those who have not heard shall understand.",
+    "cita": "Romans 15:20-21",
+    "texto": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity.",
     "learn_more": "Learn more"
   },
   "login": {
@@ -60,6 +60,10 @@
   "logout": "Logout",
   "contact_us": "Contact us!",
   "welcome": "Welcome",
+  "projects": "Projects",
+  "amazonas": "Bolivian Amazon",
+  "entrada_anterior": "Previous entry",
+  "siguiente_entrada": "Next entry",
   "campaigns": {
     "active": "Active",
     "finished": "Finished",
@@ -84,8 +88,12 @@
     "progress": "Progress",
     "collected_so_far": "Collected so far"
   },
-  "projects": "Projects",
-  "about_us": "About us",
+  "about_us": {
+    "title": "About us",
+    "versiculo": "And so I have made it my aim to preach the gospel, not where Christ was named, lest I should build on another man’s foundation, but as it is written: To whom He was not announced, they shall see; And those who have not heard shall understand.",
+    "cita": "Romans 15:20-21",
+    "texto1": "We are a Church committed to completing the task of bringing the Gospel to all Nations, making disciples of Christ and faithfully teaching the Word of God (The Bible)."
+  },
   "what_we_believe": "What do we believe?",
   "credo": {
     "creemos": "We believe: ",
@@ -104,12 +112,5 @@
     "texto13": "That the Holy Spirit grants gifts to believers for the ministry and edification of the church.",
     "texto14": "That the believer must observe the following ordinances: water baptism, the Lord's Supper and gathering with the fellowship of the faith.",
     "atribute": "Statement of faith shared by the 'Asociación Civil Evangélica Seminario Bíblico de Fe', National Registry of Religious Organizations number 2866. Legal Entity, General Inspectorate of Justice number 00041, to the Church of the Lord Association."
-  },
-  "texto_imagen_1": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity.",
-  "texto_imagen_2": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity.",
-  "texto_imagen_3": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity.",
-  "texto_imagen_4": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity.",
-  "texto_imagen_5": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity.",
-  "texto_imagen_6": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity.",
-  "texto_imagen_7": "Priority One is an evangelization project whose mission is to reach, with the message of the gospel of the kingdom of God, the different ethnic groups of the Bolivian Amazon, paying special attention to those who have never heard of Jesus, nor of His redemptive work on behalf of humanity."
+  }
 }
