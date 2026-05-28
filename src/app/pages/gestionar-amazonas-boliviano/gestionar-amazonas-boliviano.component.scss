@@ -1,0 +1,276 @@
+.gestion-page {
+	padding: 1rem;
+}
+
+.gestion-header {
+	margin-bottom: 1rem;
+}
+
+.gestion-header h1 {
+	margin: 0;
+	font-size: 1.65rem;
+}
+
+.gestion-header p {
+	margin: 0.35rem 0 0;
+	color: #475569;
+}
+
+.gestion-card {
+	background: rgb(255 255 255 / 80%);
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.gestion-card.in-dialog {
+	margin-bottom: 0.75rem;
+}
+
+.table-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin-bottom: 0.5rem;
+}
+
+.section-title {
+	margin: 0 0 0.75rem;
+	font-size: 1.15rem;
+	font-weight: 700;
+}
+
+.subsection-title {
+	margin: 1rem 0 0.65rem;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.field-label {
+	display: block;
+	margin-bottom: 0.4rem;
+	font-weight: 600;
+}
+
+.markdown-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+	margin-bottom: 0.5rem;
+	padding: 0.25rem 0;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.rich-editor {
+	min-height: 260px;
+	max-height: 420px;
+	overflow: auto;
+	padding: 0.75rem;
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	background: #ffffff;
+	line-height: 1.6;
+	font-size: 1rem;
+	outline: none;
+}
+
+.rich-editor:focus {
+	border-color: #0f766e;
+	box-shadow: 0 0 0 3px rgb(15 118 110 / 15%);
+}
+
+.rich-editor:empty::before {
+	content: attr(data-placeholder);
+	color: #94a3b8;
+}
+
+
+::ng-deep .rich-editor ul,
+::ng-deep .rich-editor ol {
+	margin: 0.5rem 0;
+	padding-left: 1.5rem;
+}
+
+::ng-deep .rich-editor ul {
+	list-style: disc;
+}
+
+::ng-deep .rich-editor ol {
+	list-style: decimal;
+}
+
+::ng-deep .rich-editor li {
+	display: list-item;
+	margin: 0.15rem 0;
+}
+
+::ng-deep .rich-editor li::marker {
+	color: #0f172a;
+}
+
+.toolbar-icon {
+	color: #475569;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.toolbar-icon.active {
+	background: #0f766e;
+	color: #ffffff;
+}
+
+.helper-text {
+	margin: 0 0 0.8rem;
+	color: #64748b;
+	font-size: 0.9rem;
+}
+
+.reason-input-row {
+	display: flex;
+	gap: 0.6rem;
+	margin-bottom: 0.8rem;
+}
+
+.reasons-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.reasons-list li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.4rem 0.6rem;
+	border-radius: 8px;
+	background: #f8fafc;
+}
+
+.upload-dropzone {
+	border: 2px dashed #94a3b8;
+	border-radius: 12px;
+	padding: 1rem;
+	text-align: center;
+	background: #f8fafc;
+	margin-bottom: 0.8rem;
+}
+
+.upload-dropzone p {
+	margin: 0;
+}
+
+.images-preview {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	max-height: 320px;
+	overflow: auto;
+}
+
+.image-item {
+	display: grid;
+	grid-template-columns: 72px 1fr auto;
+	align-items: center;
+	gap: 0.6rem;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	padding: 0.45rem;
+}
+
+.image-item img {
+	width: 72px;
+	height: 72px;
+	object-fit: cover;
+	border-radius: 6px;
+}
+
+.image-meta {
+	min-width: 0;
+}
+
+.image-meta strong {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.image-meta small {
+	color: #64748b;
+}
+
+.status {
+	margin: 0 0 0.6rem;
+	color: #0f766e;
+	font-weight: 600;
+}
+
+.status-inline {
+	flex: 1;
+	margin: 0;
+	color: #0f766e;
+	font-weight: 600;
+	text-align: left;
+}
+
+.table-card {
+	margin-top: 0.5rem;
+}
+
+.table-actions {
+	white-space: nowrap;
+}
+
+.empty-cell,
+.empty-state {
+	color: #64748b;
+}
+
+.dialog-images {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+	gap: 0.75rem;
+}
+
+.dialog-image-item {
+	margin: 0;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	padding: 0.4rem;
+	background: #fff;
+}
+
+.dialog-image-item img {
+	width: 100%;
+	height: 145px;
+	object-fit: cover;
+	border-radius: 6px;
+}
+
+.dialog-image-item figcaption {
+	margin-top: 0.35rem;
+	font-size: 0.86rem;
+	color: #475569;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+::ng-deep .p-dialog {
+	max-height: 86vh !important;
+}
+
+@media (max-width: 992px) {
+	.actions-card {
+		position: static;
+	}
+
+	.table-header {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}

@@ -1,0 +1,222 @@
+<section class="gestion-page">
+	<header class="gestion-header">
+		<h1>Gestionar posteos del Amazonas boliviano</h1>
+		<!-- <p>Crea o edita entradas, carga imagenes y previsualiza Markdown antes de guardar.</p> -->
+	</header>
+
+	<div class="gestion-card table-card">
+		<div class="table-header">
+			<h2 class="section-title">Posteos anteriores</h2>
+			<button pButton type="button" icon="pi pi-plus" label="Crear nuevo post" (click)="openCreatePostDialog()"></button>
+		</div>
+		<!-- <p class="status" *ngIf="statusMessage">{{ statusMessage }}</p> -->
+		<p-table [value]="posts" [tableStyle]="{ 'min-width': '40rem' }" [rowHover]="true">
+			<ng-template pTemplate="header">
+				<tr>
+					<th>Titulo</th>
+					<th>Fecha</th>
+					<th>Motivos</th>
+					<th>Imagenes</th>
+					<th>Acciones</th>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="body" let-post>
+				<tr>
+					<td>{{ post.title }}</td>
+					<td>{{ formatDate(post.updatedAt) }}</td>
+					<td>{{ post.prayerReasons.length }}</td>
+					<td>{{ post.images.length }}</td>
+					<td class="table-actions">
+						<button pButton type="button" icon="pi pi-pencil" [rounded]="true" [text]="true" (click)="editPost(post)"></button>
+						<button pButton type="button" icon="pi pi-images" [rounded]="true" [text]="true" (click)="openImages(post)" [disabled]="post.images.length === 0"></button>
+						<button pButton type="button" icon="pi pi-trash" severity="danger" [rounded]="true" [text]="true" (click)="deletePost(post.id)"></button>
+					</td>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="emptymessage">
+				<tr>
+					<td colspan="5" class="empty-cell">No hay posteos cargados todavia.</td>
+				</tr>
+			</ng-template>
+		</p-table>
+	</div>
+</section>
+
+<p-dialog
+	[header]="postDialogTitle"
+	[(visible)]="showPostDialog"
+	[modal]="true"
+	[draggable]="false"
+	[resizable]="false"
+	[style]="{ width: '98vw', marginTop: '20px' }"
+	[contentStyle]="{ 'max-height': '86%', 'overflow-y': 'auto' }"
+	(onHide)="closePostDialog()">
+	<div class="grid dialog-grid">
+		<div class="col-12 lg:col-6">
+			<div class="gestion-card in-dialog">
+				<!-- <h2 class="section-title">Datos del post</h2> -->
+                <p class="status" *ngIf="statusMessage">{{ statusMessage }}</p>
+				<label for="post-title" class="field-label">Titulo</label>
+				<input
+					id="post-title"
+					type="text"
+					pInputText
+					[(ngModel)]="title"
+					placeholder="Ej. Avances de mayo en comunidades riberenas"
+					class="w-full mb-3" />
+
+				<label for="post-markdown" class="field-label">Informe</label>
+				<div class="markdown-toolbar" role="toolbar" aria-label="Formato de texto" (mousedown)="$event.preventDefault()">
+					<button
+						pButton
+						type="button"
+						icon="bi bi-type-bold"
+						[text]="true"
+						[rounded]="true"
+						[pTooltip]="'Negrita'"
+						tooltipPosition="top"
+						class="toolbar-icon"
+						[class.active]="formatToggleState.bold"
+						(click)="applyBold()">
+					</button>
+					<button
+						pButton
+						type="button"
+						icon="bi bi-type-italic"
+						[text]="true"
+						[rounded]="true"
+						[pTooltip]="'Cursiva'"
+						tooltipPosition="top"
+						class="toolbar-icon"
+						[class.active]="formatToggleState.italic"
+						(click)="applyItalic()">
+					</button>
+					<button
+						pButton
+						type="button"
+						icon="bi bi-type-underline"
+						[text]="true"
+						[rounded]="true"
+						[pTooltip]="'Subrayado'"
+						tooltipPosition="top"
+						class="toolbar-icon"
+						[class.active]="formatToggleState.underline"
+						(click)="applyUnderline()">
+					</button>
+					<!-- <button pButton type="button" icon="pi pi-hashtag" [text]="true" [rounded]="true" [pTooltip]="'Titulo H2'" tooltipPosition="top" class="toolbar-icon" (click)="insertHeading(2)"></button> -->
+					<!-- <button pButton type="button" icon="pi pi-hashtag" [text]="true" [rounded]="true" [pTooltip]="'Titulo H3'" tooltipPosition="top" class="toolbar-icon" (click)="insertHeading(3)"></button> -->
+					<button pButton type="button" icon="pi pi-list" [text]="true" [rounded]="true" [pTooltip]="'Lista con viñetas'" tooltipPosition="top" class="toolbar-icon" [class.active]="formatToggleState.bulletList" (click)="insertBulletList()"></button>
+					<button pButton type="button" icon="pi pi-sort-numeric-up" [text]="true" [rounded]="true" [pTooltip]="'Lista numerada'" tooltipPosition="top" class="toolbar-icon" [class.active]="formatToggleState.numberedList" (click)="insertNumberedList()"></button>
+					<!-- <button pButton type="button" icon="pi pi-link" [text]="true" [rounded]="true" [pTooltip]="'Insertar enlace'" tooltipPosition="top" class="toolbar-icon" (click)="insertLink()"></button> -->
+					<!-- <button pButton type="button" icon="pi pi-image" [text]="true" [rounded]="true" [pTooltip]="'Insertar imagen'" tooltipPosition="top" class="toolbar-icon" (click)="insertImageMarkdown()"></button> -->
+				</div>
+				<div
+					#richEditor
+					id="post-markdown"
+					class="rich-editor mb-2"
+					contenteditable="true"
+					role="textbox"
+					aria-multiline="true"
+					data-placeholder="Escribe aqui el contenido con formato..."
+					(input)="onEditorInput()"
+					(keyup)="onEditorSelectionChange()"
+					(mouseup)="onEditorSelectionChange()">
+                </div>
+
+				<!-- <p class="helper-text">Escribe normalmente: el formato se ve al instante y el Markdown se guarda internamente.</p> -->
+			</div>
+		</div>
+
+        <div class="col-12 lg:col-3">
+            <div class="gestion-card in-dialog">
+				<h2 class="section-title">Motivos de oracion</h2>
+				<div class="reason-input-row">
+					<input
+						type="text"
+						pInputText
+						[(ngModel)]="newPrayerReason"
+						(keyup.enter)="addPrayerReason()"
+						placeholder="Agregar motivo"
+						class="w-full" />
+					<button pButton type="button" label="Agregar" icon="pi pi-plus" (click)="addPrayerReason()"></button>
+				</div>
+
+				<ul class="reasons-list" *ngIf="prayerReasons.length > 0; else emptyReasons">
+					<li *ngFor="let reason of prayerReasons; let i = index">
+						<span>{{ reason }}</span>
+						<button pButton type="button" icon="pi pi-times" severity="contrast" [text]="true" (click)="removePrayerReason(i)"></button>
+					</li>
+				</ul>
+
+				<ng-template #emptyReasons>
+					<p class="empty-state">Todavia no agregaste motivos de oracion.</p>
+				</ng-template>
+			</div>
+        </div>
+
+		<div class="col-12 lg:col-3">
+			<div class="gestion-card in-dialog">
+				<h2 class="section-title">Imagenes del post</h2>
+
+				<div class="upload-dropzone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+					<p>Arrastra y suelta imagenes aqui</p>
+					<p class="helper-text">o selecciona archivos manualmente</p>
+					<input #fileInput type="file" multiple accept="image/*" hidden (change)="onFileSelection($event)" />
+					<button pButton type="button" icon="pi pi-upload" label="Seleccionar archivos" (click)="fileInput.click()"></button>
+				</div>
+
+				<div class="images-preview" *ngIf="uploadedImages.length > 0; else emptyImages">
+					<div class="image-item" *ngFor="let image of uploadedImages; let i = index">
+						<img *ngIf="image.previewUrl" [src]="image.previewUrl" [alt]="image.name" />
+						<div class="image-meta">
+							<strong>{{ image.name }}</strong>
+							<small>{{ (image.size / 1024) | number: '1.0-0' }} KB</small>
+						</div>
+						<button pButton type="button" icon="pi pi-trash" severity="danger" [text]="true" (click)="removeImage(i)"></button>
+					</div>
+				</div>
+
+				<ng-template #emptyImages>
+					<p class="empty-state">No hay imagenes cargadas.</p>
+				</ng-template>
+			</div>
+
+		</div>
+	</div>
+	<ng-template pTemplate="footer">
+		<p class="status status-inline pt-2" *ngIf="statusMessage">{{ statusMessage }}</p>
+		<button
+			pButton
+			type="button"
+			label="Cancelar"
+			icon="pi pi-times"
+			severity="secondary"
+			[outlined]="true"
+			(click)="cancelEdit()">
+		</button>
+		<button
+			pButton
+			type="button"
+			[label]="editingPostId ? 'Actualizar post' : 'Guardar post'"
+			icon="pi pi-save"
+			(click)="savePost()">
+		</button>
+	</ng-template>
+</p-dialog>
+
+<p-dialog
+	header="Imagenes del post"
+	[(visible)]="showImagesDialog"
+	[modal]="true"
+	[style]="{ width: 'min(900px, 90vw)' }"
+	(onHide)="closeImagesDialog()">
+	<div class="dialog-images" *ngIf="selectedPostForImages as post; else noDialogImages">
+		<figure class="dialog-image-item" *ngFor="let image of post.images">
+			<img *ngIf="image.previewUrl" [src]="image.previewUrl" [alt]="image.name" />
+			<figcaption>{{ image.name }}</figcaption>
+		</figure>
+	</div>
+	<ng-template #noDialogImages>
+		<p>No hay imagenes para este post.</p>
+	</ng-template>
+</p-dialog>

@@ -1,0 +1,160 @@
+:host {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.markdown-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: var(--md-height, 400px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.markdown-body {
+    color: #0f172a;
+    line-height: 1.75;
+    font-size: 1.03rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.markdown-body * {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.markdown-body :is(h1, h2, h3, h4) {
+    margin: 1.1rem 0 0.65rem;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+}
+
+.markdown-body h1 {
+    font-size: 1.7rem;
+}
+
+.markdown-body h2 {
+    font-size: 1.45rem;
+}
+
+.markdown-body h3 {
+    font-size: 1.25rem;
+}
+
+.markdown-body h4 {
+    font-size: 1.1rem;
+}
+
+.markdown-body p {
+    margin: 0 0 0.85rem;
+    text-wrap: pretty;
+}
+
+.markdown-body :is(ul, ol) {
+    margin: 0 0 0.85rem;
+    padding-left: 1.5rem;
+}
+
+.markdown-body li {
+    margin-bottom: 0.35rem;
+}
+
+.markdown-body :is(strong, b) {
+    font-weight: 700;
+}
+
+.markdown-body :is(em, i) {
+    font-style: italic;
+}
+
+.markdown-body a {
+    color: #0f5cc0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.markdown-body blockquote {
+    border-left: 4px solid #d1d5db;
+    margin: 0 0 0.85rem;
+    padding: 0.4rem 0.8rem;
+    color: #374151;
+    background: #f9fafb;
+}
+
+.markdown-body code {
+    background: #f3f4f6;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+}
+
+.markdown-body table {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 0 0 1rem;
+}
+
+.markdown-body th,
+.markdown-body td {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 0.65rem;
+    vertical-align: top;
+    white-space: normal;
+}
+
+.markdown-body thead tr {
+    background: #f3f4f6;
+}
+
+.markdown-body pre {
+    overflow-x: hidden;
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.markdown-container.is-compact {
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.markdown-container.is-compact .markdown-body {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--md-preview-lines, 8);
+    line-clamp: var(--md-preview-lines, 8);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.markdown-container.is-compact::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2.2rem;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0), rgb(255 255 255 / 1));
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .markdown-container {
+        height: var(--md-mobile-height, 280px);
+    }
+}

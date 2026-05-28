@@ -27,75 +27,75 @@
         </div>
     </div>
     <div class="grid mt-3 mb-3">
-        <div class="col">
-            <span class="text text-lg text-green-900 font-bold">
-                Fecha: 26/04/2026
-            </span>
+        <div class="col-4" id="imagenes">
+            <div class="grid">
+                <div class="col text-center bg-">
+                    <span class="text text-lg text-green-900 font-bold">
+                        Fecha: 26/04/2026
+                    </span>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col border-right-100 surface-border max-h-full overflow-auto">
+                    <p-carousel 
+                        [value]="imagenesAmazonas" 
+                        [numVisible]="1" 
+                        [numScroll]="1" 
+                        [circular]="true" 
+                        [showIndicators]="true" 
+                        [showNavigators]="true" 
+                        [style]="{height: '100%', width: '100%'}">
+                        <ng-template pTemplate="item" let-item>
+                            <div class="flex align-items-center justify-content-center h-96 w-full">
+                                <img [src]="item.url" 
+                                    [alt]="item.alt" 
+                                    class="w-full h-full object-cover rounded shadow" 
+                                />
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="grid">
-        <div class="col-4 border-right-100 surface-border max-h-full overflow-auto">
-            <p-carousel 
-                [value]="imagenesAmazonas" 
-                [numVisible]="1" 
-                [numScroll]="1" 
-                [circular]="true" 
-                [showIndicators]="true" 
-                [showNavigators]="true" 
-                [style]="{height: '100%', width: '100%'}">
-                <ng-template pTemplate="item" let-item>
-                    <div class="flex align-items-center justify-content-center h-96 w-full">
-                        <img [src]="item.url" 
-                            [alt]="item.alt" 
-                            class="w-full h-full object-cover rounded shadow" 
-                        />
-                    </div>
-                </ng-template>
-            </p-carousel>
-        </div>
-        <div class="col-6">
+        <div class="col-6" id="informe">
             <h2 class="text-2xl font-bold mb-4">Título del Informe</h2>
-            <p>
-                El Amazonas boliviano es una de las regiones más biodiversas y culturalmente ricas de Bolivia. Sus paisajes, pueblos y tradiciones forman parte de un patrimonio invaluable.
-            </p>
-            <p>
-                En esta sección puedes explorar imágenes y conocer más sobre la vida, la naturaleza y los desafíos de esta región única.
-            </p>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati a, quae accusantium soluta natus error autem voluptate hic nam, explicabo repudiandae debitis vero temporibus dignissimos saepe ut magni accusamus vel?
-            </p>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe harum nemo, doloribus laborum assumenda odit quidem alias maiores molestias eius minus voluptate debitis deserunt vel a praesentium adipisci natus dolore.
-            </p>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus voluptatem, doloribus qui quos mollitia ducimus harum quis, similique eveniet asperiores ea? Nam debitis ab accusamus ipsam in rerum, dicta cumque!
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis vitae exercitationem fugit architecto debitis! Odit dicta et est sed beatae, debitis quaerat. Earum autem nihil molestiae recusandae, et architecto. Eum.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, expedita ullam voluptas iste ea culpa blanditiis ab quis, quas exercitationem reiciendis ducimus est iure voluptatum doloremque explicabo deleniti repellendus dolore.
-            </p>
+            <app-markdown-viewer
+                [markdown]="contenidoMarkdown"
+                [compact]="false"
+                [previewLines]="7"
+                [height]="'445px'"
+                [mobileHeight]="'280px'">
+            </app-markdown-viewer>
         </div>
         <div class="col-2">
             <div class="grid h-50 mb-3">
                 <div class="col">
                     <p class="text-900 text-xl font-medium mb-3">Contenido del blog</p>
                     <div class="border-bottom-100 surface-border mb-3"></div>
-                    <ul class="list-none p-0 m-0">
-                        <li class="mb-2">
-                            <a href="#" class="text-blue-800 hover:underline">Entrada 1: Título de la entrada</a>
-                            <p class="text-sm text-gray-800">Publicado el 01/01/2024</p>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-blue-800 hover:underline">Entrada 2: Título de la entrada</a>
-                            <p class="text-sm text-gray-800">Publicado el 15/01/2024</p>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-blue-800 hover:underline">Entrada 3: Título de la entrada</a>
-                            <p class="text-sm text-gray-800">Publicado el 30/01/2024</p>
-                        </li>
-                    </ul>
+                    <p-scrollPanel [style]="{width: '100%', height: '150px'}" class="mb-3">
+                        <ul class="list-none p-0 m-0">
+                            <li class="mb-2">
+                                <a href="#" class="text-blue-800 hover:underline">Entrada 1: Título de la entrada</a>
+                                <p class="text-sm text-gray-800">Publicado el 01/01/2024</p>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-blue-800 hover:underline">Entrada 2: Título de la entrada</a>
+                                <p class="text-sm text-gray-800">Publicado el 15/01/2024</p>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-blue-800 hover:underline">Entrada 3: Título de la entrada</a>
+                                <p class="text-sm text-gray-800">Publicado el 16/01/2024</p>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-blue-800 hover:underline">Entrada 4: Título de la entrada</a>
+                                <p class="text-sm text-gray-800">Publicado el 17/01/2024</p>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-blue-800 hover:underline">Entrada 5: Título de la entrada</a>
+                                <p class="text-sm text-gray-800">Publicado el 20/01/2024</p>
+                            </li>
+                        </ul>
+                    </p-scrollPanel>
                 </div>
             </div>
             <hr>
@@ -103,19 +103,31 @@
                 <div class="col">
                     <p class="text-900 text-xl font-medium mb-1">Motivos de oración</p>
                     <div class="border-bottom-100 surface-border mb-1"></div>
-                    <ul class="list-disc p-4 m-0">
-                        <li class="mb-2">
-                            <p class="text-sm text-gray-800">tal o cual cosa</p>
-                        </li>
-                        <li class="mb-2">
-                            <p class="text-sm text-gray-800">tal o cual otra</p>
-                        </li>
-                        <li class="mb-2">
-                            <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
-                        </li>
-                    </ul>
+                    <p-scrollPanel [style]="{width: '100%', height: '230px'}" class="mb-3">
+                        <ul class="list-disc p-4 m-0">
+                            <li class="mb-2">
+                                <p class="text-sm text-gray-800">tal o cual cosa</p>
+                            </li>
+                            <li class="mb-2">
+                                <p class="text-sm text-gray-800">tal o cual otra</p>
+                            </li>
+                            <li class="mb-2">
+                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
+                            </li>
+                            <li class="mb-2">
+                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
+                            </li>
+                            <li class="mb-2">
+                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
+                            </li>
+                            <li class="mb-2">
+                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
+                            </li>
+                        </ul>
+                    </p-scrollPanel>
                 </div>
             </div>
         </div>
     </div>
+    
 </section>

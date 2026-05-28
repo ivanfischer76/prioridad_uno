@@ -113,7 +113,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 {
                     label: 'menu.management',
                     items: [
-                        { label: 'Proyectos' },
+                        { 
+                            label: 'Proyectos',
+                            items: [
+                                { 
+                                    label: 'Amazonas Boliviano', 
+                                    command: () => this.router.navigate(['/gestionar-amazonas-boliviano']) 
+                                },
+                            ]
+                        },
                         { label: 'Campañas' },
                         { 
                             label: 'Usuarios', 

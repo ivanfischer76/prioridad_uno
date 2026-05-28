@@ -46,6 +46,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/amazonas-boliviano/amazonas-boliviano.component').then(m => m.AmazonasBolivianoComponent)
     },
     {
+        path: 'gestionar-amazonas-boliviano',
+        loadComponent: () => import('./pages/gestionar-amazonas-boliviano/gestionar-amazonas-boliviano.component').then(m => m.GestionarAmazonasBolivianoComponent)
+    },
+    {
         path: 'project-2',
         loadComponent: () => import('./pages/project-2/project-2.component').then(m => m.Project2Component)
     },
