@@ -54,7 +54,15 @@
     "lastname_placeholder": "Cognome",
     "firstname_placeholder": "Nome",
     "church_placeholder": "Chiesa",
-    "birthdate_placeholder": "gg/mm/aaaa"
+    "birthdate_placeholder": "gg/mm/aaaa",
+    "language": "Lingua del sito",
+    "notify_me": "Notificami sui nuovi rapporti",
+    "language_es": "Spagnolo",
+    "language_en": "Inglese",
+    "language_pt": "Portoghese",
+    "language_it": "Italiano",
+    "language_fr": "Francese",
+    "language_de": "Tedesco"
   },
   "profile": "Profilo",
   "profile_page": {
@@ -77,34 +85,13 @@
   "donate": "Offrire",
   "contact_us": "Contattaci!",
   "welcome": "Benvenuto",
+  "welcome_page": {
+    "fallback_notice": "Stai visualizzando contenuti in spagnolo perché questa sezione non è ancora tradotta nella lingua selezionata. Ci scusiamo per il disagio; la tradurremo presto per te."
+  },
   "projects": "Progetti",
   "amazonas": "Amazzonia Boliviana",
   "entrada_anterior": "Voce precedente",
   "siguiente_entrada": "Voce successiva",
-  "campaigns": {
-    "active": "Attive",
-    "finished": "Concluse",
-    "active_content": "Qui vengono mostrate le campagne attive.",
-    "finished_content": "Qui vengono mostrate le campagne concluse.",
-    "date": "Data",
-    "goal": "Obiettivo",
-    "result": "Risultato",
-    "date_from": "Da",
-    "date_to": "A",
-    "duration": "Durata",
-    "months": "mesi",
-    "contact": "Contatto",
-    "collaborate": "Voglio collaborare!",
-    "titles": {
-      "Campagna Frazadas": "Campagna Coperte",
-      "Campagna Kits Escolares": "Campagna Kit Scolastici",
-      "Campagna Biblias": "Campagna Bibbie",
-      "Campagna Alimentos": "Campagna Alimenti",
-      "Campagna Juguetes": "Campagna Giocattoli"
-    },
-    "progress": "Avanzamento",
-    "collected_so_far": "Raccolti finora"
-  },
   "about_us": {
     "title": "Chi siamo",
     "versiculo": "Così mi sono sforzato di predicare il vangelo, non dove Cristo era già stato nominato, per non edificare su un fondamento altrui, ma come è scritto: Coloro ai quali non era stato annunziato di lui, vedranno; e coloro che non ne avevano udito parlare, comprenderanno.",

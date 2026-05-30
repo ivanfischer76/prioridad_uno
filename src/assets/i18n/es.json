@@ -54,7 +54,15 @@
         "lastname_placeholder": "Apellido",
         "firstname_placeholder": "Nombre",
         "church_placeholder": "Iglesia",
-        "birthdate_placeholder": "dd/mm/aaaa"
+        "birthdate_placeholder": "dd/mm/aaaa",
+        "language": "Idioma del sitio",
+        "notify_me": "Notificarme de nuevos informes",
+        "language_es": "Español",
+        "language_en": "Inglés",
+        "language_pt": "Portugués",
+        "language_it": "Italiano",
+        "language_fr": "Francés",
+        "language_de": "Alemán"
     },
     "profile": "Perfil",
     "profile_page": {
@@ -77,34 +85,13 @@
     "donate": "Ofrendar",
     "contact_us": "Contáctenos!",
     "welcome": "Bienvenido",
+    "welcome_page": {
+        "fallback_notice": "Está viendo contenido en español porque esta sección aún no está traducida al idioma elegido. Disculpe las molestias; pronto lo traduciremos para usted."
+    },
     "projects": "Proyectos",
     "amazonas": "Amazonas Boliviano",
     "entrada_anterior": "Entrada anterior",
     "siguiente_entrada": "Siguiente entrada",
-    "campaigns": {
-        "active": "Activas",
-        "finished": "Finalizadas",
-        "active_content": "Aquí se muestran las campañas activas.",
-        "finished_content": "Aquí se muestran las campañas finalizadas.",
-        "date": "Fecha",
-        "goal": "Objetivo",
-        "result": "Resultado",
-        "date_from": "Desde",
-        "date_to": "Hasta",
-        "duration": "Duración",
-        "months": "meses",
-        "contact": "Contacto",
-        "collaborate": "¡Quiero colaborar!",
-        "progress": "Avance",
-        "collected_so_far": "Recolectadas hasta ahora",
-        "titles": {
-            "Campaña Frazadas": "Campaña Frazadas",
-            "Campaña Kits Escolares": "Campaña Kits Escolares",
-            "Campaña Biblias": "Campaña Biblias",
-            "Campaña Alimentos": "Campaña Alimentos",
-            "Campaña Juguetes": "Campaña Juguetes"
-        }
-    },
     "about_us": {
         "title": "¿Quiénes somos?",
         "versiculo": "Y de esta manera me esforcé a predicar el evangelio, no donde Cristo ya hubiese sido nombrado, para no edificar sobre fundamento ajeno, sino, como está escrito: Aquellos a quienes nunca les fue anunciado acerca de él, verán; Y los que nunca han oído de él, entenderán.",

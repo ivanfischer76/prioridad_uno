@@ -54,7 +54,15 @@
     "lastname_placeholder": "Nachname",
     "firstname_placeholder": "Vorname",
     "church_placeholder": "Kirche",
-    "birthdate_placeholder": "tt/mm/jjjj"
+    "birthdate_placeholder": "tt/mm/jjjj",
+    "language": "Seitensprache",
+    "notify_me": "Über neue Berichte benachrichtigen",
+    "language_es": "Spanisch",
+    "language_en": "Englisch",
+    "language_pt": "Portugiesisch",
+    "language_it": "Italienisch",
+    "language_fr": "Französisch",
+    "language_de": "Deutsch"
   },
   "profile": "Profil",
   "profile_page": {
@@ -77,34 +85,13 @@
   "donate": "Opfern",
   "contact_us": "Kontaktieren Sie uns!",
   "welcome": "Willkommen",
+  "welcome_page": {
+    "fallback_notice": "Sie sehen Inhalte auf Spanisch, weil dieser Abschnitt noch nicht in die gewählte Sprache übersetzt wurde. Wir entschuldigen uns für die Unannehmlichkeiten; wir werden ihn bald für Sie übersetzen."
+  },
   "projects": "Projekte",
   "amazonas": "Bolivianischer Amazonas",
   "entrada_anterior": "Vorheriger Eintrag",
   "siguiente_entrada": "Nächster Eintrag",
-  "campaigns": {
-    "active": "Aktiv",
-    "finished": "Beendet",
-    "active_content": "Hier werden die aktiven Kampagnen angezeigt.",
-    "finished_content": "Hier werden die beendeten Kampagnen angezeigt.",
-    "date": "Datum",
-    "goal": "Ziel",
-    "result": "Ergebnis",
-    "date_from": "Von",
-    "date_to": "Bis",
-    "duration": "Dauer",
-    "months": "Monate",
-    "contact": "Kontakt",
-    "collaborate": "Ich möchte helfen!",
-    "progress": "Fortschritt",
-    "collected_so_far": "Bisher gesammelt",
-    "titles": {
-      "Campaña Frazadas": "Decken-Kampagne",
-      "Campaña Kits Escolares": "Schulsets-Kampagne",
-      "Campaña Biblias": "Bibel-Kampagne",
-      "Campaña Alimentos": "Lebensmittel-Kampagne",
-      "Campaña Juguetes": "Spielzeug-Kampagne"
-    }
-  },
   "about_us": {
     "title": "Über uns",
     "versiculo": "So habe ich es mir zur Ehre gemacht, das Evangelium zu verkündigen, nicht dort, wo Christus schon genannt worden war, damit ich nicht auf einen fremden Grund baue, sondern wie geschrieben steht: Diejenigen, denen nichts von ihm verkündet wurde, werden sehen; und die, die nichts gehört haben, werden verstehen.",

@@ -152,6 +152,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 });
             }
 
+            managementItems.push({
+                label: 'Pantalla Bienvenida',
+                command: () => this.router.navigate(['/gestionar-bienvenida'])
+            });
+
+            if (this.hasPermission('gestionar sistema')) {
+                managementItems.push({
+                    label: 'Sistema',
+                    command: () => this.router.navigate(['/sistema'])
+                });
+            }
+
             menuItems = [
                 {
                     label: 'welcome',
@@ -178,12 +190,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 });
             }
 
-            if (managementItems.length > 0 && this.hasAnyPermission([
-                'gestionar usuarios',
-                'gestionar roles',
-                'gestionar permisos',
-                'gestionar proyectos'
-            ])) {
+            if (managementItems.length > 0) {
                 menuItems.push({
                     label: 'menu.management',
                     items: managementItems,

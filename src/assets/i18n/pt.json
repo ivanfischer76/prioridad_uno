@@ -54,7 +54,15 @@
     "lastname_placeholder": "Sobrenome",
     "firstname_placeholder": "Nome",
     "church_placeholder": "Igreja",
-    "birthdate_placeholder": "dd/mm/aaaa"
+    "birthdate_placeholder": "dd/mm/aaaa",
+    "language": "Idioma do site",
+    "notify_me": "Notificar-me sobre novos relatórios",
+    "language_es": "Espanhol",
+    "language_en": "Inglês",
+    "language_pt": "Português",
+    "language_it": "Italiano",
+    "language_fr": "Francês",
+    "language_de": "Alemão"
   },
   "profile": "Perfil",
   "profile_page": {
@@ -77,34 +85,13 @@
   "donate": "Ofertar",
   "contact_us": "Contate-nos!",
   "welcome": "Bem-vindo",
+  "welcome_page": {
+    "fallback_notice": "Você está vendo conteúdo em espanhol porque esta seção ainda não foi traduzida para o idioma escolhido. Pedimos desculpas pelo transtorno; em breve faremos a tradução para você."
+  },
   "projects": "Projetos",
   "amazonas": "Amazônia Boliviana",
   "entrada_anterior": "Entrada anterior",
   "siguiente_entrada": "Próxima entrada",
-  "campaigns": {
-    "active": "Ativas",
-    "finished": "Finalizadas",
-    "active_content": "Aqui são exibidas as campanhas ativas.",
-    "finished_content": "Aqui são exibidas as campanhas finalizadas.",
-    "date": "Data",
-    "goal": "Objetivo",
-    "result": "Resultado",
-    "date_from": "De",
-    "date_to": "Até",
-    "duration": "Duração",
-    "months": "meses",
-    "contact": "Contato",
-    "collaborate": "Quero colaborar!",
-    "progress": "Progresso",
-    "collected_so_far": "Arrecadados até agora",
-    "titles": {
-      "Campaña Frazadas": "Campanha Cobertores",
-      "Campaña Kits Escolares": "Campanha Kits Escolares",
-      "Campaña Biblias": "Campanha Bíblias",
-      "Campaña Alimentos": "Campanha Alimentos",
-      "Campaña Juguetes": "Campanha Brinquedos"
-    }
-  },
   "about_us": {
     "title": "Quem somos",
     "versiculo": "E desta maneira me esforcei por pregar o evangelho, não onde Cristo já fora anunciado, para não edificar sobre fundamento alheio; mas, como está escrito: Aqueles a quem não foi anunciado o verão; e os que não ouviram entenderão.",

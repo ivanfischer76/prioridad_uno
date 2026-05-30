@@ -54,7 +54,15 @@
     "lastname_placeholder": "Last name",
     "firstname_placeholder": "First name",
     "church_placeholder": "Church",
-    "birthdate_placeholder": "dd/mm/yyyy"
+    "birthdate_placeholder": "dd/mm/yyyy",
+    "language": "Site language",
+    "notify_me": "Notify me about new reports",
+    "language_es": "Spanish",
+    "language_en": "English",
+    "language_pt": "Portuguese",
+    "language_it": "Italian",
+    "language_fr": "French",
+    "language_de": "German"
   },
   "profile": "Profile",
   "profile_page": {
@@ -77,34 +85,13 @@
   "donate": "Offer",
   "contact_us": "Contact us!",
   "welcome": "Welcome",
+  "welcome_page": {
+    "fallback_notice": "You are viewing content in Spanish because this section has not yet been translated into your selected language. We apologize for the inconvenience; we will translate it for you soon."
+  },
   "projects": "Projects",
   "amazonas": "Bolivian Amazon",
   "entrada_anterior": "Previous entry",
   "siguiente_entrada": "Next entry",
-  "campaigns": {
-    "active": "Active",
-    "finished": "Finished",
-    "active_content": "Active campaigns are shown here.",
-    "finished_content": "Finished campaigns are shown here.",
-    "date": "Date",
-    "goal": "Goal",
-    "result": "Result",
-    "date_from": "From",
-    "date_to": "To",
-    "duration": "Duration",
-    "months": "months",
-    "contact": "Contact",
-    "collaborate": "I want to help!",
-    "titles": {
-      "Campaña Frazadas": "Blanket Campaign",
-      "Campaña Kits Escolares": "School Kits Campaign",
-      "Campaña Biblias": "Bibles Campaign",
-      "Campaña Alimentos": "Food Campaign",
-      "Campaña Juguetes": "Toys Campaign"
-    },
-    "progress": "Progress",
-    "collected_so_far": "Collected so far"
-  },
   "about_us": {
     "title": "About us",
     "versiculo": "And so I have made it my aim to preach the gospel, not where Christ was named, lest I should build on another man’s foundation, but as it is written: To whom He was not announced, they shall see; And those who have not heard shall understand.",

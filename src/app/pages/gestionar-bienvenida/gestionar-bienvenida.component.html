@@ -1,4 +1,110 @@
 <section class="page-wrapper">
-    <h2>Gestionar Bienvenida</h2>
-    <p>Componente creado correctamente.</p>
+    <header class="gestion-header">
+        <h1>Gestionar bienvenida</h1>
+    </header>
+    <p-toast position="top-right"></p-toast>
+
+    <div class="layout grid" *ngIf="!loading">
+        <div class="col-12 md:col-4">
+            <div class="card image-card">
+                <h3>Imagen</h3>
+                <div
+                    class="image-dropzone"
+                    [class.drag-over]="isImageDragOver"
+                    [class.disabled]="saving || uploading"
+                    (dragover)="onImageDragOver($event)"
+                    (dragleave)="onImageDragLeave($event)"
+                    (drop)="onImageDrop($event)">
+                    <label for="welcomeImageInput" class="image-dropzone-label">
+                        <img [src]="imageUrl" alt="Imagen de bienvenida" class="preview-image" />
+                        <span class="image-overlay-text">
+                            {{ uploading ? 'Subiendo imagen...' : 'Arrastra y suelta una imagen o haz click para seleccionar' }}
+                        </span>
+                    </label>
+                </div>
+
+                <div class="upload-row">
+                    <label
+                        for="welcomeImageInput"
+                        class="upload-button"
+                        [class.disabled]="saving || uploading">
+                        {{ uploading ? 'Subiendo...' : 'Seleccionar imagen' }}
+                    </label>
+                    <input
+                        id="welcomeImageInput"
+                        type="file"
+                        accept="image/*"
+                        (change)="onImageSelected($event)"
+                        [disabled]="saving || uploading"
+                        class="upload-input-hidden" />
+                </div>
+
+                <small class="text-center">Si no hay imagen cargada, se usara una imagen por defecto.</small>
+            </div>
+        </div>
+
+        <div class="col-12 md:col-8">
+            <div class="card">
+                <div class="toolbar">
+                    <div>
+                        <label for="locale" class="label-idioma">Idioma</label>
+                        <p-select
+                            inputId="locale"
+                            [options]="locales"
+                            optionLabel="label"
+                            optionValue="value"
+                            [(ngModel)]="selectedLocale"
+                            (onChange)="onLocaleChange()"
+                            [disabled]="saving || uploading">
+                        </p-select>
+                    </div>
+                </div>
+
+                <div class="field-block">
+                    <label for="verseText">Texto destacado (versiculo)</label>
+                    <textarea
+                        pTextarea
+                        id="verseText"
+                        rows="2"
+                        [(ngModel)]="form.verse_text"
+                        [disabled]="saving || uploading"
+                        class="w-full verse-textarea">
+                    </textarea>
+                </div>
+
+                <div class="field-block">
+                    <label for="verseCitation">Cita (alineada a la derecha)</label>
+                    <input
+                        id="verseCitation"
+                        pInputText
+                        [(ngModel)]="form.verse_citation"
+                        [disabled]="saving || uploading"
+                        class="w-full" />
+                </div>
+
+                <div class="field-block">
+                    <label for="reflectionText">Reflexion / palabras de bienvenida</label>
+                    <textarea
+                        pTextarea
+                        id="reflectionText"
+                        rows="4"
+                        [(ngModel)]="form.reflection_text"
+                        [disabled]="saving || uploading"
+                        class="w-full reflection-textarea">
+                    </textarea>
+                </div>
+
+                <div class="actions">
+                    <p-button
+                        type="button"
+                        severity="primary"
+                        [raised]="true"
+                        [disabled]="saving || uploading"
+                        (click)="saveCurrentLocale()"
+                        [label]="saving ? 'Guardando...' : 'Guardar idioma actual'">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

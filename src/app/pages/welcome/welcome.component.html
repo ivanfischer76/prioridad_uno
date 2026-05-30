@@ -1,12 +1,20 @@
-<section>
+<section class="welcome-wrapper">
     <div *ngIf="accessDenied" class="p-3 mb-3 border-round" style="background:#fff7ed;border:1px solid #fdba74;color:#9a3412;">
         No tienes permisos para acceder a esa seccion.
         <span *ngIf="deniedFrom">Ruta solicitada: {{ deniedFrom }}</span>
     </div>
-    <h2>
-        {{ 'welcome' | translate}}
-    </h2>
-    <p>
-        mensaje de bienvenida y agradecimiento por sumarse, quizás algún versículo o mensaje que vaya cambiando cada tanto, esta página la verían los usuarios logueados
-    </p>
+
+    <div class="welcome-card grid grid-nogutter">
+        <div class="col-12 md:col-4 welcome-image-col">
+            <img [src]="imageUrl" (error)="onImageError()" alt="Bienvenida" class="welcome-image" />
+        </div>
+        <div class="col-12 md:col-8 welcome-text-col">
+            <div *ngIf="showFallbackNotice" class="welcome-fallback-alert">
+                {{ 'welcome_page.fallback_notice' | translate }}
+            </div>
+            <p class="welcome-verse">{{ verseText }}</p>
+            <p class="welcome-citation">{{ verseCitation }}</p>
+            <p class="welcome-reflection">{{ reflectionText }}</p>
+        </div>
+    </div>
 </section>

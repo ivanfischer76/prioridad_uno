@@ -1,12 +1,13 @@
-<section class="flex flex-col items-center justify-center min-h-[70vh]">
+<section class="register-wrapper flex flex-col items-center justify-center min-h-[70vh]">
     <form
-        class="shadow-xl rounded-xl px-6 pt-6 pb-6 mb-4 w-full max-w-2xl bg-transparent"
-        autocomplete="off">
-        <h2 class="text-3xl text-green-700 font-bold mb-4 text-center">
+        class="register-card shadow-xl rounded-xl px-5 pt-4 pb-4 mb-2 w-full bg-white/50 backdrop-blur-sm"
+        autocomplete="off"
+        (ngSubmit)="onRegister()">
+        <h2 class="text-2xl text-green-700 font-bold mb-3 text-center">
             {{ 'register.title' | translate }}
         </h2>
-        <div class="grid mb-2">
-            <div class="col-12">
+        <div class="grid mb-2 register-grid">
+            <div class="col-12 md:col-4">
                 <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
                     {{ 'register.email' | translate }}
                 </label>
@@ -22,7 +23,7 @@
                     [placeholder]="'register.email_placeholder' | translate"
                     required />
             </div>
-            <div class="col-6">
+            <div class="col-12 md:col-4">
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">
                     {{ 'register.username' | translate }}
                 </label>
@@ -40,7 +41,7 @@
                     autocomplete="off"
                 />
             </div>
-            <div class="col-6">
+            <div class="col-12 md:col-4">
                 <label for="fechaNacimiento" class="block text-gray-700 text-sm font-bold mb-2">
                     {{ 'register.birthdate' | translate }}
                 </label>
@@ -67,9 +68,7 @@
                     (blur)="onFechaNacimientoBlur($event)"
                 />
             </div>
-        </div>
-        <div class="grid mb-2">
-            <div class="col-6">
+            <div class="col-12 md:col-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="apellido">
                     {{ 'register.lastname' | translate }}
                 </label>
@@ -85,7 +84,7 @@
                     [placeholder]="'register.lastname_placeholder' | translate"
                     required />
             </div>
-            <div class="col-6">
+            <div class="col-12 md:col-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">
                     {{ 'register.firstname' | translate }}
                 </label>
@@ -101,9 +100,7 @@
                     [placeholder]="'register.firstname_placeholder' | translate"
                     required />
             </div>
-        </div>
-        <div class="grid mb-2">
-            <div class="col-12">
+            <div class="col-12 md:col-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="iglesia">
                     {{ 'register.church' | translate }}
                 </label>
@@ -118,9 +115,41 @@
                     [placeholder]="'register.church_placeholder' | translate"
                     required />
             </div>
-        </div>
-        <div class="grid mb-2">
-            <div class="col-6">
+            <div class="col-12 md:col-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="idioma">
+                    {{ 'register.language' | translate }}
+                </label>
+                <p-select
+                    inputId="idioma"
+                    [options]="languages"
+                    [(ngModel)]="idioma"
+                    [ngModelOptions]="{ standalone: true }"
+                    optionLabel="labelKey"
+                    optionValue="value"
+                    [scrollHeight]="'320px'"
+                    class="w-full">
+                    <ng-template #selectedItem let-selected>
+                        <span *ngIf="selected">{{ selected.labelKey | translate }}</span>
+                    </ng-template>
+                    <ng-template #item let-language>
+                        <span>{{ language.labelKey | translate }}</span>
+                    </ng-template>
+                </p-select>
+            </div>
+            <div class="col-12 md:col-4 notify-col">
+                <p-checkbox
+                    inputId="notificarme"
+                    [(ngModel)]="notificarme"
+                    [ngModelOptions]="{ standalone: true }"
+                    [binary]="true">
+                </p-checkbox>
+                <label for="notificarme" class="text-gray-700 text-sm font-bold mb-0">
+                    {{ 'register.notify_me' | translate }}
+                </label>
+            </div>
+            <div class="col-12 md:col-4"></div>
+
+            <div class="col-12 md:col-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                     {{ 'register.password' | translate }}
                 </label>
@@ -138,30 +167,9 @@
                         [strongLabel]="'register.strong_password' | translate">
                     </p-password>
 
-                    <!-- <input
-                        id="password"
-                        name="password"
-                        [type]="showPassword ? 'text' : 'password'"
-                        [(ngModel)]="password"
-                        pInputText
-                        [ngModelOptions]="{standalone: true}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
-                        placeholder="********"
-                        required
-                        autocomplete="new-password"
-                    />
-                    <span class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center">
-                        <button type="button"
-                            (click)="showPassword = !showPassword"
-                            class="text-gray-500 hover:text-gray-700 focus:outline-none">
-                            <i class="bi"
-                                [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
-                                style="font-size: 1.2rem;"></i>
-                        </button>
-                    </span> -->
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-12 md:col-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="repeatPassword">
                     {{ 'register.repeat_password' | translate }}
                 </label>
@@ -179,39 +187,19 @@
                         [strongLabel]="'register.strong_password' | translate">
                     </p-password>
 
-                    <!-- <input
-                        id="repeatPassword"
-                        name="repeatPassword"
-                        [type]="showRepeatPassword ? 'text' : 'password'"
-                        [(ngModel)]="repeatPassword"
-                        pInputText
-                        [ngModelOptions]="{standalone: true}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
-                        placeholder="********"
-                        required
-                        autocomplete="new-password"
-                    />
-                    <span class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center">
-                        <button type="button"
-                            (click)="showRepeatPassword = !showRepeatPassword"
-                            class="text-gray-500 hover:text-gray-700 focus:outline-none">
-                            <i class="bi"
-                                [ngClass]="showRepeatPassword ? 'bi-eye-slash' : 'bi-eye'"
-                                style="font-size: 1.2rem;"></i>
-                        </button>
-                    </span> -->
                 </div>
             </div>
+            <div class="col-12 md:col-4"></div>
         </div>
         <div class="grid">
-            <div class="col-12">
+            <div class="col-12 md:col-4 md:col-offset-4">
                 <p-button
                     pRipple
                     [raised]="true"
                     [disabled]="!email || !username || !apellido || !nombre || !password || !repeatPassword || password !== repeatPassword"
                     styleClass="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
-                    label="{{ 'register.submit' | translate }}">
+                    [label]="'register.submit' | translate">
                 </p-button>
             </div>
         </div>
