@@ -1,26 +1,57 @@
-import { Injectable } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { inject } from '@angular/core';
 
 export const authUsersGuard: CanActivateFn = (route, state) => {
+    const router = inject(Router);
     const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-    const loggedUser = sessionStorage.getItem('response_logged_user');
-    const permiso = route.data?.['permiso'];
-    let hasPermission = false;
-    if (loggedUser && permiso) {
-        try {
-            const loggedUserData = JSON.parse(loggedUser);
-            console.log('loggedUserData', loggedUserData);
-            console.log('permisos', loggedUserData.user.permissions);
-            hasPermission = Array.isArray(loggedUserData.user.permissions) &&
-                loggedUserData.user.permissions.some((p: any) => p.name === permiso);
-        } catch (e) {
-            hasPermission = false;
-        }
+    const rawResponse = sessionStorage.getItem('response_logged_user');
+    const rawLoggedUser = sessionStorage.getItem('logged_user');
+    const permission = route.data?.['permiso'];
+    const permissions = route.data?.['permisos'];
+
+    if (!isLoggedIn) {
+        return router.createUrlTree(['/login'], {
+            queryParams: { returnUrl: state.url }
+        });
     }
-    if (isLoggedIn && hasPermission) {
+
+    const requiredPermissions = [
+        ...(typeof permission === 'string' ? [permission] : []),
+        ...(Array.isArray(permissions) ? permissions : []),
+    ].map((item) => item.toLowerCase().trim());
+
+    if (requiredPermissions.length === 0) {
         return true;
     }
-    // window.location.href = '/login';
-    return false;
+
+    let userPermissions: string[] = [];
+
+    if (rawResponse || rawLoggedUser) {
+        try {
+            const responseData = rawResponse ? JSON.parse(rawResponse) : null;
+            const loggedUserData = rawLoggedUser ? JSON.parse(rawLoggedUser) : null;
+            const sessionUser = responseData?.user ?? loggedUserData;
+
+            userPermissions = Array.isArray(sessionUser?.permissions)
+                ? sessionUser.permissions
+                    .map((item: { name?: string }) => item?.name?.toLowerCase().trim())
+                    .filter((item: string | undefined): item is string => !!item)
+                : [];
+        } catch {
+            userPermissions = [];
+        }
+    }
+
+    const hasPermission = requiredPermissions.some((item) => userPermissions.includes(item));
+
+    if (hasPermission) {
+        return true;
+    }
+
+    return router.createUrlTree(['/welcome'], {
+        queryParams: {
+            denied: '1',
+            from: state.url,
+        },
+    });
 };

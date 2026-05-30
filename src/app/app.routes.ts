@@ -38,6 +38,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent)
     },
     {
+        path: 'profile',
+        loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent)
+    },
+    {
         path: 'welcome',
         loadComponent: () => import('./pages/welcome/welcome.component').then(m => m.WelcomeComponent)
     },
@@ -47,6 +51,8 @@ export const routes: Routes = [
     },
     {
         path: 'gestionar-amazonas-boliviano',
+        canActivate: [authUsersGuard],
+        data: { permiso: 'gestionar proyectos' },
         loadComponent: () => import('./pages/gestionar-amazonas-boliviano/gestionar-amazonas-boliviano.component').then(m => m.GestionarAmazonasBolivianoComponent)
     },
     {
@@ -58,5 +64,23 @@ export const routes: Routes = [
         canActivate: [authUsersGuard],
         data: { permiso: 'gestionar usuarios' },
         loadComponent: () => import('./pages/users/users.component').then(m => m.UsersComponent)
+    },
+    {
+        path: 'roles',
+        canActivate: [authUsersGuard],
+        data: { permiso: 'gestionar roles' },
+        loadComponent: () => import('./pages/roles/roles.component').then(m => m.RolesComponent)
+    },
+    {
+        path: 'permissions',
+        canActivate: [authUsersGuard],
+        data: { permiso: 'gestionar permisos' },
+        loadComponent: () => import('./pages/permissions/permissions.component').then(m => m.PermissionsComponent)
+    },
+    {
+        path: 'statistics',
+        canActivate: [authUsersGuard],
+        data: { permisos: ['ver estadisticas', 'ver estadísticas'] },
+        loadComponent: () => import('./pages/statistics/statistics.component').then(m => m.StatisticsComponent)
     }
 ];

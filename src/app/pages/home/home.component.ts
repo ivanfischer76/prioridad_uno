@@ -4,6 +4,7 @@ import { GalleriaModule, Galleria } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { SiteVisitService } from '../../services/site-visit.service';
 
 @Component({
     selector: 'app-home',
@@ -19,6 +20,13 @@ import { ButtonModule } from 'primeng/button';
 export class HomeComponent implements OnInit {
 
     @ViewChild('galleria') galleria!: Galleria;
+
+    visitStats = {
+        unique_total: 0,
+        unique_today: 0,
+        pageviews_total: 0,
+        pageviews_today: 0,
+    };
 
     images = [
         {
@@ -72,11 +80,31 @@ export class HomeComponent implements OnInit {
         }
     ];
 
-    constructor(private router: Router, private translate: TranslateService) {}
+    constructor(
+        private router: Router,
+        private translate: TranslateService,
+        private siteVisitService: SiteVisitService
+    ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.loadTranslations();
+        this.trackHomeVisit();
         this.translate.onLangChange.subscribe(() => this.loadTranslations());
+    }
+
+    private trackHomeVisit(): void {
+        const path = this.router.url || '/';
+
+        this.siteVisitService.trackVisit(path).subscribe({
+            next: (response) => {
+                if (response?.data) {
+                    this.visitStats = response.data;
+                }
+            },
+            error: () => {
+                // If counting fails, the home page should still work normally.
+            },
+        });
     }
 
     private loadTranslations() {
@@ -86,7 +114,16 @@ export class HomeComponent implements OnInit {
     }
 
     goToLogin() {
-        this.router.navigate(['/login']);
+        const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+
+        if (isLoggedIn) {
+            this.router.navigate(['/amazonas-boliviano']);
+            return;
+        }
+
+        this.router.navigate(['/login'], {
+            queryParams: { returnUrl: '/amazonas-boliviano' }
+        });
     }
 
 

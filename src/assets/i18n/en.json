@@ -12,7 +12,8 @@
     "users": "Users",
     "roles": "Roles",
     "permissions": "Permissions",
-    "campaigns": "Campaigns"
+    "campaigns": "Campaigns",
+    "statistics": "Statistics"
   },
   "slider": {
     "versiculo": "And so I have made it my aim to preach the gospel, not where Christ was named, lest I should build on another man’s foundation, but as it is written: To whom He was not announced, they shall see; And those who have not heard shall understand.",
@@ -56,8 +57,24 @@
     "birthdate_placeholder": "dd/mm/yyyy"
   },
   "profile": "Profile",
+  "profile_page": {
+    "change_password": "Change password",
+    "save_changes": "Save changes",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "saving": "Saving...",
+    "save_password": "Save password",
+    "cancel": "Cancel",
+    "language": "Language",
+    "notify_me": "Notify me about new reports"
+  },
   "user": "User",
   "logout": "Logout",
+  "footer": {
+    "total_visits": "Total visits",
+    "today_visits": "Visits today"
+  },
+  "donate": "Offer",
   "contact_us": "Contact us!",
   "welcome": "Welcome",
   "projects": "Projects",

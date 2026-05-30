@@ -1,9 +1,58 @@
 <section>
+    <p-toast position="top-right"></p-toast>
+
     <div class="flex flex-wrap align-items-center justify-content-between">
         <span class="text text-2xl text-900 font-semibold">
             {{ 'amazonas' | translate }}
         </span>
-        <div class="flex flex-wrap justify-content-end align-items-center gap-2 mr-8">
+        <div class="toolbar-actions mr-8">
+            <div class="quick-actions">
+                <p-button
+                    pRipple
+                    type="button"
+                    size="small"
+                    [raised]="true"
+                    severity="primary"
+                    icon="pi pi-info-circle"
+                    [pTooltip]="'menu.about_us' | translate"
+                    tooltipPosition="bottom"
+                    (click)="ir_a_quienes_somos()">
+                </p-button>
+                <p-button
+                    pRipple
+                    type="button"
+                    size="small"
+                    [raised]="true"
+                    severity="primary"
+                    icon="pi pi-dollar"
+                    [pTooltip]="'donate' | translate"
+                    tooltipPosition="bottom"
+                    (click)="ir_a_donar()">
+                </p-button>
+                <p-button
+                    pRipple
+                    type="button"
+                    size="small"
+                    [raised]="true"
+                    severity="primary"
+                    icon="pi pi-envelope"
+                    [pTooltip]="'contact_us' | translate"
+                    tooltipPosition="bottom"
+                    (click)="ir_a_contacto()">
+                </p-button>
+            </div>
+            <div class="post-navigation-actions flex flex-wrap justify-content-end align-items-center gap-2">
+            <p-button 
+                pRipple
+                type="button"
+                size="small"
+                [raised]="true"
+                pTooltip="Ir a la primera entrada" 
+                tooltipPosition="bottom"
+                icon="pi pi-step-backward" 
+                [disabled]="posts.length <= 1 || selectedPostIndex === 0"
+                (click)="ir_primera_entrada()">
+            </p-button>
             <p-button 
                 pRipple
                 type="button"
@@ -12,6 +61,7 @@
                 [pTooltip]="'entrada_anterior' | translate" 
                 tooltipPosition="bottom"
                 icon="pi pi-arrow-left" 
+                [disabled]="posts.length <= 1 || selectedPostIndex === 0"
                 (click)="entrada_anterior()">
             </p-button>
             <p-button 
@@ -22,43 +72,66 @@
                 [pTooltip]="'siguiente_entrada' | translate" 
                 tooltipPosition="bottom"
                 icon="pi pi-arrow-right" 
+                [disabled]="posts.length <= 1 || selectedPostIndex >= posts.length - 1"
                 (click)="siguiente_entrada()">
             </p-button>
+            <p-button 
+                pRipple
+                type="button"
+                size="small"
+                [raised]="true"
+                pTooltip="Ir a la ultima entrada" 
+                tooltipPosition="bottom"
+                icon="pi pi-step-forward" 
+                [disabled]="posts.length <= 1 || selectedPostIndex >= posts.length - 1"
+                (click)="ir_ultima_entrada()">
+            </p-button>
+            </div>
         </div>
     </div>
+
+    <div class="estado-carga" *ngIf="loading">Cargando novedades...</div>
+    <div class="estado-error" *ngIf="!loading && loadError">{{ loadError }}</div>
+
     <div class="grid mt-3 mb-3">
         <div class="col-4" id="imagenes">
             <div class="grid">
                 <div class="col text-center bg-">
                     <span class="text text-lg text-green-900 font-bold">
-                        Fecha: 26/04/2026
+                        Fecha: {{ fechaActual || '  ' }}
                     </span>
                 </div>
             </div>
             <div class="grid">
                 <div class="col border-right-100 surface-border max-h-full overflow-auto">
-                    <p-carousel 
-                        [value]="imagenesAmazonas" 
-                        [numVisible]="1" 
-                        [numScroll]="1" 
-                        [circular]="true" 
-                        [showIndicators]="true" 
-                        [showNavigators]="true" 
-                        [style]="{height: '100%', width: '100%'}">
-                        <ng-template pTemplate="item" let-item>
-                            <div class="flex align-items-center justify-content-center h-96 w-full">
-                                <img [src]="item.url" 
-                                    [alt]="item.alt" 
-                                    class="w-full h-full object-cover rounded shadow" 
-                                />
-                            </div>
-                        </ng-template>
-                    </p-carousel>
+                    <ng-container *ngIf="imagenesAmazonas.length > 0; else noImagesInEntry">
+                        <p-carousel 
+                            [value]="imagenesAmazonas" 
+                            [numVisible]="1" 
+                            [numScroll]="1" 
+                            [autoplayInterval]="10000"
+                            [circular]="imagenesAmazonas.length > 1" 
+                            [showIndicators]="true" 
+                            [showNavigators]="imagenesAmazonas.length > 1" 
+                            [style]="{height: '100%', width: '100%'}">
+                            <ng-template pTemplate="item" let-item>
+                                <div class="flex align-items-center justify-content-center h-96 w-full">
+                                    <img [src]="item.url" 
+                                        [alt]="item.alt" 
+                                        class="w-full h-full object-cover rounded shadow" 
+                                    />
+                                </div>
+                            </ng-template>
+                        </p-carousel>
+                    </ng-container>
+                    <ng-template #noImagesInEntry>
+                        <div class="sin-imagenes">Este informe no tiene imagenes cargadas.</div>
+                    </ng-template>
                 </div>
             </div>
         </div>
         <div class="col-6" id="informe">
-            <h2 class="text-2xl font-bold mb-4">Título del Informe</h2>
+            <h2 class="text-2xl font-bold mb-4">{{ tituloInforme }}</h2>
             <app-markdown-viewer
                 [markdown]="contenidoMarkdown"
                 [compact]="false"
@@ -67,34 +140,23 @@
                 [mobileHeight]="'280px'">
             </app-markdown-viewer>
         </div>
-        <div class="col-2">
+        <div class="col-2" id="listados">
             <div class="grid h-50 mb-3">
                 <div class="col">
-                    <p class="text-900 text-xl font-medium mb-3">Contenido del blog</p>
+                    <p class="text-900 text-xl font-medium mb-3">Novedades Anteriores</p>
                     <div class="border-bottom-100 surface-border mb-3"></div>
                     <p-scrollPanel [style]="{width: '100%', height: '150px'}" class="mb-3">
-                        <ul class="list-none p-0 m-0">
-                            <li class="mb-2">
-                                <a href="#" class="text-blue-800 hover:underline">Entrada 1: Título de la entrada</a>
-                                <p class="text-sm text-gray-800">Publicado el 01/01/2024</p>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#" class="text-blue-800 hover:underline">Entrada 2: Título de la entrada</a>
-                                <p class="text-sm text-gray-800">Publicado el 15/01/2024</p>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#" class="text-blue-800 hover:underline">Entrada 3: Título de la entrada</a>
-                                <p class="text-sm text-gray-800">Publicado el 16/01/2024</p>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#" class="text-blue-800 hover:underline">Entrada 4: Título de la entrada</a>
-                                <p class="text-sm text-gray-800">Publicado el 17/01/2024</p>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#" class="text-blue-800 hover:underline">Entrada 5: Título de la entrada</a>
-                                <p class="text-sm text-gray-800">Publicado el 20/01/2024</p>
+                        <ul class="list-none p-0 m-0" *ngIf="postsReversed.length > 0; else emptyPosts">
+                            <li class="mb-2" *ngFor="let post of postsReversed">
+                                <button type="button" class="entry-link" [class.entry-link-active]="getPostIndex(post) === selectedPostIndex" (click)="selectPost(getPostIndex(post))">
+                                    {{ post.title }}
+                                </button>
+                                <p class="text-sm text-gray-800">Publicado el {{ formatPostDate(post) }}</p>
                             </li>
                         </ul>
+                        <ng-template #emptyPosts>
+                            <p class="sin-contenido">Aun no hay entradas publicadas.</p>
+                        </ng-template>
                     </p-scrollPanel>
                 </div>
             </div>
@@ -104,26 +166,14 @@
                     <p class="text-900 text-xl font-medium mb-1">Motivos de oración</p>
                     <div class="border-bottom-100 surface-border mb-1"></div>
                     <p-scrollPanel [style]="{width: '100%', height: '230px'}" class="mb-3">
-                        <ul class="list-disc p-4 m-0">
-                            <li class="mb-2">
-                                <p class="text-sm text-gray-800">tal o cual cosa</p>
-                            </li>
-                            <li class="mb-2">
-                                <p class="text-sm text-gray-800">tal o cual otra</p>
-                            </li>
-                            <li class="mb-2">
-                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
-                            </li>
-                            <li class="mb-2">
-                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
-                            </li>
-                            <li class="mb-2">
-                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
-                            </li>
-                            <li class="mb-2">
-                                <p class="text-sm text-gray-800">un motivo mas largo para ocupar mucho espacio</p>
+                        <ul class="list-disc p-4 m-0" *ngIf="motivosOracion.length > 0; else emptyPrayerReasons">
+                            <li class="mb-2" *ngFor="let motivo of motivosOracion">
+                                <p class="text-sm text-gray-800">{{ motivo }}</p>
                             </li>
                         </ul>
+                        <ng-template #emptyPrayerReasons>
+                            <p class="sin-contenido">Esta entrada no tiene motivos de oración.</p>
+                        </ng-template>
                     </p-scrollPanel>
                 </div>
             </div>

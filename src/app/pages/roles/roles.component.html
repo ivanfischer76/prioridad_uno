@@ -1,0 +1,335 @@
+<section>
+    <p-toast position="top-right"></p-toast>
+    <header class="gestion-header">
+        <h1>
+            Gestión de Roles
+        </h1>
+    </header>
+
+    <p-table
+        #dtRoles
+        [value]="roles"
+        [paginator]="true"
+        [rows]="100"
+        [responsiveLayout]="'scroll'"
+        [scrollable]="true"
+        [scrollHeight]="altoTabla"
+        [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} roles"
+        [globalFilterFields]="['id', 'name', 'guard_name']"
+        [loading]="loading">
+
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-start align-items-center">
+                    <button pButton
+                        label="Limpiar"
+                        class="p-button-outlined p-button-sm extra-padding"
+                        [style]="{height: '39px'}"
+                        icon="pi pi-filter-slash"
+                        (click)="clear(dtRoles)">
+                    </button>
+                </div>
+                <div class="flex justify-content-end align-items-center gap-2">
+                    <p-button id="btnRecargarRoles"
+                        pRipple
+                        [raised]="true"
+                        severity="info"
+                        size="small"
+                        icon="pi pi-refresh"
+                        pTooltip="Refrescar lista de roles"
+                        tooltipPosition="top"
+                        type="button"
+                        (click)="loadRoles()">
+                    </p-button>
+                    <p-button id="btnAgregarRoles"
+                        *ngIf="canCreateRoles"
+                        pRipple
+                        [raised]="true"
+                        severity="primary"
+                        size="small"
+                        icon="pi pi-plus"
+                        pTooltip="Agregar nuevo rol"
+                        tooltipPosition="top"
+                        type="button"
+                        (click)="openAddRoleDialog()">
+                    </p-button>
+                    <p-iconfield iconPosition="left" class="ml-auto">
+                        <p-inputicon styleClass="pi pi-search"></p-inputicon>
+                        <input id="filtroTablaRoles"
+                            pInputText
+                            type="text"
+                            class="p-inputtext-sm"
+                            [(ngModel)]="globalFilterValue"
+                            [style]="{height: '39px'}"
+                            (input)="filterGlobal($event, dtRoles)"
+                            placeholder="Buscar texto..."
+                        />
+                    </p-iconfield>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="guard_name">Guard <p-sortIcon field="guard_name"></p-sortIcon></th>
+                <th>Permisos</th>
+                <th class="text-center" 
+                    width="250"
+                    pFrozenColumn
+                    [alignFrozen]="'right'">
+                    {{cabeceraAcciones}} 
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-role>
+            <tr>
+                <td>{{ role.id }}</td>
+                <td>{{ role.name }}</td>
+                <td>{{ role.guard_name || 'api' }}</td>
+                <td>{{ role.permissions?.length || 0 }}</td>
+                <td class="text-right"
+                    pFrozenColumn
+                    [alignFrozen]="'right'">
+                    <button
+                        *ngIf="canEditRoles"
+                        pButton
+                        type="button"
+                        icon="pi pi-pencil"
+                        class="p-button-rounded p-button-info mr-2"
+                        [disabled]="isProtectedRole(role)"
+                        (mouseover)="cambiarCabeceraAcciones('Editar Rol')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="editRole(role)">
+                    </button>
+                    <button
+                        *ngIf="canEditRoles"
+                        pButton
+                        type="button"
+                        icon="pi pi-check-square"
+                        class="p-button-rounded p-button-help mr-2"
+                        (mouseover)="cambiarCabeceraAcciones('Gestionar Permisos')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="openPermissionsDialog(role)">
+                    </button>
+                    <button
+                        *ngIf="canEditRoles"
+                        pButton
+                        type="button"
+                        icon="pi pi-users"
+                        class="p-button-rounded p-button-success mr-2"
+                        (mouseover)="cambiarCabeceraAcciones('Ver Usuarios del Rol')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="openRoleUsersDialog(role)">
+                    </button>
+                    <button
+                        *ngIf="canDeleteRoles"
+                        pButton
+                        type="button"
+                        icon="pi pi-trash"
+                        class="p-button-rounded p-button-danger"
+                        [disabled]="isProtectedRole(role)"
+                        (mouseover)="cambiarCabeceraAcciones('Eliminar Rol')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="confirmDeleteRole(role)">
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5" class="text-center">No hay roles disponibles.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog
+        styleClass="role-dialog"
+        [header]="isCreateMode ? 'Agregar rol' : 'Editar rol'"
+        [modal]="true"
+        [(visible)]="roleDialogVisible"
+        [closable]="!savingRole"
+        [draggable]="false"
+        [resizable]="false"
+        [style]="{ width: 'min(95vw, 540px)' }"
+        (onHide)="closeRoleDialog()">
+
+        <div class="grid formgrid">
+            <div class="field col-12">
+                <label for="dlg-role-name">Nombre del rol</label>
+                <input
+                    id="dlg-role-name"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="roleForm.name"
+                    [disabled]="savingRole"
+                    class="w-full" />
+            </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <p-button
+                type="button"
+                severity="secondary"
+                [raised]="true"
+                [disabled]="savingRole"
+                (click)="closeRoleDialog()">
+                Cancelar
+            </p-button>
+            <p-button
+                type="button"
+                severity="primary"
+                [raised]="true"
+                [disabled]="savingRole"
+                (click)="saveRole()">
+                {{ savingRole ? 'Guardando...' : (isCreateMode ? 'Crear rol' : 'Guardar cambios') }}
+            </p-button>
+        </ng-template>
+    </p-dialog>
+
+    <p-dialog
+        styleClass="role-dialog role-permissions-dialog"
+        [modal]="true"
+        [(visible)]="permissionsDialogVisible"
+        [closable]="!savingRolePermissions"
+        [draggable]="false"
+        [resizable]="false"
+        [style]="{ width: 'min(98vw, 1180px)', height: 'min(83vh, 830px)' }"
+        (onHide)="closePermissionsDialog()">
+
+        <ng-template pTemplate="header">
+            <span class="role-users-dialog-title">
+                Permisos del rol:
+                <span class="role-users-dialog-role-name">{{ managingRoleName || '-' }}</span>
+            </span>
+        </ng-template>
+
+        <div class="permissions-dialog-content">
+
+            <div class="permissions-search mb-3">
+                <div class="permissions-search-row">
+                    <label for="permissions-search-input" class="permissions-search-label-inline">Buscar permiso</label>
+                    <p-iconfield iconPosition="left" class="permissions-search-input">
+                        <p-inputicon styleClass="pi pi-search"></p-inputicon>
+                        <input
+                            id="permissions-search-input"
+                            pInputText
+                            type="text"
+                            class="w-full"
+                            [(ngModel)]="permissionSearch"
+                            [disabled]="savingRolePermissions"
+                            placeholder="Escribe para filtrar permisos..." />
+                    </p-iconfield>
+                </div>
+            </div>
+
+            <div *ngIf="permissionOptions.length > 0" class="permissions-checkbox-grid">
+                <div class="permissions-checkbox-column" *ngFor="let column of permissionColumns; let columnIndex = index; trackBy: trackByColumnIndex">
+                    <div class="permissions-column-header">
+                        <!-- <div class="permissions-column-title">Columna {{ columnIndex + 1 }}</div> -->
+                        <div class="permissions-column-range">{{ getPermissionColumnHeader(column, columnIndex) }}</div>
+                    </div>
+                    <label class="permissions-checkbox-item" *ngFor="let option of column; trackBy: trackByPermissionValue">
+                        <input
+                            type="checkbox"
+                            [ngModel]="isRolePermissionSelected(option.value)"
+                            [disabled]="savingRolePermissions"
+                            (ngModelChange)="toggleRolePermission(option.value, $event)" />
+                        <span>{{ option.label }}</span>
+                    </label>
+                </div>
+            </div>
+
+            <p *ngIf="permissionOptions.length === 0" class="text-center m-0">
+                No hay permisos disponibles para asignar.
+            </p>
+
+            <p *ngIf="permissionOptions.length > 0 && filteredPermissionOptions.length === 0" class="text-center m-0">
+                No hay permisos que coincidan con la búsqueda.
+            </p>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <p-button
+                type="button"
+                severity="secondary"
+                [raised]="true"
+                [disabled]="savingRolePermissions"
+                (click)="closePermissionsDialog()">
+                Cancelar
+            </p-button>
+            <p-button
+                type="button"
+                severity="primary"
+                [raised]="true"
+                [disabled]="savingRolePermissions"
+                (click)="saveRolePermissions()">
+                {{ savingRolePermissions ? 'Guardando...' : 'Guardar permisos' }}
+            </p-button>
+        </ng-template>
+    </p-dialog>
+
+    <p-dialog
+        styleClass="role-dialog role-users-dialog"
+        [modal]="true"
+        [(visible)]="roleUsersDialogVisible"
+        [closable]="!loadingRoleUsers"
+        [draggable]="false"
+        [resizable]="false"
+        [style]="{ width: 'min(95vw, 820px)' }"
+        (onHide)="closeRoleUsersDialog()">
+
+        <ng-template pTemplate="header">
+            <span class="role-users-dialog-title">
+                Usuarios del rol:
+                <span class="role-users-dialog-role-name">{{ roleUsersDialogRoleName || '-' }}</span>
+            </span>
+        </ng-template>
+
+        <p-table
+            [value]="roleUsers"
+            [loading]="loadingRoleUsers"
+            [rows]="10"
+            [paginator]="true"
+            [responsiveLayout]="'scroll'">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Username</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td>{{ user.username || '-' }}</td>
+                    <td>{{ user.nombre || '-' }}</td>
+                    <td>{{ user.apellido || '-' }}</td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="3" class="text-center">No hay usuarios asignados a este rol.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <ng-template pTemplate="footer">
+            <p-button
+                type="button"
+                severity="secondary"
+                [raised]="true"
+                [disabled]="loadingRoleUsers"
+                (click)="closeRoleUsersDialog()">
+                Cerrar
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</section>

@@ -1,33 +1,430 @@
 <section>
-    <h1 class="text-xl font-bold mb-4">
-        Usuarios
-    </h1>
-    <p-table [value]="users" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" [showCurrentPageReport]="true" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} usuarios">
+    <p-toast position="top-right"></p-toast>
+    <header class="gestion-header">
+        <h1>
+            Gestión de Usuarios
+        </h1>
+    </header>
+    <p-table 
+        #dtUsuarios
+        [value]="users" 
+        [paginator]="true" 
+        [rows]="100" 
+        [responsiveLayout]="'scroll'" 
+        [scrollable]="true" 
+        [scrollHeight]="altoTabla"
+        [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+        [showCurrentPageReport]="true" 
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} usuarios" 
+        [globalFilterFields]="['username', 'nombre', 'apellido', 'email']"
+        [loading]="loading">
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-start align -items-center">
+                    <button pButton 
+                        label="Limpiar" 
+                        class="p-button-outlined p-button-sm extra-padding" 
+                        [style]="{height: '39px'}"
+                        icon="pi pi-filter-slash" 
+                        (click)="clear(dtUsuarios)">
+                    </button>
+                </div>
+                <div class="flex justify-content-end align-items-center gap-2">
+                    <p-button id="btnRecargarUsuarios"
+                        pRipple
+                        [raised]="true"
+                        severity="info"
+                        size="small"
+                        icon="pi pi-refresh"
+                        pTooltip="Refrescar lista de usuarios"
+                        tooltipPosition="top"
+                        type="button" 
+                        (click)="loadUsers()">
+                    </p-button>
+                    <p-button id="btnAgregarUsuarios"
+                        *ngIf="canCreateUsers"
+                        pRipple
+                        [raised]="true"
+                        severity="primary"
+                        size="small"
+                        icon="pi pi-plus"
+                        pTooltip="Agregar nuevo usuario"
+                        tooltipPosition="top"
+                        type="button" 
+                        (click)="openAddUsersDialog()">
+                    </p-button>
+                    <p-iconfield iconPosition="left" class="ml-auto">
+                        <p-inputicon styleClass="pi pi-search"></p-inputicon>
+                        <input id="filtroTablaUsuarios"
+                            pInputText 
+                            type="text" 
+                            class="p-inputtext-sm"
+                            [(ngModel)]="globalFilterValue"
+                            [style]="{height: '39px'}"
+                            (input)="filterGlobal($event, dtUsuarios)" 
+                            placeholder="Buscar texto..." 
+                        />
+                    </p-iconfield>
+                </div>
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
-                <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="id"
+                    pFrozenColumn
+                    [alignFrozen]="'left'">
+                    <p-sortIcon field="id"></p-sortIcon>
+                    ID 
+                </th>
+                <th pSortableColumn="username"
+                    pFrozenColumn
+                    [alignFrozen]="'left'">
+                    <p-sortIcon field="username"></p-sortIcon>
+                    Usuario
+                </th>
+                <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+                <th pSortableColumn="apellido">Apellido <p-sortIcon field="apellido"></p-sortIcon></th>
                 <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
-                <th pSortableColumn="role">Rol <p-sortIcon field="role"></p-sortIcon></th>
-                <th>Acciones</th>
+                <th pSortableColumn="roles">Rol</th>
+                <th pSortableColumn="idioma">Idioma <p-sortIcon field="idioma"></p-sortIcon></th>
+                <th pSortableColumn="notificarme" class="text-center">Notificarme</th>
+                <th class="text-center" 
+                    width="250"
+                    pFrozenColumn
+                    [alignFrozen]="'right'">
+                    {{cabeceraAcciones}} 
+                </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-user>
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
+                <td pFrozenColumn
+                    [alignFrozen]="'left'">
+                    {{ user.id }}
+                </td>
+                <td pFrozenColumn
+                    [alignFrozen]="'left'">
+                    {{ user.username }}
+                </td>
+                <td>{{ user.nombre }}</td>
+                <td>{{ user.apellido }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.role?.name }}</td>
-                <td>
-                    <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info mr-2" (click)="editUser(user)"></button>
-                    <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirmDeleteUser(user)"></button>
+                <td>{{ user.roles?.[0]?.name || 'Sin rol' }}</td>
+                <td>{{ getLanguageLabel(user.idioma) }}</td>
+                <td class="text-center">
+                    <i class="pi" [ngClass]="user.notificarme ? 'pi-check-circle' : 'pi-times-circle'"
+                       [style.color]="user.notificarme ? '#16a34a' : '#9ca3af'"></i>
+                </td>
+                <td class="text-right"
+                    pFrozenColumn
+                    [alignFrozen]="'right'">
+                    <button
+                        *ngIf="canResetPasswordUsers"
+                        pButton
+                        type="button"
+                        icon="pi pi-key"
+                        class="p-button-rounded p-button-warning mr-2"
+                        [disabled]="isLoggedUser(user)"
+                        (mouseover)="cambiarCabeceraAcciones('Resetear Password')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="openResetPasswordDialog(user)">
+                    </button>
+                    <button
+                        *ngIf="canEditUsers"
+                        pButton
+                        type="button"
+                        icon="pi pi-pencil"
+                        class="p-button-rounded p-button-info mr-2"
+                        (mouseover)="cambiarCabeceraAcciones('Editar Usuario')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="editUser(user)">
+                    </button>
+                    <button
+                        *ngIf="canManageUserPermissions"
+                        pButton
+                        type="button"
+                        icon="pi pi-check-square"
+                        class="p-button-rounded p-button-help mr-2"
+                        (mouseover)="cambiarCabeceraAcciones('Gestionar Permisos')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="openUserPermissionsDialog(user)">
+                    </button>
+                    <button
+                        *ngIf="canDeleteUsers"
+                        pButton
+                        type="button"
+                        icon="pi pi-trash"
+                        class="p-button-rounded p-button-danger"
+                        [disabled]="isProtectedUser(user)"
+                        (mouseover)="cambiarCabeceraAcciones('Eliminar Usuario')"
+                        (mouseout)="cambiarCabeceraAcciones('Acciones')"
+                        (click)="confirmDeleteUser(user)">
+                    </button>
                 </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="5" class="text-center">No hay usuarios disponibles.</td>
+                <td colspan="9" class="text-center">No hay usuarios disponibles.</td>
             </tr>
         </ng-template>
     </p-table>
+
+    <p-dialog id="dialogCrearEditarUsuario"
+        styleClass="user-dialog"
+        [header]="isCreateMode ? 'Agregar usuario' : 'Editar usuario'"
+        [modal]="true"
+        [(visible)]="userDialogVisible"
+        [closable]="!savingUser"
+        [draggable]="false"
+        [resizable]="false"
+        [style]="{ width: 'min(95vw, 1080px)' }"
+        (onHide)="closeUserDialog()">
+
+        <div class="grid formgrid">
+            <div class="field col-12 md:col-4">
+                <label for="dlg-role">Rol</label>
+                <p-select
+                    inputId="dlg-role"
+                    [(ngModel)]="userForm.role"
+                    [options]="filteredRoles"
+                    optionLabel="name"
+                    optionValue="name"
+                    placeholder="Seleccionar rol..."
+                    [disabled]="savingUser"
+                    class="w-full"
+                    styleClass="w-full">
+                </p-select>
+            </div>
+            <div class="field col-12 md:col-4">
+                <label for="dlg-username">Usuario</label>
+                <input id="dlg-username" pInputText type="text" [(ngModel)]="userForm.username" [disabled]="savingUser" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <label for="dlg-email">Email</label>
+                <input id="dlg-email" pInputText type="email" [(ngModel)]="userForm.email" [disabled]="savingUser" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <label for="dlg-nombre">Nombre</label>
+                <input id="dlg-nombre" pInputText type="text" [(ngModel)]="userForm.nombre" [disabled]="savingUser" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <label for="dlg-apellido">Apellido</label>
+                <input id="dlg-apellido" pInputText type="text" [(ngModel)]="userForm.apellido" [disabled]="savingUser" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <label for="dlg-iglesia">Iglesia</label>
+                <input id="dlg-iglesia" pInputText type="text" [(ngModel)]="userForm.iglesia" [disabled]="savingUser" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <label for="dlg-fecha">Fecha de nacimiento</label>
+                <input id="dlg-fecha" pInputText type="date" [(ngModel)]="userForm.fecha_nacimiento" [disabled]="savingUser" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <label for="dlg-idioma">Idioma</label>
+                <p-select
+                    inputId="dlg-idioma"
+                    [(ngModel)]="userForm.idioma"
+                    [options]="availableLanguages"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Seleccionar idioma..."
+                    [disabled]="savingUser"
+                    class="w-full"
+                    styleClass="w-full"
+                    appendTo="body">
+                </p-select>
+            </div>
+            <div class="field col-12 md:col-4 flex align-items-center gap-2 pt-4">
+                <p-checkbox
+                    inputId="dlg-notificarme"
+                    [(ngModel)]="userForm.notificarme"
+                    [binary]="true"
+                    [disabled]="savingUser">
+                </p-checkbox>
+                <label for="dlg-notificarme" style="cursor:pointer;margin:0">Notificarme de nuevos informes</label>
+            </div>
+
+            <ng-container *ngIf="isCreateMode">
+                <div class="field col-12 md:col-4">
+                    <label for="dlg-password">Contraseña</label>
+                    <p-password
+                        inputId="dlg-password"
+                        [(ngModel)]="userForm.password"
+                        [toggleMask]="true"
+                        [feedback]="false"
+                        [disabled]="savingUser"
+                        styleClass="w-full">
+                    </p-password>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label for="dlg-password-confirm">Confirmar contraseña</label>
+                    <p-password
+                        inputId="dlg-password-confirm"
+                        [(ngModel)]="userForm.passwordConfirmation"
+                        [toggleMask]="true"
+                        [feedback]="false"
+                        [disabled]="savingUser"
+                        styleClass="w-full">
+                    </p-password>
+                </div>
+            </ng-container>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <p-button
+                type="button"
+                severity="secondary"
+                [raised]="true"
+                [disabled]="savingUser"
+                (click)="closeUserDialog()">
+                Cancelar
+            </p-button>
+            <p-button
+                type="button"
+                severity="primary"
+                [raised]="true"
+                [disabled]="savingUser"
+                (click)="saveUser()">
+                {{ savingUser ? 'Guardando...' : (isCreateMode ? 'Crear usuario' : 'Guardar cambios') }}
+            </p-button>
+        </ng-template>
+    </p-dialog>
+
+    <p-dialog id="dialogBlanquearPasswordUsuario"
+        styleClass="user-dialog"
+        header="Blanquear contraseña"
+        [modal]="true"
+        [(visible)]="resetPasswordDialogVisible"
+        [closable]="!savingResetPassword"
+        [draggable]="false"
+        [resizable]="false"
+        [style]="{ width: 'min(95vw, 520px)' }"
+        (onHide)="closeResetPasswordDialog()">
+
+        <div class="grid formgrid">
+            <div class="field col-12">
+                <label for="reset-password">Nueva contraseña</label>
+                <p-password
+                    inputId="reset-password"
+                    [(ngModel)]="resetPasswordForm.password"
+                    [toggleMask]="true"
+                    [feedback]="false"
+                    [disabled]="savingResetPassword"
+                    styleClass="w-full">
+                </p-password>
+            </div>
+            <div class="field col-12">
+                <label for="reset-password-confirm">Confirmar contraseña</label>
+                <p-password
+                    inputId="reset-password-confirm"
+                    [(ngModel)]="resetPasswordForm.passwordConfirmation"
+                    [toggleMask]="true"
+                    [feedback]="false"
+                    [disabled]="savingResetPassword"
+                    styleClass="w-full">
+                </p-password>
+            </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <p-button
+                type="button"
+                severity="secondary"
+                [raised]="true"
+                [disabled]="savingResetPassword"
+                (click)="closeResetPasswordDialog()">
+                Cancelar
+            </p-button>
+            <p-button
+                type="button"
+                severity="primary"
+                [raised]="true"
+                [disabled]="savingResetPassword"
+                (click)="saveResetPassword()">
+                {{ savingResetPassword ? 'Guardando...' : 'Guardar contraseña' }}
+            </p-button>
+        </ng-template>
+    </p-dialog>
+
+    <p-dialog id="dialogPermisosUsuario"
+        styleClass="user-dialog user-permissions-dialog"
+        [modal]="true"
+        [(visible)]="userPermissionsDialogVisible"
+        [closable]="!savingUserPermissions"
+        [draggable]="false"
+        [resizable]="false"
+        [style]="{ width: 'min(98vw, 980px)', height: 'min(83vh, 820px)' }"
+        (onHide)="closeUserPermissionsDialog()">
+
+        <ng-template pTemplate="header">
+            <span class="user-permissions-dialog-title">
+                Permisos del usuario:
+                <span class="user-permissions-dialog-username">{{ managingUserPermissionsName || '-' }}</span>
+            </span>
+        </ng-template>
+
+        <div class="user-permissions-content">
+            <div class="user-permissions-search mb-3">
+                <div class="user-permissions-search-row">
+                    <label for="user-permissions-search-input" class="user-permissions-search-label-inline">Buscar permiso</label>
+                    <p-iconfield iconPosition="left" class="user-permissions-search-input">
+                        <p-inputicon styleClass="pi pi-search"></p-inputicon>
+                        <input
+                            id="user-permissions-search-input"
+                            pInputText
+                            type="text"
+                            class="w-full"
+                            [(ngModel)]="userPermissionSearch"
+                            [disabled]="savingUserPermissions"
+                            placeholder="Escribe para filtrar permisos..." />
+                    </p-iconfield>
+                </div>
+            </div>
+
+            <div class="user-permissions-checkbox-grid" *ngIf="permissionOptions.length > 0">
+                <div class="user-permissions-checkbox-column" *ngFor="let column of userPermissionColumns; let columnIndex = index; trackBy: trackByUserPermissionColumnIndex">
+                    <div class="user-permissions-column-header">
+                        <div class="user-permissions-column-range">{{ getUserPermissionColumnHeader(column, columnIndex) }}</div>
+                    </div>
+                    <label class="user-permission-item" *ngFor="let option of column; trackBy: trackByUserPermissionValue">
+                        <input
+                            type="checkbox"
+                            [ngModel]="isUserPermissionSelected(option.value)"
+                            [disabled]="savingUserPermissions || isRoleBasedPermission(option.value)"
+                            (ngModelChange)="toggleDirectUserPermission(option.value, $event)" />
+                        <span class="user-permission-name">{{ option.label }}</span>
+                        <span class="user-permission-role-tag" *ngIf="isRoleBasedPermission(option.value)">Rol</span>
+                    </label>
+                </div>
+            </div>
+
+            <p *ngIf="permissionOptions.length === 0" class="text-center m-0">
+                No hay permisos disponibles.
+            </p>
+
+            <p *ngIf="permissionOptions.length > 0 && filteredUserPermissionOptions.length === 0" class="text-center m-0">
+                No hay permisos que coincidan con la búsqueda.
+            </p>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <p-button
+                type="button"
+                severity="secondary"
+                [raised]="true"
+                [disabled]="savingUserPermissions"
+                (click)="closeUserPermissionsDialog()">
+                Cancelar
+            </p-button>
+            <p-button
+                type="button"
+                severity="primary"
+                [raised]="true"
+                [disabled]="savingUserPermissions"
+                (click)="saveUserPermissions()">
+                {{ savingUserPermissions ? 'Guardando...' : 'Guardar permisos' }}
+            </p-button>
+        </ng-template>
+    </p-dialog>
 </section>

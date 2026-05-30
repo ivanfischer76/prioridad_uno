@@ -1,17 +1,77 @@
-:host {
+app-markdown-viewer {
     display: block;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-}
-
-.markdown-container {
     width: 100%;
     max-width: 100%;
     min-width: 0;
     height: var(--md-height, 400px);
     overflow-y: auto;
     overflow-x: hidden;
+    background: transparent;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+}
+
+app-markdown-viewer::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+app-markdown-viewer::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 999px;
+}
+
+app-markdown-viewer::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 999px;
+    border: 2px solid transparent;
+}
+
+app-markdown-viewer::-webkit-scrollbar-thumb:hover {
+    background: #f8fafc;
+}
+
+app-markdown-viewer:hover {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff transparent;
+}
+
+app-markdown-viewer:hover::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+:host ::ng-deep app-markdown-viewer .p-carousel-indicator-list {
+    gap: 0.45rem;
+}
+
+:host ::ng-deep app-markdown-viewer .p-carousel-indicator-button {
+    width: 1.4rem !important;
+    height: 0.35rem !important;
+    border-radius: 999px !important;
+    background: #1d4ed8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.35);
+    opacity: 1 !important;
+}
+
+:host ::ng-deep app-markdown-viewer .p-carousel-indicator-button:hover {
+    background: #2563eb !important;
+}
+
+:host ::ng-deep app-markdown-viewer .p-carousel-indicator-active .p-carousel-indicator-button {
+    background: #16a34a !important;
+    border-color: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.45);
+}
+
+.markdown-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+    background: transparent;
 }
 
 .markdown-body {
@@ -65,6 +125,23 @@
 .markdown-body :is(ul, ol) {
     margin: 0 0 0.85rem;
     padding-left: 1.5rem;
+    list-style-position: outside;
+}
+
+.markdown-body ul {
+    list-style-type: disc;
+}
+
+.markdown-body ol {
+    list-style-type: decimal;
+}
+
+.markdown-body ul ul {
+    list-style-type: circle;
+}
+
+.markdown-body ul ul ul {
+    list-style-type: square;
 }
 
 .markdown-body li {
@@ -154,7 +231,7 @@
 }
 
 @media (max-width: 768px) {
-    .markdown-container {
+    app-markdown-viewer {
         height: var(--md-mobile-height, 280px);
     }
 }

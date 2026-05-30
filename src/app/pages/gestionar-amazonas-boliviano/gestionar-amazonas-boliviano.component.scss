@@ -9,6 +9,7 @@
 .gestion-header h1 {
 	margin: 0;
 	font-size: 1.65rem;
+	font-weight: 700;
 }
 
 .gestion-header p {
@@ -54,26 +55,97 @@
 	font-weight: 600;
 }
 
+.dialog-grid {
+	height: 100%;
+	--dialog-card-height: min(68vh, 640px);
+}
+
+@media (min-width: 992px) {
+	#informe {
+		flex: 0 0 50% !important;
+		max-width: 50% !important;
+		width: 50% !important;
+	}
+
+	#motivosOracion,
+	#imagenes {
+		flex: 0 0 25% !important;
+		max-width: 25% !important;
+		width: 25% !important;
+	}
+}
+
+#informe,
+#motivosOracion,
+#imagenes {
+	display: flex;
+}
+
+#informe {
+	position: static;
+}
+
+.editor-panel {
+	height: var(--dialog-card-height);
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	margin-bottom: 0;
+	padding-bottom: 0.6rem;
+	width: 100%;
+}
+
+#motivosOracion .gestion-card.in-dialog,
+#imagenes .gestion-card.in-dialog {
+	height: var(--dialog-card-height);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	overflow: hidden;
+	margin-bottom: 0;
+}
+
+.editor-shell {
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	overflow: hidden;
+	background: #ffffff;
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 auto;
+	height: min(47vh, 440px);
+	min-height: 0;
+	max-height: min(47vh, 440px);
+}
+
 .markdown-toolbar {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.3rem;
-	margin-bottom: 0.5rem;
-	padding: 0.25rem 0;
+	padding: 0.35rem 0.5rem;
 	border-bottom: 1px solid #e2e8f0;
+	background: #ffffff;
+	position: sticky;
+	top: 0;
+	z-index: 2;
 }
 
 .rich-editor {
-	min-height: 260px;
-	max-height: 420px;
-	overflow: auto;
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
 	padding: 0.75rem;
-	border: 1px solid #cbd5e1;
-	border-radius: 8px;
+	border: 0;
 	background: #ffffff;
 	line-height: 1.6;
 	font-size: 1rem;
 	outline: none;
+}
+
+#post-markdown {
+	min-height: 0;
 }
 
 .rich-editor:focus {
@@ -139,6 +211,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.35rem;
+	flex: 1;
+	min-height: 0;
+	overflow: auto;
 }
 
 .reasons-list li {
@@ -167,7 +242,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.6rem;
-	max-height: 320px;
+	flex: 1;
+	min-height: 0;
+	max-height: none;
 	overflow: auto;
 }
 
@@ -264,13 +341,77 @@
 	max-height: 86vh !important;
 }
 
+:host ::ng-deep .post-editor-dialog .p-dialog-header,
+:host ::ng-deep .post-editor-dialog .p-dialog-footer {
+	background: #edf2f7 !important;
+}
+
+:host ::ng-deep .post-editor-dialog .p-dialog-header {
+	border-bottom: 1px solid #dbe3ee !important;
+	padding-top: 0.4rem !important;
+	padding-bottom: 0.4rem !important;
+	padding-left: 1rem !important;
+	padding-right: 1rem !important;
+	min-height: 0 !important;
+}
+
+:host ::ng-deep .post-editor-dialog .p-dialog-footer {
+	border-top: 1px solid #dbe3ee !important;
+	padding-top: 0.4rem !important;
+	padding-bottom: 0.4rem !important;
+	padding-left: 1rem !important;
+	padding-right: 1rem !important;
+	min-height: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+:host ::ng-deep .post-editor-dialog .p-dialog-content {
+	background: #ffffff !important;
+	padding-top: 0.6rem !important;
+	padding-bottom: 0.6rem !important;
+	overflow: hidden !important;
+}
+
+:host ::ng-deep .post-editor-dialog .p-dialog-header .p-dialog-title {
+	line-height: 1.2;
+	font-size: 1rem;
+}
+
+:host ::ng-deep .post-editor-dialog .p-dialog-footer .p-button {
+	align-self: center;
+}
+
 @media (max-width: 992px) {
 	.actions-card {
 		position: static;
 	}
 
+	#informe,
+	#motivosOracion,
+	#imagenes {
+		position: static;
+		top: auto;
+		display: block;
+	}
+
 	.table-header {
 		flex-direction: column;
 		align-items: stretch;
+	}
+
+	.editor-shell {
+		height: min(40vh, 340px);
+		max-height: min(40vh, 340px);
+	}
+
+	#motivosOracion .gestion-card.in-dialog,
+	#imagenes .gestion-card.in-dialog {
+		height: auto;
+	}
+
+	.editor-panel {
+		height: auto;
+		padding-bottom: 1rem;
 	}
 }

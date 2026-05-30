@@ -73,16 +73,19 @@
                 pRipple
                 type="button"
                 [raised]="true"
-                [label]="'Iván Fischer'" 
+                [label]="loggedUser?.username || ''" 
                 icon="pi pi-user" 
                 [text]="true"
-                *ngIf="isLoggedIn">                
+                *ngIf="isLoggedIn"
+                (click)="userMenu.toggle($event)">                
             </p-button>
+            <p-menu #userMenu [model]="userMenuItems" [popup]="true" appendTo="body"></p-menu>
             <p-select 
                 [options]="languages" 
                 [(ngModel)]="selectedLang" 
                 (onChange)="changeLang($event.value)" 
                 optionLabel="label" 
+                [scrollHeight]="'320px'"
                 [style]="{height: '44px', width: '140px'}"
                 [showClear]="false">
                 <ng-template #selectedItem let-selectedLang>
@@ -109,17 +112,6 @@
                     <i class="pi pi-map"></i>
                 </ng-template>
             </p-select>
-            <p-button 
-                pRipple
-                type="button"
-                [raised]="true" 
-                icon="pi pi-sign-out" 
-                pTooltip="{{ 'logout' | translate }}"
-                tooltipPosition="bottom" 
-                [text]="true"
-                *ngIf="isLoggedIn"
-                (click)="onLogout()">
-            </p-button>
         </div>
     </div>
 

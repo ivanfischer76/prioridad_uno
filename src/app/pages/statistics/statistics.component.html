@@ -1,0 +1,34 @@
+<section class="statistics-wrapper">
+    <div class="statistics-card">
+        <div class="statistics-header">
+            <h2>Estadisticas del sitio</h2>
+            <p-button
+                type="button"
+                severity="primary"
+                [raised]="true"
+                [disabled]="loading"
+                (click)="loadStats()">
+                {{ loading ? 'Actualizando...' : 'Actualizar' }}
+            </p-button>
+        </div>
+
+        <div class="statistics-grid">
+            <div class="metric-box">
+                <span class="metric-label">Visitantes unicos totales</span>
+                <span class="metric-value">{{ stats.unique_total }}</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-label">Visitantes unicos hoy</span>
+                <span class="metric-value">{{ stats.unique_today }}</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-label">Paginas vistas totales</span>
+                <span class="metric-value">{{ stats.pageviews_total }}</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-label">Paginas vistas hoy</span>
+                <span class="metric-value">{{ stats.pageviews_today }}</span>
+            </div>
+        </div>
+    </div>
+</section>

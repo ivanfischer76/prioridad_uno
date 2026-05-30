@@ -1,0 +1,62 @@
+section.statistics-wrapper {
+    min-height: calc(100vh - 120px);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.statistics-card {
+    width: min(980px, 96vw);
+    background: rgb(255 255 255 / 0.9);
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgb(15 23 42 / 0.08);
+    padding: 1.2rem;
+}
+
+.statistics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.statistics-header h2 {
+    margin: 0;
+    color: #0f172a;
+}
+
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.metric-box {
+    background: #f8fafc;
+    border: 1px solid #dbe3ee;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.metric-label {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.metric-value {
+    color: #0f172a;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+}

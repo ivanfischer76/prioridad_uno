@@ -1,4 +1,8 @@
 <section>
+    <div *ngIf="accessDenied" class="p-3 mb-3 border-round" style="background:#fff7ed;border:1px solid #fdba74;color:#9a3412;">
+        No tienes permisos para acceder a esa seccion.
+        <span *ngIf="deniedFrom">Ruta solicitada: {{ deniedFrom }}</span>
+    </div>
     <h2>
         {{ 'welcome' | translate}}
     </h2>

@@ -12,7 +12,8 @@
     "users": "Usuários",
     "roles": "Funções",
     "permissions": "Permissões",
-    "campaigns": "Campanhas"
+    "campaigns": "Campanhas",
+    "statistics": "Estatísticas"
   },
   "slider": {
     "versiculo": "E desta maneira me esforcei por pregar o evangelho, não onde Cristo já fora anunciado, para não edificar sobre fundamento alheio; mas, como está escrito: Aqueles a quem não foi anunciado o verão; e os que não ouviram entenderão.",
@@ -56,8 +57,24 @@
     "birthdate_placeholder": "dd/mm/aaaa"
   },
   "profile": "Perfil",
+  "profile_page": {
+    "change_password": "Alterar senha",
+    "save_changes": "Salvar alterações",
+    "new_password": "Nova senha",
+    "confirm_password": "Confirmar senha",
+    "saving": "Salvando...",
+    "save_password": "Salvar senha",
+    "cancel": "Cancelar",
+    "language": "Idioma",
+    "notify_me": "Notificar-me sobre novos relatórios"
+  },
   "user": "Usuário",
   "logout": "Sair",
+  "footer": {
+    "total_visits": "Visitas totais",
+    "today_visits": "Visitas hoje"
+  },
+  "donate": "Ofertar",
   "contact_us": "Contate-nos!",
   "welcome": "Bem-vindo",
   "projects": "Projetos",

@@ -14,6 +14,8 @@ export class User {
     updated_at?: Date | string | null | undefined; // "2025-09-05T23:47:15.000000Z"
     roles?: Role[] | null | undefined;
     permissions?: Permiso[] | null | undefined;
+    idioma?: string | null | undefined;
+    notificarme?: boolean | null | undefined;
 
     constructor(
         id?: number | null | undefined,
@@ -27,7 +29,9 @@ export class User {
         created_at?: Date | string | null | undefined,
         updated_at?: Date | string | null | undefined,
         roles?: Role[] | null | undefined,
-        permissions?: Permiso[] | null | undefined
+        permissions?: Permiso[] | null | undefined,
+        idioma?: string | null | undefined,
+        notificarme?: boolean | null | undefined
     ){
         this.id = id != undefined ? id : null;
         this.username = username != undefined ? username : null;
@@ -41,5 +45,7 @@ export class User {
         this.updated_at = updated_at != undefined ? updated_at : null;
         this.roles = roles != undefined ? roles : null;
         this.permissions = permissions != undefined ? permissions : null;
+        this.idioma = idioma != undefined ? idioma : null;
+        this.notificarme = notificarme != undefined ? notificarme : null;
     }
 }

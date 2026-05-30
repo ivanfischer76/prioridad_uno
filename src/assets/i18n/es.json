@@ -12,7 +12,8 @@
         "users": "Usuarios",
         "roles": "Roles",
         "permissions": "Permisos",
-        "campaigns": "Campañas"
+        "campaigns": "Campañas",
+        "statistics": "Estadísticas"
     },
     "slider": {
         "versiculo": "Y de esta manera me esforcé a predicar el evangelio, no donde Cristo ya hubiese sido nombrado, para no edificar sobre fundamento ajeno, sino, como está escrito: Aquellos a quienes nunca les fue anunciado acerca de él, verán; Y los que nunca han oído de él, entenderán.",
@@ -56,8 +57,24 @@
         "birthdate_placeholder": "dd/mm/aaaa"
     },
     "profile": "Perfil",
+    "profile_page": {
+        "change_password": "Cambiar contraseña",
+        "save_changes": "Guardar cambios",
+        "new_password": "Nueva contraseña",
+        "confirm_password": "Confirmar contraseña",
+        "saving": "Guardando...",
+        "save_password": "Guardar contraseña",
+        "cancel": "Cancelar",
+        "language": "Idioma",
+        "notify_me": "Notificarme de nuevos informes"
+    },
     "user": "Usuario",
     "logout": "Cerrar Sesión",
+    "footer": {
+        "total_visits": "Visitas totales",
+        "today_visits": "Visitas hoy"
+    },
+    "donate": "Ofrendar",
     "contact_us": "Contáctenos!",
     "welcome": "Bienvenido",
     "projects": "Proyectos",

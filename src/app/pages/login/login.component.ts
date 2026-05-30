@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
 
@@ -32,24 +32,30 @@ export class LoginComponent {
     rememberMe: boolean = false;
     showPassword: boolean = false;
     isLoading: boolean = false;
+    private returnUrl: string = '/welcome';
     
     constructor(
         private router: Router,
+        private route: ActivatedRoute,
         private translate: TranslateService,
         private authService: AuthService
     ) {
-        // Configuración del idioma por defecto
-        const browserLang = translate.getBrowserLang();
         const supportedLangs = ['es', 'en', 'pt', 'it', 'fr', 'de'];
-        const defaultLang = supportedLangs.includes(browserLang!) ? browserLang : 'es';
-        this.translate.setDefaultLang(defaultLang!);
-        this.translate.use(defaultLang!);
+        const storedLang = localStorage.getItem('selected_lang');
+        const browserLang = translate.getBrowserLang();
+        const defaultLang = supportedLangs.includes(storedLang || '')
+            ? storedLang
+            : (supportedLangs.includes(browserLang || '') ? browserLang : 'es');
+
+        this.translate.setDefaultLang('es');
+        this.translate.use(defaultLang || 'es');
         this.translate.onLangChange.subscribe(() => {
             // Actualizar el idioma de la interfaz si es necesario
             console.log('Language changed to:', this.translate.currentLang);
         }
     );
-        this.translate.setDefaultLang('es'); // Establecer el idioma por defecto
+
+        this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/welcome';
     }
     
     loginError: string = '';
@@ -62,10 +68,23 @@ export class LoginComponent {
                 sessionStorage.setItem('response_logged_user', JSON.stringify(response));
                 this.isLoading = false;
                 if (response && response.token) {
+                    const loggedUser = response?.user ?? null;
+                    if (loggedUser) {
+                        sessionStorage.setItem('logged_user', JSON.stringify(loggedUser));
+                        const supportedLangs = ['es', 'en', 'pt', 'it', 'fr', 'de'];
+                        const selectedLang = localStorage.getItem('selected_lang');
+                        const userLang = loggedUser?.idioma;
+                        if (selectedLang && supportedLangs.includes(selectedLang)) {
+                            this.translate.use(selectedLang);
+                        } else if (userLang && supportedLangs.includes(userLang)) {
+                            this.translate.use(userLang);
+                            localStorage.setItem('selected_lang', userLang);
+                        }
+                    }
                     sessionStorage.setItem('isLoggedIn', 'true');
                     this.authService.setIsLoggedIn(true);
-                    console.log('Login successful, navigating to welcome page...');
-                    this.router.navigate(['welcome']);
+                    console.log('Login successful, navigating to return URL...');
+                    this.router.navigateByUrl(this.returnUrl);
                 } else {
                     this.authService.setIsLoggedIn(false);
                     this.loginError = this.translate.instant('login.invalid_credentials');

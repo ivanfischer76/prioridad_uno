@@ -2,7 +2,7 @@ section{
     margin: 10px;
 }
 
-.users-status-error {
+.roles-status-error {
     margin-bottom: 1rem;
     color: #b91c1c;
     font-weight: 600;
@@ -23,16 +23,22 @@ section{
 	color: #475569;
 }
 
-:host ::ng-deep .user-dialog .p-dialog-header,
-:host ::ng-deep .user-dialog .p-dialog-footer {
+:host ::ng-deep .role-dialog .p-dialog-header,
+:host ::ng-deep .role-dialog .p-dialog-footer {
     background: #edf2f7 !important;
 }
 
-:host ::ng-deep .user-dialog.p-dialog {
+:host ::ng-deep .role-dialog.p-dialog {
     margin-top: 2rem;
 }
 
-:host ::ng-deep .user-dialog .p-dialog-header {
+:host ::ng-deep .role-permissions-dialog.p-dialog {
+    margin-top: calc(3.5rem + 10px) !important;
+    margin-bottom: 3.5rem !important;
+    max-height: calc(100vh - 7rem) !important;
+}
+
+:host ::ng-deep .role-dialog .p-dialog-header {
     border-bottom: 1px solid #dbe3ee !important;
     padding-top: 0.4rem !important;
     padding-bottom: 0.4rem !important;
@@ -41,12 +47,12 @@ section{
     min-height: 0 !important;
 }
 
-:host ::ng-deep .user-dialog .p-dialog-header .p-dialog-title {
+:host ::ng-deep .role-dialog .p-dialog-header .p-dialog-title {
     line-height: 1.2;
     font-size: 1rem;
 }
 
-:host ::ng-deep .user-dialog .p-dialog-footer {
+:host ::ng-deep .role-dialog .p-dialog-footer {
     border-top: 1px solid #dbe3ee !important;
     padding-top: 0.4rem !important;
     padding-bottom: 0.4rem !important;
@@ -58,56 +64,24 @@ section{
     justify-content: flex-end !important;
 }
 
-:host ::ng-deep .user-dialog .p-dialog-footer .p-button {
+:host ::ng-deep .role-dialog .p-dialog-footer .p-button {
     align-self: center;
 }
 
-:host ::ng-deep .user-permissions-dialog.p-dialog {
-    margin-top: calc(3.5rem + 10px) !important;
-    margin-bottom: 3.5rem !important;
-    max-height: calc(100vh - 7rem) !important;
-}
-
-:host ::ng-deep .user-permissions-dialog .p-dialog-content {
+:host ::ng-deep .role-permissions-dialog .p-dialog-content {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
     overflow: hidden !important;
 }
 
-.user-permissions-dialog-title {
-    font-weight: 600;
-}
-
-.user-permissions-dialog-username {
-    color: #2563eb;
-}
-
-.user-permissions-content {
+.permissions-dialog-content {
     padding-top: 0.2rem;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.user-permissions-search-row {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.user-permissions-search-label-inline {
-    margin: 0;
-    color: #334155;
-    font-size: 0.9rem;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.user-permissions-search-input {
-    flex: 1;
-}
-
-.user-permissions-checkbox-grid {
+.permissions-checkbox-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
@@ -115,19 +89,50 @@ section{
     min-height: 0;
 }
 
-.user-permissions-checkbox-column {
-    border: 1px solid #dbe3ee;
-    border-radius: 10px;
-    background: #f8fafc;
-    padding: 0.75rem;
-    height: 100%;
-    overflow-y: auto;
+.permissions-search-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: #334155;
+}
+
+.permissions-search .p-iconfield,
+.permissions-search input {
+    width: 100%;
+}
+
+.permissions-search-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.permissions-search-label-inline {
+    margin: 0;
+    color: #334155;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.permissions-search-input {
+    flex: 1;
+}
+
+.permissions-checkbox-column {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+    border: 1px solid #dbe3ee;
+    border-radius: 10px;
+    padding: 0.75rem;
+    background: #f8fafc;
+    height: 100%;
+    overflow-y: auto;
 }
 
-.user-permissions-column-header {
+.permissions-column-header {
     color: #475569;
     border-bottom: 1px solid #dbe3ee;
     padding-top: 0.75rem;
@@ -144,17 +149,24 @@ section{
     box-shadow: 0 1px 0 #dbe3ee;
 }
 
-.user-permissions-column-header + .user-permission-item {
+.permissions-column-header + .permissions-checkbox-item {
     margin-top: 0.35rem;
 }
 
-.user-permissions-column-range {
+.permissions-column-title {
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+}
+
+.permissions-column-range {
     font-size: 0.82rem;
     font-weight: 600;
     margin-top: 0.1rem;
 }
 
-.user-permission-item {
+.permissions-checkbox-item {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -164,11 +176,11 @@ section{
     transition: background-color 0.15s ease;
 }
 
-.user-permission-item:hover {
+.permissions-checkbox-item:hover {
     background: #eef3f9;
 }
 
-.user-permission-item input[type='checkbox'] {
+.permissions-checkbox-item input[type='checkbox'] {
     width: 1.54rem;
     height: 1.54rem;
     accent-color: #2563eb;
@@ -177,54 +189,41 @@ section{
     border-radius: 4px;
 }
 
-.user-permission-item input[type='checkbox']:disabled {
-    cursor: not-allowed;
-}
-
-.user-permission-name {
+.permissions-checkbox-item span {
     font-size: 0.97rem;
 }
 
-.user-permission-role-tag {
-    margin-left: auto;
-    font-size: 0.74rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    color: #1d4ed8;
-    background: #dbeafe;
-    border: 1px solid #bfdbfe;
-    border-radius: 999px;
-    padding: 0.1rem 0.55rem;
+.role-users-dialog-title {
+    font-weight: 600;
+}
+
+.role-users-dialog-role-name {
+    color: #2563eb;
 }
 
 @media (max-width: 900px) {
-    :host ::ng-deep .user-permissions-dialog .p-dialog-content {
+    :host ::ng-deep .role-permissions-dialog .p-dialog-content {
         overflow: auto !important;
     }
 
-    :host ::ng-deep .user-permissions-dialog.p-dialog {
+    :host ::ng-deep .role-permissions-dialog.p-dialog {
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
         max-height: calc(100vh - 2rem) !important;
     }
 
-    .user-permissions-checkbox-grid {
+    .permissions-checkbox-grid {
         grid-template-columns: 1fr;
     }
 
-    .user-permissions-search-row {
+    .permissions-search-row {
         flex-direction: column;
         align-items: stretch;
         gap: 0.4rem;
     }
 
-    .user-permissions-checkbox-column {
+    .permissions-checkbox-column {
         height: auto;
         max-height: 38vh;
-    }
-
-    .user-permission-role-tag {
-        margin-left: 0.35rem;
     }
 }

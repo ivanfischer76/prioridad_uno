@@ -1,0 +1,112 @@
+section{
+    margin: 10px;
+}
+
+.permissions-status-error {
+    margin-bottom: 1rem;
+    color: #b91c1c;
+    font-weight: 600;
+}
+
+.gestion-header {
+	margin-bottom: 1rem;
+}
+
+.gestion-header h1 {
+	margin: 0;
+	font-size: 1.65rem;
+	font-weight: 700;
+}
+
+.gestion-header p {
+	margin: 0.35rem 0 0;
+	color: #475569;
+}
+
+:host ::ng-deep .permission-dialog .p-dialog-header,
+:host ::ng-deep .permission-dialog .p-dialog-footer {
+    background: #edf2f7 !important;
+}
+
+:host ::ng-deep .permission-dialog.p-dialog {
+    margin-top: 2rem;
+}
+
+:host ::ng-deep .permission-dialog .p-dialog-header {
+    border-bottom: 1px solid #dbe3ee !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    min-height: 0 !important;
+}
+
+:host ::ng-deep .permission-dialog .p-dialog-header .p-dialog-title {
+    line-height: 1.2;
+    font-size: 1rem;
+}
+
+:host ::ng-deep .permission-dialog .p-dialog-footer {
+    border-top: 1px solid #dbe3ee !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+}
+
+:host ::ng-deep .permission-dialog .p-dialog-footer .p-button {
+    align-self: center;
+}
+
+.permission-assignments-title {
+    font-weight: 600;
+}
+
+.permission-assignments-permission-name {
+    color: #2563eb;
+}
+
+.permission-assignments-content {
+    padding-top: 0.4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.permission-assignments-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    background: #f8fafc;
+    border: 1px solid #dbe3ee;
+    border-radius: 12px;
+    padding: 0.9rem;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+.permission-assignments-column h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #334155;
+    border-bottom: 1px solid #dbe3ee;
+    padding-bottom: 0.45rem;
+}
+
+:host ::ng-deep .permission-assignments-column .p-datatable-table-container {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+:host ::ng-deep .permission-assignments-column .p-datatable-thead > tr > th {
+    background: #eef3f9;
+}
+
+@media (max-width: 900px) {
+    .permission-assignments-content {
+        grid-template-columns: 1fr;
+    }
+}

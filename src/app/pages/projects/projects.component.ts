@@ -34,7 +34,16 @@ export class ProjectsComponent {
 
     goToProject(project: any) {
         if (project.id === 1) {
-            this.router.navigate(['/project-1']);
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+
+            if (isLoggedIn) {
+                this.router.navigate(['/amazonas-boliviano']);
+                return;
+            }
+
+            this.router.navigate(['/login'], {
+                queryParams: { returnUrl: '/amazonas-boliviano' }
+            });
         } else if (project.id === 2) {
             this.router.navigate(['/project-2']);
         } else {

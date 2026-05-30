@@ -12,7 +12,8 @@
     "users": "Benutzer",
     "roles": "Rollen",
     "permissions": "Berechtigungen",
-    "campaigns": "Kampagnen"
+    "campaigns": "Kampagnen",
+    "statistics": "Statistiken"
   },
   "slider": {
     "versiculo": "So habe ich es mir zur Ehre gemacht, das Evangelium zu verkündigen, nicht dort, wo Christus schon genannt worden war, damit ich nicht auf einen fremden Grund baue, sondern wie geschrieben steht: Diejenigen, denen nichts von ihm verkündet wurde, werden sehen; und die, die nichts gehört haben, werden verstehen.",
@@ -56,8 +57,24 @@
     "birthdate_placeholder": "tt/mm/jjjj"
   },
   "profile": "Profil",
+  "profile_page": {
+    "change_password": "Passwort ändern",
+    "save_changes": "Änderungen speichern",
+    "new_password": "Neues Passwort",
+    "confirm_password": "Passwort bestätigen",
+    "saving": "Wird gespeichert...",
+    "save_password": "Passwort speichern",
+    "cancel": "Abbrechen",
+    "language": "Sprache",
+    "notify_me": "Über neue Berichte benachrichtigen"
+  },
   "user": "Benutzer",
   "logout": "Abmelden",
+  "footer": {
+    "total_visits": "Besuche insgesamt",
+    "today_visits": "Besuche heute"
+  },
+  "donate": "Opfern",
   "contact_us": "Kontaktieren Sie uns!",
   "welcome": "Willkommen",
   "projects": "Projekte",

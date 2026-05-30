@@ -1,6 +1,6 @@
 {
   "name": "prioridad-uno",
-  "version": "1.1.005-20260528",
+  "version": "1.1.006-20260529",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

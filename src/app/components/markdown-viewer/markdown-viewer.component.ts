@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SecurityContext, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SecurityContext, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { marked } from 'marked';
 
@@ -6,7 +6,8 @@ import { marked } from 'marked';
     selector: 'app-markdown-viewer',
     standalone: true,
     templateUrl: './markdown-viewer.component.html',
-    styleUrls: ['./markdown-viewer.component.scss']
+    styleUrls: ['./markdown-viewer.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MarkdownViewerComponent implements OnChanges {
 

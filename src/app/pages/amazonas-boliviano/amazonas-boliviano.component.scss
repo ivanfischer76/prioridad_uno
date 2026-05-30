@@ -6,9 +6,112 @@ section {
   background: rgb(255 255 255 / 50%);
 }
 
+.estado-carga {
+  margin-top: 0.75rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.estado-error {
+  margin-top: 0.75rem;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.entry-link {
+  border: none;
+  background: transparent;
+  color: #1d4ed8;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.entry-link-active {
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.sin-contenido,
+.sin-imagenes {
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.sin-imagenes {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 2.25rem;
+}
+
+:host ::ng-deep .quick-actions .p-button {
+  background: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+:host ::ng-deep .quick-actions .p-button:hover {
+  background: #1e40af !important;
+  border-color: #1e40af !important;
+}
+
+:host ::ng-deep .quick-actions .p-button:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.35) !important;
+}
+
+:host ::ng-deep .p-carousel .p-carousel-indicators {
+  gap: 0.4rem;
+}
+
+:host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+  background: #111827 !important;
+  opacity: 0.95 !important;
+  border-radius: 999px;
+  width: 1.1rem;
+  height: 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+:host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+  background: #facc15;
+  opacity: 1;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+:host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator button:hover {
+  background: #374151 !important;
+  opacity: 1;
+}
+
 // #informe {
 //   background: rgb(255 255 255 / 50%);
 // }
 // #imagenes {
 //   background: rgb(255 255 255 / 50%);
 // }
+
+@media (max-width: 768px) {
+  .quick-actions {
+    margin-right: 0.75rem;
+  }
+}

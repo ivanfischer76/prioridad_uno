@@ -1,0 +1,121 @@
+<section class="profile-wrapper">
+    <p-toast position="top-right"></p-toast>
+    <div class="profile-card">
+        <div class="profile-header-row">
+            <h2>{{ 'profile' | translate }}</h2>
+            
+        </div>
+
+        <div class="form-grid">
+            <label for="username">{{ 'register.username' | translate }}</label>
+            <input id="username" type="text" [(ngModel)]="user.username" />
+
+            <label for="nombre">{{ 'register.firstname' | translate }}</label>
+            <input id="nombre" type="text" [(ngModel)]="user.nombre" />
+
+            <label for="apellido">{{ 'register.lastname' | translate }}</label>
+            <input id="apellido" type="text" [(ngModel)]="user.apellido" />
+
+            <label for="email">{{ 'register.email' | translate }}</label>
+            <input id="email" type="email" [(ngModel)]="user.email" />
+
+            <label for="iglesia">{{ 'register.church' | translate }}</label>
+            <input id="iglesia" type="text" [(ngModel)]="user.iglesia" />
+
+            <label for="fecha">{{ 'register.birthdate' | translate }}</label>
+            <input id="fecha" type="date" [(ngModel)]="user.fecha_nacimiento" />
+
+            <label for="idioma">{{ 'profile_page.language' | translate }}</label>
+            <p-select
+                inputId="idioma"
+                [(ngModel)]="user.idioma"
+                [options]="availableLanguages"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="{{ 'profile_page.language' | translate }}..."
+                styleClass="w-full">
+            </p-select>
+
+            <label for="notificarme" style="display:flex;align-items:center;gap:0.5rem;cursor:pointer">
+                <p-checkbox
+                    inputId="notificarme"
+                    [(ngModel)]="user.notificarme"
+                    [binary]="true">
+                </p-checkbox>
+                {{ 'profile_page.notify_me' | translate }}
+            </label>
+            <span></span>
+        </div>
+
+        <div class="flex justify-content-between align-items-center actions">
+            <p-button 
+                pRipple
+                [raised]="true"
+                severity="primary"
+                type="button" 
+                (click)="openPasswordDialog()">
+                {{ 'profile_page.change_password' | translate }}
+            </p-button>
+            <p-button 
+                pRipple
+                [raised]="true"
+                severity="info"
+                type="button" 
+                (click)="saveProfile()">
+                {{ 'profile_page.save_changes' | translate }}
+            </p-button>
+        </div>
+    </div>
+
+    <p-dialog
+        [header]="'profile_page.change_password' | translate"
+        [modal]="true"
+        [(visible)]="showPasswordDialog"
+        [closable]="!savingPassword"
+        [draggable]="false"
+        [resizable]="false"
+        [style]="{ width: 'min(92vw, 420px)' }"
+        (onHide)="closePasswordDialog()">
+
+        <div class="password-dialog-grid">
+            <label for="new-password">{{ 'profile_page.new_password' | translate }}</label>
+            <p-password
+                inputId="new-password"
+                [(ngModel)]="newPassword"
+                [toggleMask]="true"
+                [feedback]="false"
+                [disabled]="savingPassword">
+            </p-password>
+
+            <label for="confirm-password">{{ 'profile_page.confirm_password' | translate }}</label>
+            <p-password
+                inputId="confirm-password"
+                [(ngModel)]="confirmPassword"
+                [toggleMask]="true"
+                [feedback]="false"
+                [disabled]="savingPassword" >
+            </p-password>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <p-button 
+                type="button" 
+                pRipple
+                [raised]="true"
+                severity="secondary"
+                [disabled]="savingPassword"
+                (click)="closePasswordDialog()">
+                {{ 'profile_page.cancel' | translate }}
+            </p-button>
+            <p-button 
+                type="button" 
+                pRipple
+                [raised]="true"
+                severity="primary"
+                [disabled]="savingPassword"
+                (click)="savePassword()">
+                {{ savingPassword ? ('profile_page.saving' | translate) : ('profile_page.save_password' | translate) }}
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</section>

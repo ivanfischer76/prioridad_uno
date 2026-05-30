@@ -1,23 +1,101 @@
 <section class="gestion-page">
+	<p-toast position="top-right"></p-toast>
+
 	<header class="gestion-header">
-		<h1>Gestionar posteos del Amazonas boliviano</h1>
+		<h1>Gestionar Informes de Amazonas Boliviano</h1>
 		<!-- <p>Crea o edita entradas, carga imagenes y previsualiza Markdown antes de guardar.</p> -->
 	</header>
 
 	<div class="gestion-card table-card">
-		<div class="table-header">
-			<h2 class="section-title">Posteos anteriores</h2>
-			<button pButton type="button" icon="pi pi-plus" label="Crear nuevo post" (click)="openCreatePostDialog()"></button>
-		</div>
-		<!-- <p class="status" *ngIf="statusMessage">{{ statusMessage }}</p> -->
-		<p-table [value]="posts" [tableStyle]="{ 'min-width': '40rem' }" [rowHover]="true">
+		<!-- <div class="table-header">
+			<h2 class="section-title">
+				Informes anteriores
+			</h2>
+			<button 
+				pButton 
+				type="button" 
+				icon="pi pi-plus" 
+				label="Crear nuevo informe" 
+				[disabled]="isLoadingPosts || isSubmitting" 
+				(click)="openCreatePostDialog()">
+			</button>
+		</div> -->
+		<p-table 
+			#dtInformes
+			[value]="posts" 
+			[tableStyle]="{ 'min-width': '40rem' }" 
+			[scrollable]="true" 
+			[scrollHeight]="altoTabla"
+			[paginator]="true" 
+        	[rows]="100" 
+			[rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+			[showCurrentPageReport]="true" 
+			currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} informes" 
+			[globalFilterFields]="['titulo']"
+			[rowHover]="true">
+			<ng-template pTemplate="caption">
+				<div class="flex justify-content-between align-items-center">
+					<div class="flex justify-content-start align -items-center">
+						<button pButton 
+							label="Limpiar" 
+							class="p-button-outlined p-button-sm extra-padding" 
+							[style]="{height: '39px'}"
+							icon="pi pi-filter-slash" 
+							(click)="clear(dtInformes)">
+						</button>
+					</div>
+					<div class="flex justify-content-end align-items-center gap-2">
+						<p-button id="btnRecargarInformes"
+							pRipple
+							[raised]="true"
+							severity="info"
+							size="small"
+							icon="pi pi-refresh"
+							pTooltip="Refrescar lista de informes"
+							tooltipPosition="top"
+							type="button" 
+							(click)="loadPosts()">
+						</p-button>
+						<p-button id="btnCrearInforme"
+							*ngIf="canCreateInformes"
+							pRipple
+							[raised]="true"
+							severity="primary"
+							size="small"
+							icon="pi pi-plus"
+							pTooltip="Crear nuevo informe"
+							tooltipPosition="top"
+							type="button" 
+							[disabled]="isLoadingPosts || isSubmitting" 
+							(click)="openCreatePostDialog()">
+						</p-button>
+						<p-iconfield iconPosition="left" class="ml-auto">
+							<p-inputicon styleClass="pi pi-search"></p-inputicon>
+							<input id="filtroTablaInformes"
+								pInputText 
+								type="text" 
+								class="p-inputtext-sm"
+								[(ngModel)]="globalFilterValue"
+								[style]="{height: '39px'}"
+								(input)="filterGlobal($event, dtInformes)" 
+								placeholder="Buscar texto..." 
+							/>
+						</p-iconfield>
+					</div>
+				</div>
+			</ng-template>
 			<ng-template pTemplate="header">
 				<tr>
 					<th>Titulo</th>
 					<th>Fecha</th>
 					<th>Motivos</th>
 					<th>Imagenes</th>
-					<th>Acciones</th>
+					<th class="text-center" 
+						width="200"
+						pFrozenColumn
+						[alignFrozen]="'right'">
+						{{cabeceraAcciones}} 
+					</th>
 				</tr>
 			</ng-template>
 			<ng-template pTemplate="body" let-post>
@@ -26,10 +104,43 @@
 					<td>{{ formatDate(post.updatedAt) }}</td>
 					<td>{{ post.prayerReasons.length }}</td>
 					<td>{{ post.images.length }}</td>
-					<td class="table-actions">
-						<button pButton type="button" icon="pi pi-pencil" [rounded]="true" [text]="true" (click)="editPost(post)"></button>
-						<button pButton type="button" icon="pi pi-images" [rounded]="true" [text]="true" (click)="openImages(post)" [disabled]="post.images.length === 0"></button>
-						<button pButton type="button" icon="pi pi-trash" severity="danger" [rounded]="true" [text]="true" (click)="deletePost(post.id)"></button>
+					<td class="text-right table-actions"
+						pFrozenColumn
+						[alignFrozen]="'right'">
+						<button 
+							pButton 
+							type="button" 
+							icon="pi pi-pencil" 
+							[rounded]="true" 
+							[text]="true" 
+							[disabled]="isSubmitting" 
+							(mouseover)="cambiarCabeceraAcciones('Editar Informe')"
+                        	(mouseout)="cambiarCabeceraAcciones('Acciones')"
+							(click)="editPost(post)">
+						</button>
+						<button 
+							pButton 
+							type="button" 
+							icon="pi pi-images" 
+							[rounded]="true" 
+							[text]="true" 
+							[disabled]="post.images.length === 0 || isSubmitting"
+							(mouseover)="cambiarCabeceraAcciones('Ver Imagenes')"
+                        	(mouseout)="cambiarCabeceraAcciones('Acciones')"
+							(click)="openImages(post)">
+						</button>
+						<button 
+							pButton 
+							type="button" 
+							icon="pi pi-trash"
+							severity="danger" 
+							[rounded]="true" 
+							[text]="true" 
+							[disabled]="isSubmitting" 
+							(mouseover)="cambiarCabeceraAcciones('Eliminar Informe')"
+                        	(mouseout)="cambiarCabeceraAcciones('Acciones')"
+							(click)="deletePost(post.id)">
+						</button>
 					</td>
 				</tr>
 			</ng-template>
@@ -48,14 +159,13 @@
 	[modal]="true"
 	[draggable]="false"
 	[resizable]="false"
+	styleClass="post-editor-dialog"
 	[style]="{ width: '98vw', marginTop: '20px' }"
-	[contentStyle]="{ 'max-height': '86%', 'overflow-y': 'auto' }"
+	[contentStyle]="{ 'height': '72vh', 'overflow': 'hidden' }"
 	(onHide)="closePostDialog()">
 	<div class="grid dialog-grid">
-		<div class="col-12 lg:col-6">
-			<div class="gestion-card in-dialog">
-				<!-- <h2 class="section-title">Datos del post</h2> -->
-                <p class="status" *ngIf="statusMessage">{{ statusMessage }}</p>
+		<div id="informe" class="col-12 lg:col-6">
+			<div class="gestion-card in-dialog editor-panel">
 				<label for="post-title" class="field-label">Titulo</label>
 				<input
 					id="post-title"
@@ -64,70 +174,68 @@
 					[(ngModel)]="title"
 					placeholder="Ej. Avances de mayo en comunidades riberenas"
 					class="w-full mb-3" />
-
 				<label for="post-markdown" class="field-label">Informe</label>
-				<div class="markdown-toolbar" role="toolbar" aria-label="Formato de texto" (mousedown)="$event.preventDefault()">
-					<button
-						pButton
-						type="button"
-						icon="bi bi-type-bold"
-						[text]="true"
-						[rounded]="true"
-						[pTooltip]="'Negrita'"
-						tooltipPosition="top"
-						class="toolbar-icon"
-						[class.active]="formatToggleState.bold"
-						(click)="applyBold()">
-					</button>
-					<button
-						pButton
-						type="button"
-						icon="bi bi-type-italic"
-						[text]="true"
-						[rounded]="true"
-						[pTooltip]="'Cursiva'"
-						tooltipPosition="top"
-						class="toolbar-icon"
-						[class.active]="formatToggleState.italic"
-						(click)="applyItalic()">
-					</button>
-					<button
-						pButton
-						type="button"
-						icon="bi bi-type-underline"
-						[text]="true"
-						[rounded]="true"
-						[pTooltip]="'Subrayado'"
-						tooltipPosition="top"
-						class="toolbar-icon"
-						[class.active]="formatToggleState.underline"
-						(click)="applyUnderline()">
-					</button>
-					<!-- <button pButton type="button" icon="pi pi-hashtag" [text]="true" [rounded]="true" [pTooltip]="'Titulo H2'" tooltipPosition="top" class="toolbar-icon" (click)="insertHeading(2)"></button> -->
-					<!-- <button pButton type="button" icon="pi pi-hashtag" [text]="true" [rounded]="true" [pTooltip]="'Titulo H3'" tooltipPosition="top" class="toolbar-icon" (click)="insertHeading(3)"></button> -->
-					<button pButton type="button" icon="pi pi-list" [text]="true" [rounded]="true" [pTooltip]="'Lista con viñetas'" tooltipPosition="top" class="toolbar-icon" [class.active]="formatToggleState.bulletList" (click)="insertBulletList()"></button>
-					<button pButton type="button" icon="pi pi-sort-numeric-up" [text]="true" [rounded]="true" [pTooltip]="'Lista numerada'" tooltipPosition="top" class="toolbar-icon" [class.active]="formatToggleState.numberedList" (click)="insertNumberedList()"></button>
-					<!-- <button pButton type="button" icon="pi pi-link" [text]="true" [rounded]="true" [pTooltip]="'Insertar enlace'" tooltipPosition="top" class="toolbar-icon" (click)="insertLink()"></button> -->
-					<!-- <button pButton type="button" icon="pi pi-image" [text]="true" [rounded]="true" [pTooltip]="'Insertar imagen'" tooltipPosition="top" class="toolbar-icon" (click)="insertImageMarkdown()"></button> -->
+				<div class="editor-shell">
+					<div class="markdown-toolbar" role="toolbar" aria-label="Formato de texto" (mousedown)="$event.preventDefault()">
+						<button
+							pButton
+							type="button"
+							icon="bi bi-type-bold"
+							[text]="true"
+							[rounded]="true"
+							[pTooltip]="'Negrita'"
+							tooltipPosition="top"
+							class="toolbar-icon"
+							[class.active]="formatToggleState.bold"
+							(click)="applyBold()">
+						</button>
+						<button
+							pButton
+							type="button"
+							icon="bi bi-type-italic"
+							[text]="true"
+							[rounded]="true"
+							[pTooltip]="'Cursiva'"
+							tooltipPosition="top"
+							class="toolbar-icon"
+							[class.active]="formatToggleState.italic"
+							(click)="applyItalic()">
+						</button>
+						<button
+							pButton
+							type="button"
+							icon="bi bi-type-underline"
+							[text]="true"
+							[rounded]="true"
+							[pTooltip]="'Subrayado'"
+							tooltipPosition="top"
+							class="toolbar-icon"
+							[class.active]="formatToggleState.underline"
+							(click)="applyUnderline()">
+						</button>
+						<!-- <button pButton type="button" icon="pi pi-hashtag" [text]="true" [rounded]="true" [pTooltip]="'Titulo H2'" tooltipPosition="top" class="toolbar-icon" (click)="insertHeading(2)"></button> -->
+						<!-- <button pButton type="button" icon="pi pi-hashtag" [text]="true" [rounded]="true" [pTooltip]="'Titulo H3'" tooltipPosition="top" class="toolbar-icon" (click)="insertHeading(3)"></button> -->
+						<button pButton type="button" icon="pi pi-list" [text]="true" [rounded]="true" [pTooltip]="'Lista con viñetas'" tooltipPosition="top" class="toolbar-icon" [class.active]="formatToggleState.bulletList" (click)="insertBulletList()"></button>
+						<button pButton type="button" icon="pi pi-sort-numeric-up" [text]="true" [rounded]="true" [pTooltip]="'Lista numerada'" tooltipPosition="top" class="toolbar-icon" [class.active]="formatToggleState.numberedList" (click)="insertNumberedList()"></button>
+						<!-- <button pButton type="button" icon="pi pi-link" [text]="true" [rounded]="true" [pTooltip]="'Insertar enlace'" tooltipPosition="top" class="toolbar-icon" (click)="insertLink()"></button> -->
+						<!-- <button pButton type="button" icon="pi pi-image" [text]="true" [rounded]="true" [pTooltip]="'Insertar imagen'" tooltipPosition="top" class="toolbar-icon" (click)="insertImageMarkdown()"></button> -->
+					</div>
+					<div id="post-markdown"
+						#richEditor
+						class="rich-editor"
+						contenteditable="true"
+						role="textbox"
+						aria-multiline="true"
+						data-placeholder="Escribe aqui el contenido con formato..."
+						(input)="onEditorInput()"
+						(keyup)="onEditorSelectionChange()"
+						(mouseup)="onEditorSelectionChange()">
+                    </div>
 				</div>
-				<div
-					#richEditor
-					id="post-markdown"
-					class="rich-editor mb-2"
-					contenteditable="true"
-					role="textbox"
-					aria-multiline="true"
-					data-placeholder="Escribe aqui el contenido con formato..."
-					(input)="onEditorInput()"
-					(keyup)="onEditorSelectionChange()"
-					(mouseup)="onEditorSelectionChange()">
-                </div>
-
-				<!-- <p class="helper-text">Escribe normalmente: el formato se ve al instante y el Markdown se guarda internamente.</p> -->
 			</div>
 		</div>
 
-        <div class="col-12 lg:col-3">
+		<div id="motivosOracion" class="col-12 lg:col-3">
             <div class="gestion-card in-dialog">
 				<h2 class="section-title">Motivos de oracion</h2>
 				<div class="reason-input-row">
@@ -138,7 +246,14 @@
 						(keyup.enter)="addPrayerReason()"
 						placeholder="Agregar motivo"
 						class="w-full" />
-					<button pButton type="button" label="Agregar" icon="pi pi-plus" (click)="addPrayerReason()"></button>
+					<button 
+						pButton 
+						type="button" 
+						pTooltip="Agregar motivo de oración"
+						tooltipPosition="top" 
+						icon="pi pi-check" 
+						(click)="addPrayerReason()">
+					</button>
 				</div>
 
 				<ul class="reasons-list" *ngIf="prayerReasons.length > 0; else emptyReasons">
@@ -154,9 +269,9 @@
 			</div>
         </div>
 
-		<div class="col-12 lg:col-3">
+		<div id="imagenes" class="col-12 lg:col-3">
 			<div class="gestion-card in-dialog">
-				<h2 class="section-title">Imagenes del post</h2>
+				<h2 class="section-title">Imagenes del informe</h2>
 
 				<div class="upload-dropzone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
 					<p>Arrastra y suelta imagenes aqui</p>
@@ -184,7 +299,6 @@
 		</div>
 	</div>
 	<ng-template pTemplate="footer">
-		<p class="status status-inline pt-2" *ngIf="statusMessage">{{ statusMessage }}</p>
 		<button
 			pButton
 			type="button"
@@ -192,13 +306,15 @@
 			icon="pi pi-times"
 			severity="secondary"
 			[outlined]="true"
+			[disabled]="isSubmitting"
 			(click)="cancelEdit()">
 		</button>
 		<button
 			pButton
 			type="button"
-			[label]="editingPostId ? 'Actualizar post' : 'Guardar post'"
-			icon="pi pi-save"
+			[label]="isSubmitting ? 'Guardando...' : (editingPostId ? 'Actualizar post' : 'Guardar post')"
+			[icon]="isSubmitting ? 'pi pi-spin pi-spinner' : 'pi pi-save'"
+			[disabled]="isSubmitting"
 			(click)="savePost()">
 		</button>
 	</ng-template>

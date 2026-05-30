@@ -12,7 +12,8 @@
     "users": "Utilisateurs",
     "roles": "Rôles",
     "permissions": "Autorisations",
-    "campaigns": "Campagnes"
+    "campaigns": "Campagnes",
+    "statistics": "Statistiques"
   },
   "slider": {
     "versiculo": "C’est ainsi que je me suis fait un honneur d’annoncer l’Évangile là où Christ n’avait pas été nommé, afin de ne pas bâtir sur le fondement d’autrui, mais, comme il est écrit : Ceux à qui il n’a point été annoncé verront, et ceux qui n’en avaient pas entendu parler comprendront.",
@@ -56,8 +57,24 @@
     "birthdate_placeholder": "jj/mm/aaaa"
   },
   "profile": "Profil",
+  "profile_page": {
+    "change_password": "Changer le mot de passe",
+    "save_changes": "Enregistrer les modifications",
+    "new_password": "Nouveau mot de passe",
+    "confirm_password": "Confirmer le mot de passe",
+    "saving": "Enregistrement...",
+    "save_password": "Enregistrer le mot de passe",
+    "cancel": "Annuler",
+    "language": "Langue",
+    "notify_me": "Me notifier des nouveaux rapports"
+  },
   "user": "Utilisateur",
   "logout": "Déconnexion",
+  "footer": {
+    "total_visits": "Visites totales",
+    "today_visits": "Visites aujourd'hui"
+  },
+  "donate": "Offrir",
   "contact_us": "Contactez-nous !",
   "welcome": "Bienvenue",
   "projects": "Projets",

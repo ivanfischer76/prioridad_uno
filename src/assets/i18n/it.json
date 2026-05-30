@@ -12,7 +12,8 @@
     "users": "Utenti",
     "roles": "Ruoli",
     "permissions": "Permessi",
-    "campaigns": "Campagne"
+    "campaigns": "Campagne",
+    "statistics": "Statistiche"
   },
   "slider": {
     "versiculo": "Così mi sono sforzato di predicare il vangelo, non dove Cristo era già stato nominato, per non edificare su un fondamento altrui, ma come è scritto: Coloro ai quali non era stato annunziato di lui, vedranno; e coloro che non ne avevano udito parlare, comprenderanno.",
@@ -56,8 +57,24 @@
     "birthdate_placeholder": "gg/mm/aaaa"
   },
   "profile": "Profilo",
+  "profile_page": {
+    "change_password": "Cambia password",
+    "save_changes": "Salva modifiche",
+    "new_password": "Nuova password",
+    "confirm_password": "Conferma password",
+    "saving": "Salvataggio...",
+    "save_password": "Salva password",
+    "cancel": "Annulla",
+    "language": "Lingua",
+    "notify_me": "Notificami sui nuovi rapporti"
+  },
   "user": "Utente",
   "logout": "Disconnetti",
+  "footer": {
+    "total_visits": "Visite totali",
+    "today_visits": "Visite di oggi"
+  },
+  "donate": "Offrire",
   "contact_us": "Contattaci!",
   "welcome": "Benvenuto",
   "projects": "Progetti",
