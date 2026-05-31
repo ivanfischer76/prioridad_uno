@@ -9,12 +9,6 @@ export interface ContactChannelData {
     support_phone: string;
 }
 
-export interface SendSupportMessagePayload {
-    sender_email: string;
-    subject: string;
-    message: string;
-}
-
 export interface SendPublicContactPayload {
     full_name: string;
     email: string;
@@ -24,6 +18,12 @@ export interface SendPublicContactPayload {
 
 export interface ContactInquirySummary {
     id: number;
+    sender_user_id: number | null;
+    contact_origin: 'internal' | 'external';
+    leido: boolean;
+    contestado: boolean;
+    fecha_contacto: string | null;
+    fecha_respuesta: string | null;
     full_name: string | null;
     email: string;
     subject: string;
@@ -38,31 +38,9 @@ export interface ContactInquiryDetail extends ContactInquirySummary {
     replied_at: string | null;
 }
 
-export interface SupportThreadSummary {
-    id: number;
-    subject: string;
-    status: string;
-    last_message_at: string | null;
-    last_message_preview: string;
-    unread_count: number;
-    created_at: string | null;
-}
-
-export interface SupportThreadMessage {
-    id: number;
-    sender_type: 'user' | 'admin' | 'system';
-    from_email: string;
-    body: string;
-    sent_via_email: boolean;
-    read_at: string | null;
-    created_at: string | null;
-}
-
-export interface SupportThreadDetail {
-    id: number;
-    subject: string;
-    status: string;
-    messages: SupportThreadMessage[];
+export interface UpdateInquiryStatePayload {
+    leido: boolean;
+    contestado: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -76,7 +54,9 @@ export class ContactSupportService {
     }
 
     sendPublicContact(payload: SendPublicContactPayload): Observable<{ data: { id: number } }> {
-        return this.http.post<{ data: { id: number } }>(`${this.baseUrl}/contact-us/messages`, payload);
+        return this.http.post<{ data: { id: number } }>(`${this.baseUrl}/contact-us/messages`, payload, {
+            headers: this.getAuthHeaders(),
+        });
     }
 
     getAdminInquiries(): Observable<{ data: ContactInquirySummary[] }> {
@@ -91,24 +71,15 @@ export class ContactSupportService {
         });
     }
 
-    sendMessage(payload: SendSupportMessagePayload): Observable<{ data: { thread_id: number; message_id: number; mail_sent: boolean } }> {
-        return this.http.post<{ data: { thread_id: number; message_id: number; mail_sent: boolean } }>(
-            `${this.baseUrl}/support/messages`,
+    updateAdminInquiryState(
+        inquiryId: number,
+        payload: UpdateInquiryStatePayload
+    ): Observable<{ data: { id: number; leido: boolean; contestado: boolean; fecha_contacto: string | null; fecha_respuesta: string | null; status: string } }> {
+        return this.http.patch<{ data: { id: number; leido: boolean; contestado: boolean; fecha_contacto: string | null; fecha_respuesta: string | null; status: string } }>(
+            `${this.baseUrl}/admin/contact-us/messages/${inquiryId}/state`,
             payload,
             { headers: this.getAuthHeaders() }
         );
-    }
-
-    getMyThreads(): Observable<{ data: SupportThreadSummary[] }> {
-        return this.http.get<{ data: SupportThreadSummary[] }>(`${this.baseUrl}/support/threads`, {
-            headers: this.getAuthHeaders(),
-        });
-    }
-
-    getThread(threadId: number): Observable<{ data: SupportThreadDetail }> {
-        return this.http.get<{ data: SupportThreadDetail }>(`${this.baseUrl}/support/threads/${threadId}`, {
-            headers: this.getAuthHeaders(),
-        });
     }
 
     private getAuthHeaders(): HttpHeaders {

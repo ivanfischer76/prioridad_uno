@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
 import { TooltipModule } from 'primeng/tooltip';
 import { User } from '../../models/admin/user';
+import packageJson from '../../../../package.json';
 
 @Component({
     selector: 'app-navbar',
@@ -34,6 +35,7 @@ import { User } from '../../models/admin/user';
 export class NavbarComponent implements OnInit, OnDestroy {
     items: MenuItem[] | undefined;
     userMenuItems: MenuItem[] = [];
+    readonly softwareVersion = packageJson.version;
 
     languages = [
         { label: 'Español', value: 'es' },
@@ -85,6 +87,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 this.syncLoggedUserFromSession();
                 console.log('Logged user data:', this.loggedUser);
                 this.updateMenuItems();
+                this.updateUserMenuItems();
             }
         );
     }
@@ -95,6 +98,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 label: this.translate.instant('profile'),
                 icon: 'pi pi-user-edit',
                 command: () => this.goToProfile(),
+            },
+            {
+                label: this.softwareVersion,
+                disabled: true,
+                styleClass: 'navbar-version-item',
             },
             {
                 label: this.translate.instant('logout'),
@@ -119,6 +127,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
         if (this.isLoggedIn) {
             const managementItems: MenuItem[] = [];
 
+            if (this.hasPermission('gestionar contactos')) {
+                managementItems.push({
+                    label: 'Contactos',
+                    command: () => this.router.navigate(['/gestionar-contactos'])
+                });
+            }
+
+            if (this.hasPermission('gestionar bienvenida')) {
+                managementItems.push({
+                    label: 'Pantalla Bienvenida',
+                    command: () => this.router.navigate(['/gestionar-bienvenida'])
+                });
+            }
+
             if (this.hasPermission('gestionar proyectos')) {
                 managementItems.push({
                     label: 'Proyectos',
@@ -131,10 +153,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 });
             }
 
-            if (this.hasPermission('gestionar usuarios')) {
+            if (this.hasPermission('gestionar permisos')) {
                 managementItems.push({
-                    label: 'Usuarios',
-                    command: () => this.router.navigate(['/users'])
+                    label: 'Permisos',
+                    command: () => this.router.navigate(['/permissions'])
                 });
             }
 
@@ -145,31 +167,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 });
             }
 
-            if (this.hasPermission('gestionar permisos')) {
+            if (this.hasPermission('gestionar usuarios')) {
                 managementItems.push({
-                    label: 'Permisos',
-                    command: () => this.router.navigate(['/permissions'])
+                    label: 'Usuarios',
+                    command: () => this.router.navigate(['/users'])
                 });
             }
 
-            managementItems.push({
-                label: 'Pantalla Bienvenida',
-                command: () => this.router.navigate(['/gestionar-bienvenida'])
-            });
 
-            if (this.hasPermission('gestionar sistema')) {
-                managementItems.push({
-                    label: 'Sistema',
-                    command: () => this.router.navigate(['/sistema'])
-                });
-            }
+            // if (this.hasPermission('gestionar sistema')) {
+            //     managementItems.push({
+            //         label: 'Sistema',
+            //         command: () => this.router.navigate(['/sistema'])
+            //     });
+            // }
 
-            if (this.hasPermission('gestionar contactos')) {
-                managementItems.push({
-                    label: 'Contactos',
-                    command: () => this.router.navigate(['/gestionar-contactos'])
-                });
-            }
+            
 
             menuItems = [
                 {
@@ -179,10 +192,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 {
                     label: 'amazonas',
                     route: '/amazonas-boliviano'
-                },
-                {
-                    label: 'menu.messages',
-                    route: '/messages'
                 },
                 // {
                 //     label: 'projects',

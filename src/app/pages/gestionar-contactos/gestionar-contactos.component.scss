@@ -11,6 +11,7 @@ section.gestion-contactos-page {
     color: #1f2937;
     font-size: 1.65rem;
     font-weight: 700;
+    text-shadow: 0 0 6px rgb(255 255 255 / 0.9), 0 0 14px rgb(255 255 255 / 0.6);
 }
 
 .panel {
@@ -28,6 +29,66 @@ section.gestion-contactos-page {
 
 .message-cell {
     color: #334155;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-table {
+    table-layout: fixed;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-thead > tr > th,
+:host ::ng-deep .contact-table-compact .p-datatable-tbody > tr > td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-tbody > tr {
+    height: 2.55rem;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-tbody > tr > td .p-button {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-tbody > tr.row-read > td {
+    background: #f8fafc;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-tbody > tr.row-unread > td {
+    background: #fff7ed;
+}
+
+.row-read-icon {
+    margin-right: 0.35rem;
+}
+
+.row-response-icon {
+    font-size: 1rem;
+}
+
+.email-status-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-right: 0.35rem;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-tbody > tr.row-read .row-read-icon {
+    color: #16a34a;
+}
+
+:host ::ng-deep .contact-table-compact .p-datatable-tbody > tr.row-unread .row-read-icon {
+    color: #ea580c;
+}
+
+.response-yes {
+    color: #16a34a;
+}
+
+.response-no {
+    color: #dc2626;
 }
 
 .empty-cell {
@@ -57,7 +118,132 @@ section.gestion-contactos-page {
 }
 
 .read-only-textarea {
-    min-height: 220px;
-    max-height: 420px;
+    min-height: 196px;
+    max-height: 196px;
     overflow-y: auto;
+    resize: none;
+}
+
+.response-date-chip {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #334155;
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-header,
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-footer {
+    background: #edf2f7 !important;
+}
+
+:host ::ng-deep .gestion-contactos-dialog.p-dialog {
+    margin-top: 2rem;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-header {
+    border-bottom: 1px solid #dbe3ee !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    min-height: 0 !important;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-header .p-dialog-title,
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-header .p-dialog-header-icon {
+    color: #1f2937;
+}
+
+.dialog-title-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+}
+
+.dialog-title-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.dialog-status-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 999px;
+    padding: 0.33rem 0.62rem;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+
+.badge-read {
+    color: #14532d;
+    background: #dcfce7;
+    border-color: #86efac;
+}
+
+.badge-unread {
+    color: #334155;
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+}
+
+.badge-answered {
+    color: #1e3a8a;
+    background: #dbeafe;
+    border-color: #93c5fd;
+}
+
+.badge-unanswered {
+    color: #7f1d1d;
+    background: #fee2e2;
+    border-color: #fca5a5;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-header .p-dialog-title {
+    line-height: 1.2;
+    font-size: 1rem;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-footer {
+    border-top: 1px solid #dbe3ee !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-footer .dialog-footer-content {
+    align-items: center !important;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-footer .dialog-footer-actions {
+    display: flex;
+    align-items: center;
+}
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-footer .p-button {
+    align-self: center;
+}
+
+
+:host ::ng-deep .gestion-contactos-dialog .p-dialog-content {
+    background: rgb(248 250 252 / 0.96);
 }

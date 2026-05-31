@@ -50,7 +50,6 @@ export class UsersComponent implements OnInit {
     loggedUser: User | null = null;
     loading = false;
     loadError = '';
-    globalFilterValue = '';
     userDialogVisible = false;
     userDialogMode: 'create' | 'edit' = 'create';
     savingUser = false;
@@ -87,6 +86,7 @@ export class UsersComponent implements OnInit {
 
     altoTabla: string = '58vh';
     cabeceraAcciones: string = 'Acciones';
+    globalFilterValue = '';
 
     readonly availableLanguages = [
         { label: 'Español', value: 'es' },

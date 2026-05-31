@@ -6,7 +6,7 @@
     </header>
 
     <div class="panel table-panel">
-        <div class="table-actions">
+        <!-- <div class="table-actions">
             <p-button
                 type="button"
                 icon="pi pi-refresh"
@@ -17,41 +17,130 @@
                 tooltipPosition="top"
                 (click)="loadInquiries()">
             </p-button>
-        </div>
+        </div> -->
 
         <p-table
+            #dtMensajesContactos
+            styleClass="contact-table-compact"
             [value]="inquiries"
-            [paginator]="true"
-            [rows]="20"
-            [rowsPerPageOptions]="[10, 20, 50]"
-            [tableStyle]="{ 'min-width': '70rem' }"
+            [paginator]="true" 
+            [rows]="100" 
+            [responsiveLayout]="'scroll'" 
+            [scrollable]="true" 
+            [scrollHeight]="altoTabla"
+            [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+            [showCurrentPageReport]="true" 
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} mensajes" 
+            [globalFilterFields]="['email', 'full_name', 'subject', 'message', 'contact_origin', 'fecha_contacto', 'fecha_respuesta']"
+            [tableStyle]="{ 'min-width': '108rem' }"
             [loading]="loading"
-            [rowHover]="true"
-            responsiveLayout="scroll">
+            [rowHover]="true">
+
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-between align-items-center">
+                    <div class="flex justify-content-start align -items-center">
+                        <button pButton 
+                            label="Limpiar" 
+                            class="p-button-outlined p-button-sm extra-padding" 
+                            [style]="{height: '39px'}"
+                            icon="pi pi-filter-slash" 
+                            (click)="clear(dtMensajesContactos)">
+                        </button>
+                    </div>
+                    <div class="flex justify-content-end align-items-center gap-2">
+                        <p-button id="btnRecargarMensajes"
+                            pRipple
+                            [raised]="true"
+                            severity="info"
+                            size="small"
+                            icon="pi pi-refresh"
+                            pTooltip="Refrescar lista de mensajes"
+                            tooltipPosition="top"
+                            type="button" 
+                            (click)="loadInquiries()">
+                        </p-button>
+                        <p-iconfield iconPosition="left" class="ml-auto">
+                            <p-inputicon styleClass="pi pi-search"></p-inputicon>
+                            <input id="filtroTablaMensajes"
+                                pInputText 
+                                type="text" 
+                                class="p-inputtext-sm"
+                                [(ngModel)]="globalFilterValue"
+                                [style]="{height: '39px'}"
+                                (input)="filterGlobal($event, dtMensajesContactos)" 
+                                placeholder="Buscar texto..." 
+                            />
+                        </p-iconfield>
+                    </div>
+                </div>
+            </ng-template>
+
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Email</th>
-                    <th>Nombre y apellido</th>
-                    <th>Asunto</th>
-                    <th>Mensaje</th>
-                    <th class="text-center" style="width: 120px;">Acciones</th>
+                    <th pFrozenColumn
+                        style="width: 6rem;"
+                        [alignFrozen]="'left'">
+                        ID
+                    </th>
+                    <th pFrozenColumn
+                        style="width: 20rem;"
+                        [alignFrozen]="'left'">
+                        Email
+                    </th>
+                    <th style="width: 18rem;">Nombre y apellido</th>
+                    <th style="width: 27rem;">Asunto</th>
+                    <th style="width: 8rem;">Recibido</th>
+                    <th style="width: 8rem;">Respondido</th>
+                    <th style="width: 26rem;">Mensaje</th>
+                    <th style="width: 8rem;">Origen</th>
+                    <th class="text-center" 
+                        width="150"
+                        pFrozenColumn
+                        [alignFrozen]="'right'">
+                        {{cabeceraAcciones}}
+                    </th>
                 </tr>
             </ng-template>
 
             <ng-template pTemplate="body" let-inquiry>
-                <tr>
-                    <td>{{ inquiry.email }}</td>
-                    <td>{{ inquiry.full_name || '-' }}</td>
-                    <td>{{ inquiry.subject }}</td>
+                <tr [ngClass]="inquiry.leido ? 'row-read' : 'row-unread'">
+                    <td pFrozenColumn
+                        [alignFrozen]="'left'">
+                        {{ inquiry.id }}
+                    </td>
+                    <td pFrozenColumn
+                        [alignFrozen]="'left'"
+                        [title]="inquiry.email">
+                        <span class="email-status-icons">
+                            <i class="pi row-read-icon"
+                                [ngClass]="inquiry.leido ? 'pi-inbox' : 'pi-envelope'"
+                                [pTooltip]="inquiry.leido ? 'Leído' : 'No leído'"
+                                tooltipPosition="top">
+                            </i>
+                            <i class="pi row-response-icon"
+                                [ngClass]="inquiry.contestado ? 'pi-check-circle response-yes' : 'pi-times-circle response-no'"
+                                [pTooltip]="inquiry.contestado ? ('Respondido' + (inquiry.fecha_respuesta ? ' (' + formatDateTime(inquiry.fecha_respuesta) + ')' : '')) : 'No respondido'"
+                                tooltipPosition="top">
+                            </i>
+                        </span>
+                        {{ inquiry.email }}
+                    </td>
+                    <td [title]="inquiry.full_name || '-'">{{ inquiry.full_name || '-' }}</td>
+                    <td [title]="inquiry.subject">{{ inquiry.subject }}</td>
+                    <td [title]="formatDateTime(inquiry.fecha_contacto)">{{ formatDateTime(inquiry.fecha_contacto) }}</td>
+                    <td [title]="formatDateTime(inquiry.fecha_respuesta)">{{ formatDateTime(inquiry.fecha_respuesta) }}</td>
                     <td class="message-cell" [title]="inquiry.message">{{ previewText(inquiry.message) }}</td>
-                    <td class="text-center">
+                    <td [title]="getInquiryOriginLabel(inquiry)">{{ getInquiryOriginLabel(inquiry) }}</td>
+                    <td class="text-right"
+                        pFrozenColumn
+                        [alignFrozen]="'right'">
                         <p-button
                             type="button"
                             icon="pi pi-eye"
                             [rounded]="true"
                             [text]="true"
-                            pTooltip="Ver mensaje"
-                            tooltipPosition="top"
+                            (mouseover)="cambiarCabeceraAcciones('Ver Mensaje')"
+                            (mouseout)="cambiarCabeceraAcciones('Acciones')"
                             (click)="openInquiry(inquiry.id)">
                         </p-button>
                     </td>
@@ -60,7 +149,7 @@
 
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="5" class="empty-cell">No hay mensajes de contacto recibidos.</td>
+                    <td colspan="9" class="empty-cell">No hay mensajes de contacto recibidos.</td>
                 </tr>
             </ng-template>
         </p-table>
@@ -68,48 +157,116 @@
 </section>
 
 <p-dialog
-    header="Detalle del mensaje"
+    styleClass="gestion-contactos-dialog"
     [(visible)]="dialogVisible"
     [modal]="true"
     [draggable]="false"
     [resizable]="false"
     [style]="{ width: '75rem', maxWidth: '95vw' }"
     (onHide)="closeDialog()">
+    <ng-template pTemplate="header">
+        <div class="dialog-title-wrap">
+            <span class="dialog-title-text">Detalle del mensaje</span>
+            <div class="dialog-status-badges" *ngIf="selectedInquiry">
+                <span class="status-badge" [ngClass]="selectedInquiry.leido ? 'badge-read' : 'badge-unread'">
+                    {{ selectedInquiry.leido ? 'Leído' : 'No leído' }}
+                </span>
+                <span class="status-badge" [ngClass]="selectedInquiry.contestado ? 'badge-answered' : 'badge-unanswered'">
+                    {{ selectedInquiry.contestado ? 'Respondido' : 'No respondido' }}
+                </span>
+            </div>
+        </div>
+    </ng-template>
+
     <div *ngIf="loadingDetail" class="dialog-loading">
         Cargando mensaje...
     </div>
 
     <div *ngIf="!loadingDetail && selectedInquiry" class="dialog-form">
         <div class="grid">
-            <div class="col-6">
+            <div class="col-5">
                 <div class="field-block">
                     <label>Nombre y apellido</label>
                     <input pInputText type="text" class="w-full" [value]="selectedInquiry.full_name || ''" readonly />
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-5">
                 <div class="field-block">
                     <label>Email</label>
                     <input pInputText type="text" class="w-full" [value]="selectedInquiry.email" readonly />
                 </div>
             </div>
+            <div class="col-2">
+                <div class="field-block">
+                    <label>Origen</label>
+                    <input pInputText type="text" class="w-full" [value]="getInquiryOriginLabel(selectedInquiry)" readonly />
+                </div>
+            </div>
         </div>
 
 
-        <div class="field-block">
-            <label>Asunto</label>
-            <input pInputText type="text" class="w-full" [value]="selectedInquiry.subject" readonly />
+        <div class="grid">
+            <div class="col-10">
+                <div class="field-block">
+                    <label>Asunto</label>
+                    <input pInputText type="text" class="w-full" [value]="selectedInquiry.subject" readonly />
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="field-block">
+                    <label>Fecha de recepción</label>
+                    <input pInputText type="text" class="w-full" [value]="formatDateTime(selectedInquiry.fecha_contacto)" readonly />
+                </div>
+            </div>
         </div>
 
         <div class="field-block">
             <label>Mensaje</label>
             <textarea
                 pTextarea
-                rows="9"
+                rows="8"
                 class="w-full read-only-textarea"
                 [value]="selectedInquiry.message"
                 readonly>
             </textarea>
         </div>
     </div>
+
+    <ng-template pTemplate="footer">
+        <div class="dialog-footer-content flex w-full justify-content-between align-items-center gap-3">
+            <div class="flex align-items-center gap-2">
+                <p-checkbox
+                    inputId="chkRespondido"
+                    [binary]="true"
+                    [(ngModel)]="stateRespondido"
+                    (ngModelChange)="onRespondidoChange($event)"
+                    [disabled]="loadingDetail || savingState || !selectedInquiry">
+                </p-checkbox>
+                <label for="chkRespondido">Respondido</label>
+                <span *ngIf="getResponseDateDisplay() as responseDate" class="response-date-chip">
+                    {{ formatDateTime(responseDate) }}
+                </span>
+            </div>
+            <div class="dialog-footer-actions flex align-items-center gap-2">
+                <p-button
+                    type="button"
+                    severity="secondary"
+                    icon="bi bi-envelope"
+                    label="'Marcar como No Leído'"
+                    [raised]="true"
+                    [disabled]="loadingDetail || savingState || !selectedInquiry"
+                    (click)="saveState(false)">
+                </p-button>
+                <p-button
+                    type="button"
+                    severity="primary"
+                    label="'Marcar como Leído'"
+                    icon="bi bi-envelope-open"
+                    [raised]="true"
+                    [disabled]="loadingDetail || savingState || !selectedInquiry"
+                    (click)="saveState(true)">
+                </p-button>
+            </div>
+        </div>
+    </ng-template>
 </p-dialog>

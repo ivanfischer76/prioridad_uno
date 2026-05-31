@@ -13,8 +13,7 @@
     "roles": "Roles",
     "permissions": "Permissions",
     "campaigns": "Campaigns",
-    "statistics": "Statistics",
-    "messages": "Messages"
+    "statistics": "Statistics"
   },
   "slider": {
     "versiculo": "And so I have made it my aim to preach the gospel, not where Christ was named, lest I should build on another man’s foundation, but as it is written: To whom He was not announced, they shall see; And those who have not heard shall understand.",
@@ -85,25 +84,6 @@
   },
   "donate": "Offer",
   "contact_us": "Contact us!",
-  "contact_page": {
-    "title": "Internal contact",
-    "subtitle": "Send your inquiry and it will be saved in your mailbox.",
-    "form_title": "Send message",
-    "email_label": "Contact email",
-    "subject_label": "Subject",
-    "message_label": "Message",
-    "send_button": "Send message",
-    "sending": "Sending...",
-    "channels_title": "Contact channels",
-    "support_email": "Email",
-    "support_phone": "Phone",
-    "mailbox_title": "Mailbox",
-    "no_messages": "You have no messages yet.",
-    "loading_messages": "Loading conversation...",
-    "from_me": "Me",
-    "from_support": "Support",
-    "select_message": "Select a conversation to view messages."
-  },
   "contact_public": {
     "title": "Contact us",
     "subtitle": "This form is for visitors and general inquiries.",
@@ -117,22 +97,6 @@
     "channels_title": "Contact channels",
     "support_email": "Email",
     "support_phone": "Phone"
-  },
-  "messages_page": {
-    "title": "Internal messaging",
-    "subtitle": "Send messages to the team and review your internal conversations.",
-    "compose_title": "New internal message",
-    "email_label": "Contact email",
-    "subject_label": "Subject",
-    "message_label": "Message",
-    "send_button": "Send message",
-    "sending": "Sending...",
-    "mailbox_title": "Conversations",
-    "no_messages": "You have no messages yet.",
-    "loading_messages": "Loading conversation...",
-    "from_me": "Me",
-    "from_support": "Support",
-    "select_message": "Select a conversation to view messages."
   },
   "welcome": "Welcome",
   "welcome_page": {

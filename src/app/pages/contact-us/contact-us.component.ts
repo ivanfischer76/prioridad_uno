@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -42,11 +43,13 @@ export class ContactUsComponent implements OnInit {
     private readonly emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     constructor(
+        private readonly route: ActivatedRoute,
         private readonly contactSupportService: ContactSupportService,
         private readonly messageService: MessageService,
     ) {}
 
     ngOnInit(): void {
+        this.prefillFromLoggedUserIfRequested();
         this.loadContactChannel();
     }
 
@@ -109,6 +112,43 @@ export class ContactUsComponent implements OnInit {
 
     private toast(severity: 'success' | 'error' | 'warn', summary: string, detail: string): void {
         this.messageService.add({ severity, summary, detail, life: 3200 });
+    }
+
+    private prefillFromLoggedUserIfRequested(): void {
+        const shouldPrefill = this.route.snapshot.queryParamMap.get('prefillLoggedUser') === '1';
+
+        if (!shouldPrefill) {
+            return;
+        }
+
+        const rawResponse = sessionStorage.getItem('response_logged_user');
+        const rawLoggedUser = sessionStorage.getItem('logged_user');
+
+        try {
+            const responseData = rawResponse
+                ? JSON.parse(rawResponse) as {
+                    user?: { nombre?: string; apellido?: string; email?: string };
+                }
+                : null;
+            const loggedUser = rawLoggedUser
+                ? JSON.parse(rawLoggedUser) as { nombre?: string; apellido?: string; email?: string }
+                : null;
+
+            const firstName = responseData?.user?.nombre || loggedUser?.nombre || '';
+            const lastName = responseData?.user?.apellido || loggedUser?.apellido || '';
+            const fullName = `${firstName} ${lastName}`.replace(/\s+/g, ' ').trim();
+            const email = responseData?.user?.email || loggedUser?.email || '';
+
+            if (fullName) {
+                this.form.full_name = fullName;
+            }
+
+            if (email) {
+                this.form.email = email;
+            }
+        } catch {
+            // Si la sesión no es parseable, se mantiene el formulario vacío.
+        }
     }
 
 }

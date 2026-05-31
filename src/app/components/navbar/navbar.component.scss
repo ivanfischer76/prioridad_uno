@@ -126,3 +126,23 @@ a:hover{
     border-radius: var(--p-menubar-border-radius);
     text-decoration: none;
 }
+
+:host ::ng-deep .p-menu .navbar-version-item {
+    pointer-events: none;
+    opacity: 0.78;
+}
+
+:host ::ng-deep .p-menu .navbar-version-item .p-menu-item-content {
+    background: transparent !important;
+}
+
+:host ::ng-deep .p-menu .navbar-version-item .p-menu-item-link {
+    justify-content: center;
+    cursor: default;
+}
+
+:host ::ng-deep .p-menu .navbar-version-item .p-menu-item-text {
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    color: rgb(236 253 245 / 0.82) !important;
+}

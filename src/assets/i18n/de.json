@@ -13,8 +13,7 @@
     "roles": "Rollen",
     "permissions": "Berechtigungen",
     "campaigns": "Kampagnen",
-    "statistics": "Statistiken",
-    "messages": "Nachrichten"
+    "statistics": "Statistiken"
   },
   "slider": {
     "versiculo": "So habe ich es mir zur Ehre gemacht, das Evangelium zu verkündigen, nicht dort, wo Christus schon genannt worden war, damit ich nicht auf einen fremden Grund baue, sondern wie geschrieben steht: Diejenigen, denen nichts von ihm verkündet wurde, werden sehen; und die, die nichts gehört haben, werden verstehen.",
@@ -85,25 +84,6 @@
   },
   "donate": "Opfern",
   "contact_us": "Kontaktieren Sie uns!",
-  "contact_page": {
-    "title": "Interner Kontakt",
-    "subtitle": "Senden Sie Ihre Anfrage, sie wird in Ihrem Postfach gespeichert.",
-    "form_title": "Nachricht senden",
-    "email_label": "Kontakt-E-Mail",
-    "subject_label": "Betreff",
-    "message_label": "Nachricht",
-    "send_button": "Nachricht senden",
-    "sending": "Wird gesendet...",
-    "channels_title": "Kontaktkanäle",
-    "support_email": "E-Mail",
-    "support_phone": "Telefon",
-    "mailbox_title": "Postfach",
-    "no_messages": "Sie haben noch keine Nachrichten.",
-    "loading_messages": "Konversation wird geladen...",
-    "from_me": "Ich",
-    "from_support": "Support",
-    "select_message": "Wählen Sie eine Konversation, um Nachrichten zu sehen."
-  },
   "contact_public": {
     "title": "Kontaktieren Sie uns",
     "subtitle": "Dieses Formular ist für Besucher und allgemeine Anfragen gedacht.",
@@ -117,22 +97,6 @@
     "channels_title": "Kontaktkanäle",
     "support_email": "E-Mail",
     "support_phone": "Telefon"
-  },
-  "messages_page": {
-    "title": "Interne Nachrichten",
-    "subtitle": "Senden Sie Nachrichten an das Team und sehen Sie Ihre internen Konversationen.",
-    "compose_title": "Neue interne Nachricht",
-    "email_label": "Kontakt-E-Mail",
-    "subject_label": "Betreff",
-    "message_label": "Nachricht",
-    "send_button": "Nachricht senden",
-    "sending": "Wird gesendet...",
-    "mailbox_title": "Konversationen",
-    "no_messages": "Sie haben noch keine Nachrichten.",
-    "loading_messages": "Konversation wird geladen...",
-    "from_me": "Ich",
-    "from_support": "Support",
-    "select_message": "Wählen Sie eine Konversation, um Nachrichten zu sehen."
   },
   "welcome": "Willkommen",
   "welcome_page": {

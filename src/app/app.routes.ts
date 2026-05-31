@@ -18,11 +18,6 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/contact-us/contact-us.component').then(m => m.ContactUsComponent)
     },
     {
-        path: 'messages',
-        canActivate: [authUsersGuard],
-        loadComponent: () => import('./pages/messages/messages.component').then(m => m.MessagesComponent)
-    },
-    {
         path: 'donate',
         loadComponent: () => import('./pages/donate/donate.component').then(m => m.DonateComponent)
     },

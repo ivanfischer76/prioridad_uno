@@ -275,7 +275,11 @@ export class AmazonasBolivianoComponent implements OnInit, OnDestroy {
     }
 
     ir_a_contacto(): void {
-        void this.router.navigate(['/contact-us']);
+        void this.router.navigate(['/contact-us'], {
+            queryParams: {
+                prefillLoggedUser: '1',
+            },
+        });
     }
 
     entrada_anterior() {

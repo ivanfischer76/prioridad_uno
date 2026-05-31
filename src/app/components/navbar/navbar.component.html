@@ -112,6 +112,17 @@
                     <i class="pi pi-map"></i>
                 </ng-template>
             </p-select>
+            <p-button
+                pRipple
+                type="button"
+                [raised]="true"
+                [text]="true"
+                icon="pi pi-sign-out"
+                *ngIf="isLoggedIn"
+                [pTooltip]="'logout' | translate"
+                tooltipPosition="bottom"
+                (click)="onLogout()">
+            </p-button>
         </div>
     </div>
 
