@@ -1,7 +1,93 @@
-<section>
-    <h1>
-        {{ 'contact-us' | translate }}
-    </h1>
-    <p>aquí sería como un correo electrónico propio que permitiría enviar un email desde aquí mismo o bien hacer una entrada en una base datos de mensajes de contacto</p>
+<section class="contact-page">
+    <p-toast position="top-right"></p-toast>
 
+    <header class="contact-header">
+        <h1>{{ 'contact_public.title' | translate }}</h1>
+        <!-- <p>{{ 'contact_public.subtitle' | translate }}</p> -->
+    </header>
+
+    <div class="contact-public-grid">
+        <article class="panel contact-form-panel">
+            <!-- <h2>{{ 'contact_public.form_title' | translate }}</h2> -->
+
+            <div class="field-row">
+                <div class="field-block">
+                    <label for="fullName">{{ 'contact_public.full_name_label' | translate }}</label>
+                    <input
+                        id="fullName"
+                        pInputText
+                        type="text"
+                        [(ngModel)]="form.full_name"
+                        [disabled]="sending"
+                        class="w-full"
+                        maxlength="160"
+                        autocomplete="name" />
+                </div>
+
+                <div class="field-block">
+                    <label for="senderEmail">{{ 'contact_public.email_label' | translate }}</label>
+                    <input
+                        id="senderEmail"
+                        pInputText
+                        type="email"
+                        [(ngModel)]="form.email"
+                        [disabled]="sending"
+                        class="w-full"
+                        autocomplete="email" />
+                </div>
+            </div>
+
+            <div class="field-block">
+                <label for="subject">{{ 'contact_public.subject_label' | translate }}</label>
+                <input
+                    id="subject"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="form.subject"
+                    [disabled]="sending"
+                    class="w-full"
+                    maxlength="180" />
+            </div>
+
+            <div class="field-block">
+                <label for="message">{{ 'contact_public.message_label' | translate }}</label>
+                <textarea
+                    id="message"
+                    pTextarea
+                    rows="7"
+                    [(ngModel)]="form.message"
+                    [disabled]="sending"
+                    class="w-full contact-message-textarea"
+                    maxlength="5000">
+                </textarea>
+            </div>
+
+            <div class="actions-row">
+                <p-button
+                    type="button"
+                    severity="primary"
+                    [raised]="true"
+                    [disabled]="sending || loading || !isFormValid()"
+                    (click)="sendMessage()"
+                    [label]="sending ? ('contact_public.sending' | translate) : ('contact_public.send_button' | translate)">
+                </p-button>
+            </div>
+        </article>
+
+        <aside class="panel contact-channel-panel">
+            <h2>{{ 'contact_public.channels_title' | translate }}</h2>
+
+            <div class="channel-row">
+                <span class="channel-label">{{ 'contact_public.support_email' | translate }}:</span>
+                <a *ngIf="supportEmail" [href]="'mailto:' + supportEmail">{{ supportEmail }}</a>
+                <span *ngIf="!supportEmail">-</span>
+            </div>
+
+            <div class="channel-row">
+                <span class="channel-label">{{ 'contact_public.support_phone' | translate }}:</span>
+                <a *ngIf="supportPhone" [href]="'tel:' + supportPhone">{{ supportPhone }}</a>
+                <span *ngIf="!supportPhone">-</span>
+            </div>
+        </aside>
+    </div>
 </section>

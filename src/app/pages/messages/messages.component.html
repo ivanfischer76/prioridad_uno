@@ -1,0 +1,104 @@
+<section class="messages-page">
+    <p-toast position="top-right"></p-toast>
+
+    <header class="messages-header">
+        <h1>{{ 'messages_page.title' | translate }}</h1>
+        <p>{{ 'messages_page.subtitle' | translate }}</p>
+    </header>
+
+    <div class="messages-grid">
+        <article class="panel">
+            <h2>{{ 'messages_page.compose_title' | translate }}</h2>
+
+            <div class="field-block">
+                <label for="internalSenderEmail">{{ 'messages_page.email_label' | translate }}</label>
+                <input
+                    id="internalSenderEmail"
+                    pInputText
+                    type="email"
+                    [(ngModel)]="form.sender_email"
+                    [disabled]="sending"
+                    class="w-full"
+                    autocomplete="email" />
+            </div>
+
+            <div class="field-block">
+                <label for="internalSubject">{{ 'messages_page.subject_label' | translate }}</label>
+                <input
+                    id="internalSubject"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="form.subject"
+                    [disabled]="sending"
+                    class="w-full"
+                    maxlength="180" />
+            </div>
+
+            <div class="field-block">
+                <label for="internalMessage">{{ 'messages_page.message_label' | translate }}</label>
+                <textarea
+                    id="internalMessage"
+                    pTextarea
+                    rows="6"
+                    [(ngModel)]="form.message"
+                    [disabled]="sending"
+                    class="w-full internal-message-textarea"
+                    maxlength="5000">
+                </textarea>
+            </div>
+
+            <div class="actions-row">
+                <p-button
+                    type="button"
+                    severity="primary"
+                    [raised]="true"
+                    [disabled]="sending"
+                    (click)="sendMessage()"
+                    [label]="sending ? ('messages_page.sending' | translate) : ('messages_page.send_button' | translate)">
+                </p-button>
+            </div>
+        </article>
+
+        <aside class="panel">
+            <h2>{{ 'messages_page.mailbox_title' | translate }}</h2>
+
+            <div class="mailbox-grid">
+                <div class="threads-col">
+                    <button
+                        *ngFor="let thread of threads"
+                        type="button"
+                        class="thread-item"
+                        [class.active]="thread.id === selectedThreadId"
+                        (click)="openThread(thread.id)">
+                        <div class="thread-subject">{{ thread.subject }}</div>
+                        <div class="thread-preview">{{ thread.last_message_preview }}</div>
+                    </button>
+                    <p *ngIf="!loadingThreads && threads.length === 0" class="empty-state">
+                        {{ 'messages_page.no_messages' | translate }}
+                    </p>
+                </div>
+
+                <div class="messages-col">
+                    <div *ngIf="loadingThreadDetail" class="empty-state">
+                        {{ 'messages_page.loading_messages' | translate }}
+                    </div>
+
+                    <div *ngIf="!loadingThreadDetail && selectedThread" class="messages-scroll">
+                        <article
+                            *ngFor="let item of selectedThread.messages"
+                            class="message-bubble"
+                            [class.from-user]="item.sender_type === 'user'"
+                            [class.from-support]="item.sender_type !== 'user'">
+                            <header>{{ item.sender_type === 'user' ? ('messages_page.from_me' | translate) : ('messages_page.from_support' | translate) }}</header>
+                            <p>{{ item.body }}</p>
+                        </article>
+                    </div>
+
+                    <div *ngIf="!loadingThreadDetail && !selectedThread" class="empty-state">
+                        {{ 'messages_page.select_message' | translate }}
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>

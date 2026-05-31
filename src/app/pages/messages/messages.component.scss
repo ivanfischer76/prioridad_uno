@@ -1,0 +1,169 @@
+section.messages-page {
+    padding: 10px;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.messages-header {
+    margin-bottom: 0.7rem;
+}
+
+.messages-header h1 {
+    margin: 0;
+    color: #1f2937;
+}
+
+.messages-header p {
+    margin: 0.4rem 0 0;
+    color: #475569;
+}
+
+.messages-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1.15fr;
+    gap: 0.8rem;
+    height: calc(100% - 68px);
+    min-height: 0;
+}
+
+.panel {
+    background: rgb(255 255 255 / 0.9);
+    border: 1px solid #dbe3ee;
+    border-radius: 12px;
+    padding: 0.95rem;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.panel h2 {
+    margin: 0 0 0.7rem;
+    font-size: 1.08rem;
+    color: #1f2937;
+}
+
+.field-block {
+    margin-bottom: 0.72rem;
+}
+
+.field-block label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.internal-message-textarea {
+    min-height: 180px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.actions-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mailbox-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.25fr;
+    gap: 0.6rem;
+    height: calc(100% - 42px);
+    min-height: 0;
+}
+
+.threads-col,
+.messages-col {
+    min-height: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.45rem;
+    overflow: hidden;
+}
+
+.threads-col {
+    overflow-y: auto;
+}
+
+.messages-scroll {
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.thread-item {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    border-radius: 8px;
+    padding: 0.42rem;
+    margin-bottom: 0.35rem;
+    cursor: pointer;
+}
+
+.thread-item.active {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.thread-subject {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.thread-preview {
+    font-size: 0.83rem;
+    color: #64748b;
+}
+
+.message-bubble {
+    border-radius: 8px;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid #dbe3ee;
+}
+
+.message-bubble header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.message-bubble p {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.message-bubble.from-user {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.message-bubble.from-support {
+    background: #f8fafc;
+}
+
+.empty-state {
+    color: #64748b;
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+@media (max-width: 920px) {
+    .messages-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: auto;
+    }
+
+    .mailbox-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .messages-col {
+        min-height: 260px;
+    }
+}

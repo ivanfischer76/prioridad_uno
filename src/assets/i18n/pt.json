@@ -13,7 +13,8 @@
     "roles": "Funções",
     "permissions": "Permissões",
     "campaigns": "Campanhas",
-    "statistics": "Estatísticas"
+    "statistics": "Estatísticas",
+    "messages": "Mensagens"
   },
   "slider": {
     "versiculo": "E desta maneira me esforcei por pregar o evangelho, não onde Cristo já fora anunciado, para não edificar sobre fundamento alheio; mas, como está escrito: Aqueles a quem não foi anunciado o verão; e os que não ouviram entenderão.",
@@ -84,6 +85,55 @@
   },
   "donate": "Ofertar",
   "contact_us": "Contate-nos!",
+  "contact_page": {
+    "title": "Contato interno",
+    "subtitle": "Envie sua consulta e ela ficará registrada na sua caixa.",
+    "form_title": "Enviar mensagem",
+    "email_label": "Email de contato",
+    "subject_label": "Assunto",
+    "message_label": "Mensagem",
+    "send_button": "Enviar mensagem",
+    "sending": "Enviando...",
+    "channels_title": "Canais de contato",
+    "support_email": "Email",
+    "support_phone": "Telefone",
+    "mailbox_title": "Caixa de mensagens",
+    "no_messages": "Você ainda não tem mensagens.",
+    "loading_messages": "Carregando conversa...",
+    "from_me": "Eu",
+    "from_support": "Suporte",
+    "select_message": "Selecione uma conversa para ver as mensagens."
+  },
+  "contact_public": {
+    "title": "Fale conosco",
+    "subtitle": "Este formulário é para visitantes e consultas gerais.",
+    "form_title": "Enviar consulta",
+    "full_name_label": "Nome e sobrenome",
+    "email_label": "Email",
+    "subject_label": "Assunto",
+    "message_label": "Mensagem",
+    "send_button": "Enviar consulta",
+    "sending": "Enviando...",
+    "channels_title": "Canais de contato",
+    "support_email": "Email",
+    "support_phone": "Telefone"
+  },
+  "messages_page": {
+    "title": "Mensageria interna",
+    "subtitle": "Envie mensagens para a equipe e revise suas conversas internas.",
+    "compose_title": "Nova mensagem interna",
+    "email_label": "Email de contato",
+    "subject_label": "Assunto",
+    "message_label": "Mensagem",
+    "send_button": "Enviar mensagem",
+    "sending": "Enviando...",
+    "mailbox_title": "Conversas",
+    "no_messages": "Você ainda não tem mensagens.",
+    "loading_messages": "Carregando conversa...",
+    "from_me": "Eu",
+    "from_support": "Suporte",
+    "select_message": "Selecione uma conversa para ver as mensagens."
+  },
   "welcome": "Bem-vindo",
   "welcome_page": {
     "fallback_notice": "Você está vendo conteúdo em espanhol porque esta seção ainda não foi traduzida para o idioma escolhido. Pedimos desculpas pelo transtorno; em breve faremos a tradução para você."

@@ -1,3 +1,92 @@
-section{
+section.contact-page {
     padding: 10px;
+}
+
+.contact-header {
+    margin-bottom: 1rem;
+}
+
+.contact-header h1 {
+    margin: 0;
+    color: #1f2937;
+}
+
+.contact-header h1 {
+	margin: 0;
+	font-size: 1.65rem;
+	font-weight: 700;
+}
+
+.contact-header p {
+    margin: 0.4rem 0 0;
+    color: #475569;
+}
+
+.contact-public-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0.8rem;
+}
+
+.panel {
+    background: rgb(255 255 255 / 0.9);
+    border: 1px solid #dbe3ee;
+    border-radius: 12px;
+    padding: 0.95rem;
+}
+
+.panel h2 {
+    margin: 0 0 0.7rem;
+    font-size: 1.08rem;
+    color: #1f2937;
+}
+
+.field-block {
+    margin-bottom: 0.72rem;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.field-block label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.contact-message-textarea {
+    min-height: 210px;
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.actions-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.channel-row {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 0.45rem;
+    color: #334155;
+}
+
+.channel-label {
+    font-weight: 700;
+}
+
+@media (max-width: 920px) {
+    .contact-public-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 }

@@ -18,6 +18,11 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/contact-us/contact-us.component').then(m => m.ContactUsComponent)
     },
     {
+        path: 'messages',
+        canActivate: [authUsersGuard],
+        loadComponent: () => import('./pages/messages/messages.component').then(m => m.MessagesComponent)
+    },
+    {
         path: 'donate',
         loadComponent: () => import('./pages/donate/donate.component').then(m => m.DonateComponent)
     },
@@ -69,6 +74,12 @@ export const routes: Routes = [
         path: 'gestionar-bienvenida',
         canActivate: [authUsersGuard],
         loadComponent: () => import('./pages/gestionar-bienvenida/gestionar-bienvenida.component').then(m => m.GestionarBienvenidaComponent)
+    },
+    {
+        path: 'gestionar-contactos',
+        canActivate: [authUsersGuard],
+        data: { permiso: 'gestionar contactos' },
+        loadComponent: () => import('./pages/gestionar-contactos/gestionar-contactos.component').then(m => m.GestionarContactosComponent)
     },
     {
         path: 'sistema',

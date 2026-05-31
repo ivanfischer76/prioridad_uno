@@ -164,6 +164,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 });
             }
 
+            if (this.hasPermission('gestionar contactos')) {
+                managementItems.push({
+                    label: 'Contactos',
+                    command: () => this.router.navigate(['/gestionar-contactos'])
+                });
+            }
+
             menuItems = [
                 {
                     label: 'welcome',
@@ -172,6 +179,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 {
                     label: 'amazonas',
                     route: '/amazonas-boliviano'
+                },
+                {
+                    label: 'menu.messages',
+                    route: '/messages'
                 },
                 // {
                 //     label: 'projects',
@@ -203,6 +214,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     label: 'menu.about_us',
                     icon: 'pi pi-users',
                     route: '/about-us'
+                },
+                {
+                    label: 'menu.contact',
+                    icon: 'pi pi-envelope',
+                    route: '/contact-us'
                 },
                 // {
                 //     label: 'menu.campaigns',

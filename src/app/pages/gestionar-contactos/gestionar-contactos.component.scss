@@ -1,0 +1,63 @@
+section.gestion-contactos-page {
+    padding: 10px;
+}
+
+.gestion-header {
+    margin-bottom: 1rem;
+}
+
+.gestion-header h1 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 1.65rem;
+    font-weight: 700;
+}
+
+.panel {
+    background: rgb(255 255 255 / 0.9);
+    border: 1px solid #dbe3ee;
+    border-radius: 12px;
+    padding: 0.95rem;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.message-cell {
+    color: #334155;
+}
+
+.empty-cell {
+    text-align: center;
+    color: #64748b;
+}
+
+.dialog-loading {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+}
+
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.field-block label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.read-only-textarea {
+    min-height: 220px;
+    max-height: 420px;
+    overflow-y: auto;
+}

@@ -13,7 +13,8 @@
     "roles": "Ruoli",
     "permissions": "Permessi",
     "campaigns": "Campagne",
-    "statistics": "Statistiche"
+    "statistics": "Statistiche",
+    "messages": "Messaggi"
   },
   "slider": {
     "versiculo": "Così mi sono sforzato di predicare il vangelo, non dove Cristo era già stato nominato, per non edificare su un fondamento altrui, ma come è scritto: Coloro ai quali non era stato annunziato di lui, vedranno; e coloro che non ne avevano udito parlare, comprenderanno.",
@@ -84,6 +85,55 @@
   },
   "donate": "Offrire",
   "contact_us": "Contattaci!",
+  "contact_page": {
+    "title": "Contatto interno",
+    "subtitle": "Invia la tua richiesta e verrà salvata nella tua casella.",
+    "form_title": "Invia messaggio",
+    "email_label": "Email di contatto",
+    "subject_label": "Oggetto",
+    "message_label": "Messaggio",
+    "send_button": "Invia messaggio",
+    "sending": "Invio in corso...",
+    "channels_title": "Canali di contatto",
+    "support_email": "Email",
+    "support_phone": "Telefono",
+    "mailbox_title": "Casella messaggi",
+    "no_messages": "Non hai ancora messaggi.",
+    "loading_messages": "Caricamento conversazione...",
+    "from_me": "Io",
+    "from_support": "Supporto",
+    "select_message": "Seleziona una conversazione per vedere i messaggi."
+  },
+  "contact_public": {
+    "title": "Contattaci",
+    "subtitle": "Questo modulo è per visitatori e richieste generali.",
+    "form_title": "Invia richiesta",
+    "full_name_label": "Nome e cognome",
+    "email_label": "Email",
+    "subject_label": "Oggetto",
+    "message_label": "Messaggio",
+    "send_button": "Invia richiesta",
+    "sending": "Invio in corso...",
+    "channels_title": "Canali di contatto",
+    "support_email": "Email",
+    "support_phone": "Telefono"
+  },
+  "messages_page": {
+    "title": "Messaggistica interna",
+    "subtitle": "Invia messaggi al team e controlla le tue conversazioni interne.",
+    "compose_title": "Nuovo messaggio interno",
+    "email_label": "Email di contatto",
+    "subject_label": "Oggetto",
+    "message_label": "Messaggio",
+    "send_button": "Invia messaggio",
+    "sending": "Invio in corso...",
+    "mailbox_title": "Conversazioni",
+    "no_messages": "Non hai ancora messaggi.",
+    "loading_messages": "Caricamento conversazione...",
+    "from_me": "Io",
+    "from_support": "Supporto",
+    "select_message": "Seleziona una conversazione per vedere i messaggi."
+  },
   "welcome": "Benvenuto",
   "welcome_page": {
     "fallback_notice": "Stai visualizzando contenuti in spagnolo perché questa sezione non è ancora tradotta nella lingua selezionata. Ci scusiamo per il disagio; la tradurremo presto per te."

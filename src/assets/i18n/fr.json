@@ -13,7 +13,8 @@
     "roles": "Rôles",
     "permissions": "Autorisations",
     "campaigns": "Campagnes",
-    "statistics": "Statistiques"
+    "statistics": "Statistiques",
+    "messages": "Messages"
   },
   "slider": {
     "versiculo": "C’est ainsi que je me suis fait un honneur d’annoncer l’Évangile là où Christ n’avait pas été nommé, afin de ne pas bâtir sur le fondement d’autrui, mais, comme il est écrit : Ceux à qui il n’a point été annoncé verront, et ceux qui n’en avaient pas entendu parler comprendront.",
@@ -84,6 +85,55 @@
   },
   "donate": "Offrir",
   "contact_us": "Contactez-nous !",
+  "contact_page": {
+    "title": "Contact interne",
+    "subtitle": "Envoyez votre demande et elle sera enregistrée dans votre boîte.",
+    "form_title": "Envoyer un message",
+    "email_label": "Email de contact",
+    "subject_label": "Objet",
+    "message_label": "Message",
+    "send_button": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "channels_title": "Canaux de contact",
+    "support_email": "Email",
+    "support_phone": "Téléphone",
+    "mailbox_title": "Boîte de réception",
+    "no_messages": "Vous n'avez pas encore de messages.",
+    "loading_messages": "Chargement de la conversation...",
+    "from_me": "Moi",
+    "from_support": "Support",
+    "select_message": "Sélectionnez une conversation pour voir les messages."
+  },
+  "contact_public": {
+    "title": "Contactez-nous",
+    "subtitle": "Ce formulaire est destiné aux visiteurs et aux demandes générales.",
+    "form_title": "Envoyer une demande",
+    "full_name_label": "Nom et prénom",
+    "email_label": "Email",
+    "subject_label": "Objet",
+    "message_label": "Message",
+    "send_button": "Envoyer la demande",
+    "sending": "Envoi en cours...",
+    "channels_title": "Canaux de contact",
+    "support_email": "Email",
+    "support_phone": "Téléphone"
+  },
+  "messages_page": {
+    "title": "Messagerie interne",
+    "subtitle": "Envoyez des messages à l'équipe et consultez vos conversations internes.",
+    "compose_title": "Nouveau message interne",
+    "email_label": "Email de contact",
+    "subject_label": "Objet",
+    "message_label": "Message",
+    "send_button": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "mailbox_title": "Conversations",
+    "no_messages": "Vous n'avez pas encore de messages.",
+    "loading_messages": "Chargement de la conversation...",
+    "from_me": "Moi",
+    "from_support": "Support",
+    "select_message": "Sélectionnez une conversation pour voir les messages."
+  },
   "welcome": "Bienvenue",
   "welcome_page": {
     "fallback_notice": "Vous consultez du contenu en espagnol parce que cette section n'est pas encore traduite dans la langue choisie. Veuillez nous excuser pour la gêne occasionnée ; nous la traduirons bientôt pour vous."
